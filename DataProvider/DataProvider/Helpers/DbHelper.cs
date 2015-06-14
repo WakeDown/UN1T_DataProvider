@@ -52,6 +52,39 @@ namespace DataProvider.Helpers
                 return dt;
             }
 
+            public static void ExecuteStoredProcedure(SqlConnection connection, SqlTransaction tran, string spName, params SqlParameter[] sqlParams)
+            {
+                using (var conn = connection)
+                using (var cmd = new SqlCommand(spName, conn)
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    CommandTimeout = 1000,
+                    Transaction = tran
+                })
+                {
+                    cmd.Parameters.AddRange(sqlParams);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            public static DataTable ExecuteQueryStoredProcedure(SqlConnection connection, SqlTransaction tran, string spName, params SqlParameter[] sqlParams)
+            {
+                DataTable dt = new DataTable();
+
+                using (var cmd = new SqlCommand(spName, connection, tran)
+                {
+                    CommandType = CommandType.StoredProcedure,
+                    CommandTimeout = 1000
+                })
+                {
+                    cmd.Parameters.AddRange(sqlParams);
+                    dt.Load(cmd.ExecuteReader());
+                }
+
+                return dt;
+            }
+
             public static object ExecuteScalarStoredProcedure(SqlConnection connection, string spName, params SqlParameter[] sqlParams)
             {
                 object result;
@@ -99,13 +132,19 @@ namespace DataProvider.Helpers
                 return result;
             }
 
+            public static DateTime GetValueDateTime(object value)
+            {
+                DateTime result = Convert.ToDateTime(value);
+                return result;
+            }
+
             public static DateTime? GetValueDateTimeOrNull(object value)
             {
                 DateTime? result = null;
 
                 if (value != null && !String.IsNullOrEmpty(value.ToString()))
                 {
-                    result = Convert.ToDateTime(value);
+                    result = GetValueDateTime(value);
                 }
 
                 return result;
@@ -118,6 +157,22 @@ namespace DataProvider.Helpers
                 if (!String.IsNullOrEmpty(value.ToString()))
                 {
                     result = Convert.ToBoolean(value);
+                }
+
+                return result;
+            }
+
+            public static byte[] GetByteArr(object value)
+            {
+                byte[] result = null;
+
+                try
+                {
+                    result = (Byte[])value;
+                }
+                catch (Exception ex)
+                {
+                    result = new byte[25];
                 }
 
                 return result;

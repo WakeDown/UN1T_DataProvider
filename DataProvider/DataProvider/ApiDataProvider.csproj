@@ -106,12 +106,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Stuff\CityController.cs" />
     <Compile Include="Controllers\Stuff\DepartmentController.cs" />
     <Compile Include="Controllers\Stuff\EmployeeController.cs" />
+    <Compile Include="Controllers\Stuff\EmpStateController.cs" />
+    <Compile Include="Controllers\Stuff\OrganizationController.cs" />
+    <Compile Include="Controllers\Stuff\PositionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

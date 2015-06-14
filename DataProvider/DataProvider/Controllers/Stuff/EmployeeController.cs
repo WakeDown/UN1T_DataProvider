@@ -14,35 +14,50 @@ namespace DataProvider.Controllers.Stuff
     {
 
         [EnableQuery]
-        public IQueryable<Employee> GetList()
+        public IQueryable<Employee> GetList(int? idDepartment = null)
         {
-            return new EnumerableQuery<Employee>(new Collection<Employee>() { new Employee(1), new Employee(2) });
+            return new EnumerableQuery<Employee>(Employee.GetList(idDepartment));
         }
-        //public ICollection<Employee> Get()
-        //{
-        //    return new Collection<Employee>() { new Employee(1), new Employee(2) };
-        //}
-        
+
         public Employee Get(int id)
         {
-            return new Employee(id);
+            var dep = new Employee(id);
+            return dep;
         }
 
-        public string Save(Employee emp)
+        public HttpResponseMessage Save(Employee emp)
         {
-            return "Сохранено";
+            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.Created);
 
-            //if (String.IsNullOrEmpty(model.Title))
-            //    return new HttpResponseMessage(HttpStatusCode.BadRequest);
+            try
+            {
+                emp.Save();
+                response.Content = new StringContent(String.Format("{{\"id\":{0}}}", emp.Id));
+            }
+            catch (Exception ex)
+            {
+                response = new HttpResponseMessage(HttpStatusCode.OK);
+                response.Content = new StringContent(String.Format("{{\"errorMessage\":\"{0}\"}}", ex.Message));
 
-            ///*Логика сохранения*/
-
-            //return new HttpResponseMessage(HttpStatusCode.Created);
+            }
+            return response;
         }
 
-        public string Delete(int id)
+        public HttpResponseMessage Close(int id)
         {
-            return String.Format("Топик {0} удален!", id);
+            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.Created);
+
+            try
+            {
+                Employee.Close(id);
+            }
+            catch (Exception ex)
+            {
+                response = new HttpResponseMessage(HttpStatusCode.OK);
+                response.Content = new StringContent(String.Format("{{\"errorMessage\":\"{0}\"}}", ex.Message));
+
+            }
+            return response;
         }
     }
 }

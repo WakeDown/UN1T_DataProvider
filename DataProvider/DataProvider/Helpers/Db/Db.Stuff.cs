@@ -25,11 +25,22 @@ namespace DataProvider.Helpers
                 return dt;
             }
 
-            public static object ExecuteScalarStoredProcedure(string spName, params SqlParameter[] sqlParams)
+            public static DataTable ExecuteQueryStoredProcedure(string spName, SqlConnection conn, SqlTransaction tran, params SqlParameter[] sqlParams)
             {
-                object result = DbHelper.ExecuteScalarStoredProcedure(connection, spName, sqlParams);
-                return result;
+                DataTable dt = DbHelper.ExecuteQueryStoredProcedure(conn, tran, spName, sqlParams);
+                return dt;
             }
+
+            public static void ExecuteStoredProcedure(string spName, SqlConnection conn, SqlTransaction tran, params SqlParameter[] sqlParams)
+            {
+                DbHelper.ExecuteStoredProcedure(conn, tran, spName, sqlParams);
+            }
+
+            //public static object ExecuteScalarStoredProcedure(string spName, params SqlParameter[] sqlParams)
+            //{
+            //    object result = DbHelper.ExecuteScalarStoredProcedure(connection, spName, sqlParams);
+            //    return result;
+            //}
         }
     }
 }

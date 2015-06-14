@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 using DataProvider.Helpers;
 
 namespace DataProvider.Models.Stuff
@@ -41,6 +42,22 @@ namespace DataProvider.Models.Stuff
             }
         }
 
+        public void Save()
+        {
+            SqlParameter pId = new SqlParameter() { ParameterName = "id", SqlValue = Id, SqlDbType = SqlDbType.Int };
+            SqlParameter pName = new SqlParameter() { ParameterName = "name", SqlValue = Name, SqlDbType = SqlDbType.NVarChar };
+            SqlParameter pParentDepartment = new SqlParameter() { ParameterName = "id_parent", SqlValue = ParentDepartment.Id, SqlDbType = SqlDbType.Int };
+            SqlParameter pChief = new SqlParameter() { ParameterName = "id_chief", SqlValue = Chief.Id, SqlDbType = SqlDbType.Int };
+
+            var dt = Db.Stuff.ExecuteQueryStoredProcedure("save_department", pId, pName, pParentDepartment, pChief);
+            if (dt.Rows.Count > 0)
+            {
+                int id;
+                int.TryParse(dt.Rows[0]["id"].ToString(), out id);
+                Id = id;
+            }
+        }
+
         public static IEnumerable<Department> GetList()
         {
             var dt = Db.Stuff.ExecuteQueryStoredProcedure("get_department");
@@ -55,6 +72,11 @@ namespace DataProvider.Models.Stuff
 
             return lst;
         }
-
+        
+        public static void Close(int id)
+        {
+            SqlParameter pId = new SqlParameter() { ParameterName = "id", SqlValue = id, SqlDbType = SqlDbType.Int };
+            var dt = Db.Stuff.ExecuteQueryStoredProcedure("close_department", pId);
+        }
     }
 }
