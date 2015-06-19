@@ -27,6 +27,7 @@ namespace DataProvider.App_Start
             // Web API configuration and services
 
             // Web API routes
+            config.EnableQuerySupport();
             config.MapHttpAttributeRoutes();
 
             //config.Routes.MapHttpRoute(

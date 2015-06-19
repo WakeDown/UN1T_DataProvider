@@ -10,6 +10,7 @@ AS
             BEGIN
                 UPDATE  photos
                 SET     picture = @picture
+				where id_employee = @id_employee
             END
         ELSE
             BEGIN

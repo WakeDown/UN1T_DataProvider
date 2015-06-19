@@ -1,0 +1,35 @@
+﻿** Выделение
+     Таблицы, которые будут перестроены
+       [dbo].[employees]
+     Кластеризованные индексы, которые будут удалены
+       Нет
+     Кластеризованные индексы, которые будут созданы
+       Нет
+     Возможные проблемы, связанные с данными
+       Нет
+
+** Действия пользователя
+     Удалить
+       [dbo].[DF__employees__ad_si__34C8D9D1] (Ограничение по умолчанию)
+       [dbo].[DF__employees__datti__36B12243] (Ограничение по умолчанию)
+       [dbo].[DF__employees__datti__37A5467C] (Ограничение по умолчанию)
+       [dbo].[DF__employees__enabl__35BCFE0A] (Ограничение по умолчанию)
+       [dbo].[DF__employees__male__5812160E] (Ограничение по умолчанию)
+     Восстановление таблицы
+       [dbo].[employees] (Таблица)
+     Обновить
+       [dbo].[get_department] (процедуре)
+
+** Корректирующие действия
+     Создать
+       [dbo].[employees].[IX_employee_id_department] (Индекс)
+       [dbo].[employees].[IX_employee_id_manager] (Индекс)
+       [dbo].[employees].[IX_employee_ad_sid] (Индекс)
+       [dbo].[employees].[IX_employee_id_emp_state] (Индекс)
+       [dbo].[employees].[IX_employee_enabled] (Индекс)
+     Обновить
+       [dbo].[close_employee] (процедуре)
+       [dbo].[get_employee] (процедуре)
+       [dbo].[get_organization] (процедуре)
+       [dbo].[get_position] (процедуре)
+       [dbo].[save_employee] (процедуре)

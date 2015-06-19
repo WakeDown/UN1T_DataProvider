@@ -19,9 +19,9 @@ namespace DataProvider.Controllers.Stuff
             return new EnumerableQuery<Employee>(Employee.GetList(idDepartment));
         }
 
-        public Employee Get(int id)
+        public Employee Get(int id, bool getPhoto = false)
         {
-            var dep = new Employee(id);
+            var dep = new Employee(id, getPhoto);
             return dep;
         }
 

@@ -22,5 +22,40 @@ namespace DataProvider.Controllers.Stuff
             var model = new Position(id);
             return model;
         }
+
+        public HttpResponseMessage Save(Position pos)
+        {
+            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.Created);
+
+            try
+            {
+                pos.Save();
+                response.Content = new StringContent(String.Format("{{\"id\":{0}}}", pos.Id));
+            }
+            catch (Exception ex)
+            {
+                response = new HttpResponseMessage(HttpStatusCode.OK);
+                response.Content = new StringContent(String.Format("{{\"errorMessage\":\"{0}\"}}", ex.Message));
+
+            }
+            return response;
+        }
+
+        public HttpResponseMessage Close(int id)
+        {
+            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.Created);
+
+            try
+            {
+                Position.Close(id);
+            }
+            catch (Exception ex)
+            {
+                response = new HttpResponseMessage(HttpStatusCode.OK);
+                response.Content = new StringContent(String.Format("{{\"errorMessage\":\"{0}\"}}", ex.Message));
+
+            }
+            return response;
+        }
     }
 }

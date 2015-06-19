@@ -42,10 +42,17 @@ AS
                                     AND ph.id_employee = e.id
                           )
                      ELSE NULL
-                END AS photo
+                END AS photo,
+				CASE WHEN @id_department IS NOT NULL THEN 
+				CASE WHEN EXISTS(SELECT 1 FROM departments dd WHERE dd.id=@id_department AND dd.id_chief=e.id) THEN 0 ELSE 1 end
+				ELSE NULL END AS is_chief,
+				case when male=1 then 1 else 0 end as male,
+				id_position_org,
+				p_org.name as position_org
         FROM    employees e
                 INNER JOIN employee_states es ON e.id_emp_state = es.id
                 INNER JOIN positions p ON e.id_position = p.id
+				INNER JOIN positions p_org ON e.id_position_org = p_org.id
                 INNER JOIN organizations o ON e.id_organization = o.id
                 INNER JOIN cities c ON e.id_city = c.id
                 INNER JOIN departments d ON e.id_department = d.id
@@ -74,4 +81,5 @@ AS
                            AND id_department = @id_department
                          )
                     )
+					ORDER BY is_chief, e.full_name
     END

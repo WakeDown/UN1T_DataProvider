@@ -1,0 +1,1 @@
+﻿GRANT EXECUTE ON SCHEMA ::dbo TO sqlUnit_prog

@@ -9,14 +9,16 @@
     @display_name NVARCHAR(100) ,
     @id_position INT ,
     @id_organization INT ,
-    @email NVARCHAR(150) ,
-    @work_num NVARCHAR(50) ,
-    @mobil_num NVARCHAR(50) ,
+    @email NVARCHAR(150) = null,
+    @work_num NVARCHAR(50)  = null,
+    @mobil_num NVARCHAR(50)  = null,
     @id_emp_state INT ,
     @id_department INT ,
     @id_city INT ,
     @date_came DATE =null ,
-	@birth_date date= null
+	@birth_date date= null,
+	@male bit,
+	@id_position_org int
 AS
     BEGIN
         SET NOCOUNT ON;
@@ -43,7 +45,9 @@ AS
                         id_department = @id_department ,
                         id_city = @id_city ,
                         date_came = @date_came,
-						birth_date=@birth_date
+						birth_date=@birth_date,
+						male=@male,
+						id_position_org=@id_position_org
                 WHERE   id = @id
             END
         ELSE
@@ -65,7 +69,9 @@ AS
                           id_department ,
                           id_city ,
                           date_came ,
-						  birth_date
+						  birth_date,
+						  male,
+						  id_position_org
                         )
                 VALUES  ( @ad_sid ,
                           @id_manager ,
@@ -83,7 +89,9 @@ AS
                           @id_department ,
                           @id_city ,
                           @date_came  ,
-						  @birth_date
+						  @birth_date,
+						  @male,
+						  @id_position_org
                         )
 
                 SELECT  @id = @@IDENTITY

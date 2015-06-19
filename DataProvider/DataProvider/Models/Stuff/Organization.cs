@@ -12,6 +12,7 @@ namespace DataProvider.Models.Stuff
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public int EmpCount { get; set; }
 
         public Organization()
         {
@@ -37,6 +38,7 @@ namespace DataProvider.Models.Stuff
         {
             Id = Db.DbHelper.GetValueInt(row["id"]);
             Name = row["name"].ToString();
+            EmpCount = Db.DbHelper.GetValueInt(row["emp_count"]);
         }
 
         public static IEnumerable<Organization> GetList()
@@ -51,6 +53,35 @@ namespace DataProvider.Models.Stuff
             return lst;
         }
 
-        
+        public void Save()
+        {
+            SqlParameter pId = new SqlParameter() { ParameterName = "id", SqlValue = Id, SqlDbType = SqlDbType.Int };
+            SqlParameter pName = new SqlParameter() { ParameterName = "name", SqlValue = Name, SqlDbType = SqlDbType.NVarChar };
+
+            var dt = Db.Stuff.ExecuteQueryStoredProcedure("save_organization", pId, pName);
+            if (dt.Rows.Count > 0)
+            {
+                int id;
+                int.TryParse(dt.Rows[0]["id"].ToString(), out id);
+                Id = id;
+            }
+        }
+
+        public static void Close(int id)
+        {
+            SqlParameter pId = new SqlParameter() { ParameterName = "id", SqlValue = id, SqlDbType = SqlDbType.Int };
+
+            int count = (int)Db.Stuff.ExecuteScalar("get_organization_link_count", pId);
+
+            if (count == 0)
+            {
+                SqlParameter pIdOrg = new SqlParameter() { ParameterName = "id", SqlValue = id, SqlDbType = SqlDbType.Int };
+                Db.Stuff.ExecuteStoredProcedure("close_organization", pIdOrg);
+            }
+            else
+            {
+                throw new Exception("Невозможно удалить юр. лицо так как есть привязка к сотрудникам!");
+            }
+        }
     }
 }

@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Http.ModelBinding.Binders;
 
 namespace DataProvider.Helpers
 {
@@ -85,10 +86,9 @@ namespace DataProvider.Helpers
                 return dt;
             }
 
-            public static object ExecuteScalarStoredProcedure(SqlConnection connection, string spName, params SqlParameter[] sqlParams)
+            public static object ExecuteScalar(SqlConnection connection, string spName, params SqlParameter[] sqlParams)
             {
                 object result;
-
                 using (var conn = connection)
                 using (var cmd = new SqlCommand(spName, conn)
                 {
@@ -156,7 +156,7 @@ namespace DataProvider.Helpers
 
                 if (!String.IsNullOrEmpty(value.ToString()))
                 {
-                    result = Convert.ToBoolean(value);
+                    result = value.ToString().Equals("1");
                 }
 
                 return result;

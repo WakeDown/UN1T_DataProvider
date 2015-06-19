@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WcfDataProvider", "WcfDataP
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "StuffDb", "StuffDb\StuffDb.sqlproj", "{957E9FDF-1A2C-439B-9AF8-01346400E2CB}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SpeCalcDb", "SpeCalc\SpeCalcDb.sqlproj", "{07255904-74E6-4F7C-9ED1-CB6898339A47}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,12 @@ Global
 		{957E9FDF-1A2C-439B-9AF8-01346400E2CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{957E9FDF-1A2C-439B-9AF8-01346400E2CB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{957E9FDF-1A2C-439B-9AF8-01346400E2CB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{07255904-74E6-4F7C-9ED1-CB6898339A47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07255904-74E6-4F7C-9ED1-CB6898339A47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07255904-74E6-4F7C-9ED1-CB6898339A47}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{07255904-74E6-4F7C-9ED1-CB6898339A47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07255904-74E6-4F7C-9ED1-CB6898339A47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07255904-74E6-4F7C-9ED1-CB6898339A47}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

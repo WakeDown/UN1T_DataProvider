@@ -1,0 +1,5 @@
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\SpeCalc\bin\Debug\SpeCalcDb.dacpac
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\SpeCalc\bin\Debug\SpeCalc.dll
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\SpeCalc\bin\Debug\SpeCalc.pdb
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\SpeCalc\obj\Debug\SpeCalc.dll
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\SpeCalc\obj\Debug\SpeCalc.pdb

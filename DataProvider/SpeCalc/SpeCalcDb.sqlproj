@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>SpeCalcDb</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{07255904-74e6-4f7c-9ed1-cb6898339a47}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>SpeCalc</RootNamespace>
+    <AssemblyName>SpeCalc</AssemblyName>
+    <ModelCollation>1049,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>Cyrillic_General_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+    <DefaultFileStreamFilegroup>ContentDBFSGroup</DefaultFileStreamFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="Storage\" />
+    <Folder Include="Security\" />
+    <Folder Include="dbo\Functions\" />
+    <Folder Include="dbo\Stored Procedures\" />
+    <Folder Include="Post" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\Currency.sql" />
+    <Build Include="dbo\Tables\ClaimStatus.sql" />
+    <Build Include="dbo\Tables\ProtectFact.sql" />
+    <Build Include="dbo\Tables\DealType.sql" />
+    <Build Include="dbo\Tables\TenderStatus.sql" />
+    <Build Include="dbo\Tables\PositionState.sql" />
+    <Build Include="dbo\Tables\TenderClaim.sql" />
+    <Build Include="dbo\Tables\ClaimPosition.sql" />
+    <Build Include="dbo\Tables\CalculateClaimPosition.sql" />
+    <Build Include="dbo\Tables\ClaimStatusHistory.sql" />
+    <Build Include="dbo\Tables\Roles.sql" />
+    <Build Include="dbo\Tables\DeliveryTime.sql" />
+    <Build Include="Storage\ContentDBFSGroup.sql" />
+    <Build Include="Security\sqlUnit_prog.sql" />
+    <Build Include="Security\sqlUnit_prog_1.sql" />
+    <Build Include="dbo\Functions\Split.sql" />
+    <Build Include="dbo\Stored Procedures\SaveTenderClaim.sql" />
+    <Build Include="dbo\Stored Procedures\LoadTenderClaims.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteTenderClaims.sql" />
+    <Build Include="dbo\Stored Procedures\ChangeTenderClaimClaimStatus.sql" />
+    <Build Include="dbo\Stored Procedures\ChangeTenderClaimTenderStatus.sql" />
+    <Build Include="dbo\Stored Procedures\LoadTenderClaimById.sql" />
+    <Build Include="dbo\Stored Procedures\FilterTenderClaims.sql" />
+    <Build Include="dbo\Stored Procedures\FilterTenderClaimsCount.sql" />
+    <Build Include="dbo\Stored Procedures\LoadApproachingTenderClaim.sql" />
+    <Build Include="dbo\Stored Procedures\LoadOverdieTenderClaim.sql" />
+    <Build Include="dbo\Stored Procedures\GetTenderClaimCount.sql" />
+    <Build Include="dbo\Stored Procedures\SaveClaimPosition.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateClaimPosition.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteClaimPosition.sql" />
+    <Build Include="dbo\Stored Procedures\GetClaimsPositionsStatistics.sql" />
+    <Build Include="dbo\Stored Procedures\GetClaimsCalculatePositionsStatistics.sql" />
+    <Build Include="dbo\Stored Procedures\LoadNoneCalculatePosition.sql" />
+    <Build Include="dbo\Stored Procedures\GetProductsForClaims.sql" />
+    <Build Include="dbo\Stored Procedures\HasClaimTranmissedPosition.sql" />
+    <Build Include="dbo\Stored Procedures\IsPositionsReadyToConfirm.sql" />
+    <Build Include="dbo\Stored Procedures\SetPositionsToConfirm.sql" />
+    <Build Include="dbo\Stored Procedures\ExistsClaimPosition.sql" />
+    <Build Include="dbo\Stored Procedures\ChangeClaimPositionState.sql" />
+    <Build Include="dbo\Stored Procedures\ChangePositionsState.sql" />
+    <Build Include="dbo\Stored Procedures\GetProductsForClaim.sql" />
+    <Build Include="dbo\Stored Procedures\HasClaimPosition.sql" />
+    <Build Include="dbo\Stored Procedures\LoadProductManagersForClaim.sql" />
+    <Build Include="dbo\Stored Procedures\LoadClaimPositionForTenderClaim.sql" />
+    <Build Include="dbo\Stored Procedures\LoadClaimPositionForTenderClaimForProduct.sql" />
+    <Build Include="dbo\Stored Procedures\SaveCalculateClaimPosition.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateCalculateClaimPosition.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteCalculateClaimPosition.sql" />
+    <Build Include="dbo\Stored Procedures\LoadCalculateClaimPositionForClaim.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteCalculatePositionForClaim.sql" />
+    <Build Include="dbo\Stored Procedures\SaveClaimStatusHistory.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteCalculateForPositions.sql" />
+    <Build Include="dbo\Stored Procedures\LoadStatusHistoryForClaim.sql" />
+    <Build Include="dbo\Stored Procedures\LoadLastStatusHistoryForClaim.sql" />
+    <Build Include="dbo\Stored Procedures\LoadCurrencies.sql" />
+    <Build Include="dbo\Stored Procedures\LoadDealTypes.sql" />
+    <Build Include="dbo\Stored Procedures\LoadClaimStatus.sql" />
+    <Build Include="dbo\Stored Procedures\LoadTenderStatus.sql" />
+    <Build Include="dbo\Stored Procedures\LoadPositionStates.sql" />
+    <Build Include="dbo\Stored Procedures\LoadProtectFacts.sql" />
+    <Build Include="dbo\Stored Procedures\LoadRoles.sql" />
+    <Build Include="dbo\Stored Procedures\UpdateTenderClaimCurrency.sql" />
+    <Build Include="dbo\Stored Procedures\ChangePositionsProduct.sql" />
+    <Build Include="dbo\Stored Procedures\LoadDeliveryTimes.sql" />
+    <Build Include="dbo\Tables\ClaimCertFiles.sql" />
+    <Build Include="dbo\Stored Procedures\SaveClaimCertFile.sql" />
+    <Build Include="dbo\Stored Procedures\DeleteClaimCertFile.sql" />
+    <None Include="Post\grant.sql" />
+    <PostDeploy Include="Post\post_script.sql" />
+    <Build Include="dbo\Stored Procedures\LoadClaimCertList.sql" />
+    <Build Include="dbo\Stored Procedures\GetCertFile.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="SpeCalcDb.publish.xml" />
+  </ItemGroup>
+</Project>

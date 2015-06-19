@@ -4,6 +4,8 @@ using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Web;
 using DataProvider.Helpers;
 using Microsoft.OData.Core.UriParser.Semantic;
@@ -31,6 +33,12 @@ namespace DataProvider.Models.Stuff
         public byte[] Photo { get; set; }
         public DateTime? DateCame { get; set; }
         public DateTime? BirthDate { get; set; }
+        public bool IsChief { get; set; }
+        public bool Male { get; set; }
+        /// <summary>
+        /// Официальная должность
+        /// </summary>
+        public Position PositionOrg { get; set; }
 
         public Employee()
         {
@@ -63,6 +71,9 @@ namespace DataProvider.Models.Stuff
             DateCame = Db.DbHelper.GetValueDateTimeOrNull(row["date_came"]);
             BirthDate = Db.DbHelper.GetValueDateTimeOrNull(row["birth_date"]);
             Photo = row["photo"] == DBNull.Value ? null: Db.DbHelper.GetByteArr(row["photo"]);
+            IsChief = row["is_chief"].ToString().Equals("0");
+            Male = row["male"].ToString().Equals("1");
+            PositionOrg = new Position() { Id = Db.DbHelper.GetValueInt(row["id_position_org"]), Name = row["position_org"].ToString() };
         }
 
         public Employee(int id, bool getPhoto = false)
@@ -79,11 +90,25 @@ namespace DataProvider.Models.Stuff
 
         internal void Save()
         {
+            //TODO: Если пользователь существует в AD то при изменении почты надо менять почтовый аккаунт!
+
             if (String.IsNullOrEmpty(AdSid))
             {
                 AdSid = "";
             }
-            if (Manager==null)Manager=new Employee();
+
+            if (Manager == null)
+            {
+                try
+                {
+                Manager=new Employee(){Id = new Department(Department.Id).Chief.Id};
+                }
+                catch (Exception)
+                {
+                    Manager=new Employee();
+                }
+            }
+
             if (EmpState == null) EmpState = EmpState.GetStuffState();
 
             FullName = String.Format("{0} {1} {2}", Surname, Name , Patronymic);
@@ -107,6 +132,8 @@ namespace DataProvider.Models.Stuff
             SqlParameter pCity = new SqlParameter() { ParameterName = "id_city", SqlValue = City.Id, SqlDbType = SqlDbType.Int };
             SqlParameter pDateCame = new SqlParameter() { ParameterName = "date_came", SqlValue = DateCame, SqlDbType = SqlDbType.Date };
             SqlParameter pBirthDate = new SqlParameter() { ParameterName = "birth_date", SqlValue = BirthDate, SqlDbType = SqlDbType.Date };
+            SqlParameter pMale = new SqlParameter() { ParameterName = "male", SqlValue = Male, SqlDbType = SqlDbType.Bit };
+            SqlParameter pPositionOrg = new SqlParameter() { ParameterName = "id_position_org", SqlValue = PositionOrg.Id, SqlDbType = SqlDbType.Int };
 
             using (var conn = Db.Stuff.connection)
             {
@@ -120,7 +147,7 @@ namespace DataProvider.Models.Stuff
                                 pSurname,
                                 pPatronymic, pFullName, pDisplayName, pPosition, pDepartment, pOrganization, pEmail,
                                 pWorkNum,
-                                pMobilNum, pEmpState, pCity, pDateCame, pBirthDate);
+                                pMobilNum, pEmpState, pCity, pDateCame, pBirthDate, pMale, pPositionOrg);
                             if (dt.Rows.Count > 0)
                             {
                                 int id;

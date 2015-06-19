@@ -36,11 +36,11 @@ namespace DataProvider.Helpers
                 DbHelper.ExecuteStoredProcedure(conn, tran, spName, sqlParams);
             }
 
-            //public static object ExecuteScalarStoredProcedure(string spName, params SqlParameter[] sqlParams)
-            //{
-            //    object result = DbHelper.ExecuteScalarStoredProcedure(connection, spName, sqlParams);
-            //    return result;
-            //}
+            public static object ExecuteScalar(string spName, params SqlParameter[] sqlParams)
+            {
+                object result = DbHelper.ExecuteScalar(connection, spName, sqlParams);
+                return result;
+            }
         }
     }
 }

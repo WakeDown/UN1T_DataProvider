@@ -68,12 +68,13 @@
     <Folder Include="StoredProc\Position" />
     <Folder Include="StoredProc\Organization" />
     <Folder Include="StoredProc\EmpStates" />
+    <Folder Include="Views" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\cities.sql" />
     <Build Include="Tables\departments.sql" />
     <Build Include="Tables\employee_states.sql" />
-    <Build Include="Tables\employes.sql" />
+    <Build Include="Tables\employees.sql" />
     <Build Include="StoredProc\Department\get_department.sql" />
     <Build Include="StoredProc\Department\save_department.sql" />
     <Build Include="StoredProc\Employee\get_employee.sql" />
@@ -85,6 +86,13 @@
     <Build Include="StoredProc\Organization\get_organization.sql" />
     <Build Include="StoredProc\EmpStates\get_emp_state.sql" />
     <Build Include="StoredProc\Employee\save_photo.sql" />
+    <Build Include="StoredProc\Organization\save_organization.sql" />
+    <Build Include="StoredProc\Position\save_position.sql" />
+    <Build Include="StoredProc\Organization\close_organization.sql" />
+    <Build Include="StoredProc\Position\close_position.sql" />
+    <Build Include="StoredProc\Position\get_position_link_count.sql" />
+    <Build Include="StoredProc\Organization\get_organization_link_count.sql" />
+    <Build Include="Views\employees_view.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="StuffDb.refactorlog" />
