@@ -6,10 +6,11 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.OData;
 using DataProvider.Models.Stuff;
+using DataProvider.Objects;
 
 namespace DataProvider.Controllers.Stuff
 {
-    public class PositionController : ApiController
+    public class PositionController : BaseApiController
     {
         [EnableQuery]
         public IQueryable<Position> GetList()
@@ -22,13 +23,14 @@ namespace DataProvider.Controllers.Stuff
             var model = new Position(id);
             return model;
         }
-
+        [AuthorizeAd(Groups = new[] { AdGroup.PersonalManager })]
         public HttpResponseMessage Save(Position pos)
         {
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.Created);
 
             try
             {
+                //pos.Creator = new Employee() {AdSid = GetCurUserSid()};
                 pos.Save();
                 response.Content = new StringContent(String.Format("{{\"id\":{0}}}", pos.Id));
             }
@@ -40,7 +42,7 @@ namespace DataProvider.Controllers.Stuff
             }
             return response;
         }
-
+        [AuthorizeAd(Groups = new[] { AdGroup.PersonalManager })]
         public HttpResponseMessage Close(int id)
         {
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.Created);

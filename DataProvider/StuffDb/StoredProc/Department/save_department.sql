@@ -2,7 +2,8 @@
     @id INT = NULL ,
     @name NVARCHAR(150) ,
     @id_parent INT ,
-    @id_chief INT
+    @id_chief INT,
+	@creator_sid varchar(46)=null
 AS
     BEGIN
 	SET NOCOUNT ON;
@@ -23,11 +24,11 @@ AS
                 INSERT  INTO departments
                         ( name ,
                           id_parent ,
-                          id_chief 
+                          id_chief  ,creator_sid
                         )
                 VALUES  ( @name ,
                           @id_parent ,
-                          @id_chief 
+                          @id_chief  ,@creator_sid
                         )
 
 						SELECT @id=@@IDENTITY

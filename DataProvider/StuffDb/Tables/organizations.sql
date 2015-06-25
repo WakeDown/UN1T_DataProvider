@@ -7,5 +7,6 @@
     [dattim2] DATETIME NOT NULL DEFAULT '3.3.3333', 
     [display_in_list] BIT NOT NULL DEFAULT 1, 
     [full_name] NVARCHAR(500) NULL, 
-    [order_num] INT NOT NULL DEFAULT 500
+    [order_num] INT NOT NULL DEFAULT 500, 
+    [creator_sid] VARCHAR(46) NULL
 )

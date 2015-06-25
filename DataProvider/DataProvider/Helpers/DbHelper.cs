@@ -120,6 +120,13 @@ namespace DataProvider.Helpers
                 return result;
             }
 
+            public static int GetValueIntOrDefault(object value)
+            {
+                int? result = GetValueIntOrNull(value);
+                return result ?? 0;
+            }
+            
+
             public static decimal? GetValueDeciamlOrNull(string value)
             {
                 decimal? result = null;

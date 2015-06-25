@@ -3,3 +3,7 @@ D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\SpeCalc\bin\Debug\Sp
 D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\SpeCalc\bin\Debug\SpeCalc.pdb
 D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\SpeCalc\obj\Debug\SpeCalc.dll
 D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\SpeCalc\obj\Debug\SpeCalc.pdb
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\SpeCalc\obj\Debug\Model.xml
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\SpeCalc\obj\Debug\refactor.xml
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\SpeCalc\obj\Debug\postdeploy.sql
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\SpeCalc\obj\Debug\predeploy.sql

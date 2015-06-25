@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.OData;
 using DataProvider.Models.Stuff;
+using DataProvider.Objects;
 
 namespace DataProvider.Controllers.Stuff
 {
@@ -18,13 +19,18 @@ namespace DataProvider.Controllers.Stuff
         {
             return new EnumerableQuery<Department>(Department.GetList());
         }
+
+        public IQueryable<Department> GetOrgStructure()
+        {
+            return new EnumerableQuery<Department>(Department.GetOrgStructure());
+        }
         
         public Department Get(int id)
         {
             var dep = new Department(id);
             return dep;
         }
-        
+        [AuthorizeAd(Groups = new[] { AdGroup.PersonalManager })]
         public HttpResponseMessage Save(Department dep)
         {
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.Created);
@@ -42,7 +48,7 @@ namespace DataProvider.Controllers.Stuff
             }
             return response;
         }
-        
+        [AuthorizeAd(Groups = new[] { AdGroup.PersonalManager })]
         public HttpResponseMessage Close(int id)
         {
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.Created);

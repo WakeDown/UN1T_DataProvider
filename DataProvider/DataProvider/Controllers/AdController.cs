@@ -1,21 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.DirectoryServices.AccountManagement;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Principal;
 using System.Web.Http;
 using DataProvider.Helpers;
+using DataProvider.Models.Stuff;
+using DataProvider.Objects;
+using WebGrease.Css.Extensions;
 
 namespace DataProvider.Controllers
 {
-    public class AdController : ApiController
+    public class AdController : BaseApiController
     {
         [HttpGet]
+        [AuthorizeAd(Groups = new[] { AdGroup.PersonalManager })]
         public string GetEmailAddressByName(string surname, string name)
         {
             return String.Format("{0}@unitgroup.ru", GetLoginByName(surname, name));
         }
         [HttpGet]
+        [AuthorizeAd(Groups = new[] { AdGroup.PersonalManager })]
         public string GetLoginByName(string surname, string name)
         {
             return AdHelper.GenerateLoginByName(surname, name);
@@ -32,6 +39,39 @@ namespace DataProvider.Controllers
 
             //}
             //return response;
+        }
+        
+
+        [HttpGet]
+        [AuthorizeAd(Groups = new[] { AdGroup.SystemUser })]
+        public HttpResponseMessage Synchronyze()
+        {
+            //RequestContext.Principal
+
+            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.Created);
+            string sid = GetCurUserSid();
+            try
+            {
+                foreach (Employee emp in Employee.GetList(getPhoto: true))
+                {
+                    Employee e = emp;
+                    try
+                    {
+                        AdHelper.SaveUser(ref e);
+                    }
+                    catch (UnauthorizedAccessException ex)
+                    {
+                        continue;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                response = new HttpResponseMessage(HttpStatusCode.OK);
+                response.Content = new StringContent(String.Format("{{\"errorMessage\":\"{0}\"}}", ex.Message));
+
+            }
+            return response;
         }
     }
 }

@@ -1,22 +1,18 @@
-﻿CREATE PROCEDURE [dbo].[get_department] @id INT = NULL
+﻿CREATE PROCEDURE [dbo].[get_department] @id INT = NULL, @get_emp_count BIT = 0
 AS
     BEGIN
         SET NOCOUNT ON;
         SELECT  id ,
                 name ,
                 id_parent ,
-                ( SELECT    name
-                  FROM      departments d2
-                  WHERE     d2.id = d.id_parent
-                ) AS parent ,
+                parent ,
                 id_chief ,
-                ( SELECT    display_name
-                  FROM      employees e
-                  WHERE     e.id = d.id_chief
-                ) AS chief
-        FROM    departments d
-        WHERE   d.enabled = 1
-                AND ( @id IS NULL
+                chief,
+				CASE WHEN @get_emp_count = 1 THEN 
+				(SELECT COUNT(1) FROM employees_view e WHERE e.id_department = d.id)
+				 ELSE NULL END AS emp_count
+        FROM    departments_view d
+        WHERE   ( @id IS NULL
                       OR ( @id IS NOT NULL
                            AND @id > 0
                            AND d.id = @id

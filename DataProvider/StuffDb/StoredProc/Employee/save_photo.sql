@@ -1,6 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[save_photo]
     @id_employee INT ,
-    @picture IMAGE
+    @picture IMAGE,
+	@creator_sid varchar(46) = null
 AS
     BEGIN
         SET nocount ON;
@@ -15,7 +16,7 @@ AS
         ELSE
             BEGIN
                 INSERT  INTO photos
-                        ( id_employee ,picture )
-                VALUES  ( @id_employee, @picture )
+                        ( id_employee ,picture, creator_sid )
+                VALUES  ( @id_employee, @picture, @creator_sid )
             END
     END

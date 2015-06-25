@@ -13,6 +13,7 @@ namespace DataProvider.Objects
 
         public string GetTranslit(string sourceText)
         {
+            sourceText = sourceText.Replace("КС", "X").Replace("кс", "x").Replace("Кc", "X").Replace("кС", "X");
             StringBuilder ans = new StringBuilder();
             for (int i = 0; i < sourceText.Length; i++)
             {

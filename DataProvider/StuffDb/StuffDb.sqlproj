@@ -93,6 +93,9 @@
     <Build Include="StoredProc\Position\get_position_link_count.sql" />
     <Build Include="StoredProc\Organization\get_organization_link_count.sql" />
     <Build Include="Views\employees_view.sql" />
+    <Build Include="Views\departments_view.sql" />
+    <Build Include="StoredProc\Employee\get_employees_birthday.sql" />
+    <Build Include="StoredProc\Department\check_employee_is_chief.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="StuffDb.refactorlog" />

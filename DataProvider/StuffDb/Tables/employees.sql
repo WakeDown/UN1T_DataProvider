@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[employees]
 (
 	[id] INT NOT NULL PRIMARY KEY IDENTITY, 
-    [ad_sid] VARCHAR(36) NOT NULL DEFAULT '', 
+    [ad_sid] VARCHAR(46) NOT NULL DEFAULT '', 
     [id_manager] INT NOT NULL, 
     [surname] NVARCHAR(50) NOT NULL, 
     [name] NVARCHAR(50) NOT NULL, 
@@ -22,7 +22,9 @@
     [date_came] DATE NULL, 
     [birth_date] DATE NULL, 
     [male] BIT NOT NULL DEFAULT 1, 
-    [id_position_org] INT NOT NULL      
+    [id_position_org] INT NOT NULL, 
+    [has_ad_account] BIT NOT NULL DEFAULT 0, 
+    [creator_sid] VARCHAR(46) NULL      
 )
 
 GO

@@ -119,4 +119,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="order_num" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="72634209-685d-44e2-ba29-32e812a00340" ChangeDateTime="06/22/2015 10:15:08" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[employees].[id_creator]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[employees]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="creator" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="aebbc97b-5295-4b14-b189-6514b3640211" ChangeDateTime="06/22/2015 10:15:15" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[employees].[creator]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[employees]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="creator_sid" />
+  </Operation>
 </Operations>

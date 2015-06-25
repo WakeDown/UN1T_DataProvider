@@ -6,7 +6,8 @@
     [enabled] BIT NOT NULL DEFAULT 1, 
     [dattim1] DATETIME NOT NULL DEFAULT getdate(), 
     [dattim2] DATETIME NOT NULL DEFAULT '3.3.3333', 
-    [id_chief] INT NOT NULL DEFAULT 0
+    [id_chief] INT NOT NULL DEFAULT 0, 
+    [creator_sid] VARCHAR(46) NULL
 )
 
 GO

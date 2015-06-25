@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.OData;
 using DataProvider.Models.Stuff;
+using DataProvider.Objects;
 
 namespace DataProvider.Controllers.Stuff
 {
@@ -22,7 +23,7 @@ namespace DataProvider.Controllers.Stuff
             var model = new Organization(id);
             return model;
         }
-
+        [AuthorizeAd(Groups = new[] { AdGroup.PersonalManager })]
         public HttpResponseMessage Save(Organization org)
         {
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.Created);
@@ -40,7 +41,7 @@ namespace DataProvider.Controllers.Stuff
             }
             return response;
         }
-
+        [AuthorizeAd(Groups = new[] { AdGroup.PersonalManager })]
         public HttpResponseMessage Close(int id)
         {
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.Created);

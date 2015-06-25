@@ -7,7 +7,8 @@
     [dattim2] DATETIME NOT NULL DEFAULT '3.3.3333', 
     [path] NVARCHAR(4000) NULL, 
     [picture] IMAGE NULL, 
-    [picture_name] NVARCHAR(100) NULL
+    [picture_name] NVARCHAR(100) NULL, 
+    [creator_sid] VARCHAR(46) NULL
 )
 
 GO

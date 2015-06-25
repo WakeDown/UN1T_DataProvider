@@ -13,6 +13,7 @@ namespace DataProvider.Models.Stuff
         public int Id { get; set; }
         public string Name { get; set; }
         public int EmpCount { get; set; }
+        public Employee Creator { get; set; }
 
         public Organization()
         {
@@ -55,10 +56,12 @@ namespace DataProvider.Models.Stuff
 
         public void Save()
         {
+            if (Creator == null) Creator = new Employee();
             SqlParameter pId = new SqlParameter() { ParameterName = "id", SqlValue = Id, SqlDbType = SqlDbType.Int };
             SqlParameter pName = new SqlParameter() { ParameterName = "name", SqlValue = Name, SqlDbType = SqlDbType.NVarChar };
+            SqlParameter pCreatorAdSid = new SqlParameter() { ParameterName = "creator_sid", SqlValue = Creator.AdSid, SqlDbType = SqlDbType.VarChar };
 
-            var dt = Db.Stuff.ExecuteQueryStoredProcedure("save_organization", pId, pName);
+            var dt = Db.Stuff.ExecuteQueryStoredProcedure("save_organization", pId, pName, pCreatorAdSid);
             if (dt.Rows.Count > 0)
             {
                 int id;

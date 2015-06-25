@@ -11,3 +11,4 @@
 */
 
 :r .\grant.sql
+:r .\ins_que_states.sql

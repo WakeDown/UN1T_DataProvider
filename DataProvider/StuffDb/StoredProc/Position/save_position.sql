@@ -1,6 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[save_position]
 	@id INT = NULL ,
-    @name NVARCHAR(150)
+    @name NVARCHAR(500),
+	@creator_sid varchar(46)=null
 AS
     BEGIN
 	SET NOCOUNT ON;
@@ -17,9 +18,9 @@ AS
         ELSE
             BEGIN
                 INSERT  INTO positions
-                        ( name 
+                        ( name  ,creator_sid
                         )
-                VALUES  ( @name 
+                VALUES  ( @name  ,@creator_sid
                         )
 
 						SELECT @id=@@IDENTITY

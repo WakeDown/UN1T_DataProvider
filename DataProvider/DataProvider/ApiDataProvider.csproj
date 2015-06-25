@@ -72,6 +72,7 @@
       <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.AccountManagement" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -143,6 +144,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\images\no_photo_female.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\images\no_photo_male.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Global.asax" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -151,6 +158,10 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="Controllers\SpeCalc\QuePosAnswerController.cs" />
+    <Compile Include="Controllers\SpeCalc\QuePositionController.cs" />
+    <Compile Include="Controllers\SpeCalc\QuestionController.cs" />
     <Compile Include="Controllers\Stuff\CityController.cs" />
     <Compile Include="Controllers\Stuff\DepartmentController.cs" />
     <Compile Include="Controllers\Stuff\EmployeeController.cs" />
@@ -161,6 +172,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\AdHelper.cs" />
+    <Compile Include="Helpers\Db\Db.SpeCalc.cs" />
+    <Compile Include="Helpers\MessageHelper.cs" />
+    <Compile Include="Models\SpeCalc\QuePosAnswer.cs" />
+    <Compile Include="Models\SpeCalc\QueState.cs" />
+    <Compile Include="Models\SpeCalc\Question.cs" />
+    <Compile Include="Models\SpeCalc\QuePosition.cs" />
     <Compile Include="Models\Stuff\City.cs" />
     <Compile Include="Models\Stuff\Department.cs" />
     <Compile Include="Models\Stuff\Employee.cs" />
@@ -168,7 +185,13 @@
     <Compile Include="Models\Stuff\Organization.cs" />
     <Compile Include="Models\Stuff\Position.cs" />
     <Compile Include="Helpers\DbHelper.cs" />
+    <Compile Include="Objects\AdGroup.cs" />
+    <Compile Include="Objects\AdUserGroup.cs" />
+    <Compile Include="Objects\Authorization.cs" />
+    <Compile Include="Objects\BaseApiController.cs" />
+    <Compile Include="Objects\DbModelParameter.cs" />
     <Compile Include="Objects\Transliteration.cs" />
+    <Compile Include="Objects\WindowsImpersonationContextFacade.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -185,6 +208,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\Main\" />
+    <Folder Include="Objects\Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

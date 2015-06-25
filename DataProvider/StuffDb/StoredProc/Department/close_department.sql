@@ -3,6 +3,6 @@ AS
     BEGIN
         SET NOCOUNT ON;
         UPDATE  departments
-        SET     enabled = 0
+        SET     enabled = 0, dattim2 = getdate()
         WHERE   id = @id
     END

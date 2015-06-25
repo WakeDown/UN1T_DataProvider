@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[save_employee]
     @id INT = NULL ,
-    @ad_sid VARCHAR(36) ,
+    @ad_sid VARCHAR(46) ,
     @id_manager INT ,
     @surname NVARCHAR(50) ,
     @name NVARCHAR(50) ,
@@ -18,7 +18,9 @@
     @date_came DATE =null ,
 	@birth_date date= null,
 	@male bit,
-	@id_position_org int
+	@id_position_org int,
+	@has_ad_account bit,
+	@creator_sid varchar(46)=null
 AS
     BEGIN
         SET NOCOUNT ON;
@@ -47,7 +49,8 @@ AS
                         date_came = @date_came,
 						birth_date=@birth_date,
 						male=@male,
-						id_position_org=@id_position_org
+						id_position_org=@id_position_org,
+						has_ad_account = @has_ad_account
                 WHERE   id = @id
             END
         ELSE
@@ -71,7 +74,9 @@ AS
                           date_came ,
 						  birth_date,
 						  male,
-						  id_position_org
+						  id_position_org,
+						  has_ad_account,
+						  creator_sid
                         )
                 VALUES  ( @ad_sid ,
                           @id_manager ,
@@ -91,7 +96,9 @@ AS
                           @date_came  ,
 						  @birth_date,
 						  @male,
-						  @id_position_org
+						  @id_position_org,
+						  @has_ad_account,
+						  @creator_sid
                         )
 
                 SELECT  @id = @@IDENTITY
