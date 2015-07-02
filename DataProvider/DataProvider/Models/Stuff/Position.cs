@@ -5,15 +5,16 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using DataProvider.Helpers;
+using DataProvider.Objects;
 
 namespace DataProvider.Models.Stuff
 {
-    public class Position
+    public class Position:DbModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public int EmpCount { get; set; }
-        public Employee Creator { get; set; }
+        //public Employee Creator { get; set; }
 
         public Position()
         {
@@ -56,10 +57,10 @@ namespace DataProvider.Models.Stuff
 
         public void Save()
         {
-            if (Creator == null) Creator = new Employee();
+            //if (Creator == null) Creator = new Employee();
             SqlParameter pId = new SqlParameter() { ParameterName = "id", SqlValue = Id, SqlDbType = SqlDbType.Int };
             SqlParameter pName = new SqlParameter() { ParameterName = "name", SqlValue = Name, SqlDbType = SqlDbType.NVarChar };
-            SqlParameter pCreatorAdSid = new SqlParameter() { ParameterName = "creator_sid", SqlValue = Creator.AdSid, SqlDbType = SqlDbType.VarChar };
+            SqlParameter pCreatorAdSid = new SqlParameter() { ParameterName = "creator_sid", SqlValue = CurUserAdSid, SqlDbType = SqlDbType.VarChar };
 
             var dt = Db.Stuff.ExecuteQueryStoredProcedure("save_position", pId, pName, pCreatorAdSid);
             if (dt.Rows.Count > 0)

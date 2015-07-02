@@ -6,10 +6,11 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.OData;
 using DataProvider.Models.Stuff;
+using DataProvider.Objects;
 
 namespace DataProvider.Controllers.Stuff
 {
-    public class CityController : ApiController
+    public class CityController : BaseApiController
     {
         [EnableQuery]
         public IQueryable<City> GetList()
@@ -21,6 +22,41 @@ namespace DataProvider.Controllers.Stuff
         {
             var model = new City(id);
             return model;
+        }
+        [AuthorizeAd(Groups = new[] { AdGroup.PersonalManager })]
+        public HttpResponseMessage Save(City model)
+        {
+            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.Created);
+
+            try
+            {
+                model.Save();
+                response.Content = new StringContent(String.Format("{{\"id\":{0}}}", model.Id));
+            }
+            catch (Exception ex)
+            {
+                response = new HttpResponseMessage(HttpStatusCode.OK);
+                response.Content = new StringContent(String.Format("{{\"errorMessage\":\"{0}\"}}", ex.Message));
+
+            }
+            return response;
+        }
+        [AuthorizeAd(Groups = new[] { AdGroup.PersonalManager })]
+        public HttpResponseMessage Close(int id)
+        {
+            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.Created);
+
+            try
+            {
+                City.Close(id);
+            }
+            catch (Exception ex)
+            {
+                response = new HttpResponseMessage(HttpStatusCode.OK);
+                response.Content = new StringContent(String.Format("{{\"errorMessage\":\"{0}\"}}", ex.Message));
+
+            }
+            return response;
         }
     }
 }

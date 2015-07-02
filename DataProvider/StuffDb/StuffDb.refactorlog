@@ -133,4 +133,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="creator_sid" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="e068b3a1-f7e7-4bc6-a2ea-1699f48e65eb" ChangeDateTime="07/01/2015 16:39:35">
+    <Property Name="ElementName" Value="[dbo].[organizations].[address]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[organizations]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="address_ur" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ea52b8de-f887-4231-b2cb-8cd2ac2de5ea" ChangeDateTime="07/01/2015 16:41:53">
+    <Property Name="ElementName" Value="[dbo].[organizations].[Bank]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[organizations]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="bank" />
+  </Operation>
 </Operations>

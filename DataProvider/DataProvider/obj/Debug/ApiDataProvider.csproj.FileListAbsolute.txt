@@ -1,4 +1,3 @@
-D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\DataProvider\bin\Microsoft.Data.OData.xml
 D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\DataProvider\bin\Content\images\no_photo_female.png
 D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\DataProvider\bin\Content\images\no_photo_male.jpg
 D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\DataProvider\bin\DataProvider.dll.config
@@ -32,6 +31,7 @@ D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\DataProvider\bin\Ant
 D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\DataProvider\bin\EntityFramework.xml
 D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\DataProvider\bin\EntityFramework.SqlServer.xml
 D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\DataProvider\bin\Microsoft.Data.Edm.xml
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\DataProvider\bin\Microsoft.Data.OData.xml
 D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\DataProvider\bin\Microsoft.OData.Core.xml
 D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\DataProvider\bin\Microsoft.OData.Edm.xml
 D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\DataProvider\bin\Microsoft.Spatial.xml
@@ -108,4 +108,3 @@ D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\DataProvider\bin\ru\
 D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\DataProvider\bin\ru\System.Web.Http.WebHost.resources.dll
 D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\DataProvider\obj\Debug\DataProvider.dll
 D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\DataProvider\obj\Debug\DataProvider.pdb
-D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\DataProvider\obj\Debug\ApiDataProvider.csprojResolveAssemblyReference.cache

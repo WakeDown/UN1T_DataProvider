@@ -8,11 +8,13 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Web;
 using DataProvider.Helpers;
+using DataProvider.Models.SpeCalc;
+using DataProvider.Objects;
 using Microsoft.OData.Core.UriParser.Semantic;
 
 namespace DataProvider.Models.Stuff
 {
-    public class Employee
+    public class Employee:DbModel
     {
         public int Id { get; set; }
         public string AdSid { get; set; }
@@ -37,12 +39,9 @@ namespace DataProvider.Models.Stuff
         public bool Male { get; set; }
         public bool HasAdAccount { get; set; }
         public Employee Creator { get; set; }
-
-        /// <summary>
-        /// Официальная должность
-        /// </summary>
         public Position PositionOrg { get; set; }
         public string ExpirenceString { get; set; }
+        public string AdLogin { get; set; }
 
         public Employee()
         {
@@ -57,28 +56,29 @@ namespace DataProvider.Models.Stuff
         private void FillSelf(DataRow row)
         {
             Id = Db.DbHelper.GetValueInt(row["id"]);
-            AdSid = row["ad_sid"].ToString();
-            Manager = new Employee() { Id = Db.DbHelper.GetValueInt(row["id_manager"]), DisplayName = row["manager"].ToString(), Email = row["manager_email"].ToString() };
-            Surname = row["surname"].ToString();
-            Name = row["name"].ToString();
-            Patronymic = row["patronymic"].ToString();
-            FullName = row["full_name"].ToString();
-            DisplayName = row["display_name"].ToString();
-            Position = new Position() { Id = Db.DbHelper.GetValueInt(row["id_position"]), Name = row["position"].ToString() };
-            Organization = new Organization() { Id = Db.DbHelper.GetValueInt(row["id_organization"]), Name = row["organization"].ToString() };
-            Email = row["email"].ToString();
-            WorkNum = row["work_num"].ToString();
-            MobilNum = row["mobil_num"].ToString();
-            EmpState = new EmpState() { Id = Db.DbHelper.GetValueInt(row["id_emp_state"]), Name = row["emp_state"].ToString() };
-            Department = new Department() { Id = Db.DbHelper.GetValueInt(row["id_department"]), Name = row["department"].ToString() };
-            City = new City() { Id = Db.DbHelper.GetValueInt(row["id_city"]), Name = row["city"].ToString() };
-            DateCame = Db.DbHelper.GetValueDateTimeOrNull(row["date_came"]);
-            BirthDate = Db.DbHelper.GetValueDateTimeOrNull(row["birth_date"]);
+            AdSid =  row.Table.Columns.Contains("ad_sid") ? row["ad_sid"].ToString() : String.Empty;
+            Manager = new Employee() { Id = row.Table.Columns.Contains("id_manager") ? Db.DbHelper.GetValueInt(row["id_manager"]) : 0, DisplayName = row.Table.Columns.Contains("manager") ? row["manager"].ToString() : String.Empty, Email = row.Table.Columns.Contains("manager_email") ? row["manager_email"].ToString() : String.Empty };
+            Surname = row.Table.Columns.Contains("surname") ? row["surname"].ToString() : String.Empty;
+            Name = row.Table.Columns.Contains("name") ? row["name"].ToString() : String.Empty;
+            Patronymic = row.Table.Columns.Contains("patronymic") ? row["patronymic"].ToString() : String.Empty;
+            FullName = row.Table.Columns.Contains("full_name") ? row["full_name"].ToString() : String.Empty;
+            DisplayName = row.Table.Columns.Contains("display_name") ? row["display_name"].ToString() : String.Empty;
+            Position = new Position() { Id = row.Table.Columns.Contains("id_position") ? Db.DbHelper.GetValueInt(row["id_position"]) : 0, Name = row.Table.Columns.Contains("position") ? row["position"].ToString() : String.Empty };
+            Organization = new Organization() { Id = row.Table.Columns.Contains("id_organization") ? Db.DbHelper.GetValueInt(row["id_organization"]) : 0, Name = row.Table.Columns.Contains("organization") ? row["organization"].ToString() : String.Empty };
+            Email = row.Table.Columns.Contains("email") ? row["email"].ToString() : String.Empty;
+            WorkNum = row.Table.Columns.Contains("work_num") ? row["work_num"].ToString() : String.Empty;
+            MobilNum = row.Table.Columns.Contains("mobil_num") ? row["mobil_num"].ToString() : String.Empty;
+            EmpState = new EmpState() { Id = row.Table.Columns.Contains("id_emp_state") ? Db.DbHelper.GetValueInt(row["id_emp_state"]) : 0, Name = row.Table.Columns.Contains("emp_state") ? row["emp_state"].ToString() : String.Empty };
+            Department = new Department() { Id = row.Table.Columns.Contains("id_department") ? Db.DbHelper.GetValueInt(row["id_department"]) : 0, Name = row.Table.Columns.Contains("department") ? row["department"].ToString() : String.Empty };
+            City = new City() { Id = row.Table.Columns.Contains("id_city") ? Db.DbHelper.GetValueInt(row["id_city"]) : 0, Name = row.Table.Columns.Contains("city") ? row["city"].ToString() : String.Empty };
+            DateCame = row.Table.Columns.Contains("date_came") ? Db.DbHelper.GetValueDateTimeOrNull(row["date_came"]) : new DateTime();
+            BirthDate = row.Table.Columns.Contains("birth_date") ? Db.DbHelper.GetValueDateTimeOrNull(row["birth_date"]) : new DateTime();
             Photo = row.Table.Columns.Contains("photo") ? row["photo"] == DBNull.Value ? null : Db.DbHelper.GetByteArr(row["photo"]) : null;
             IsChief = row.Table.Columns.Contains("is_chief") ? row["is_chief"].ToString().Equals("0") : false;
-            Male = row["male"].ToString().Equals("1");
-            PositionOrg = new Position() { Id = Db.DbHelper.GetValueInt(row["id_position_org"]), Name = row["position_org"].ToString() };
-            HasAdAccount = row["has_ad_account"].ToString().Equals("1");
+            Male = row.Table.Columns.Contains("male") ? row["male"].ToString().Equals("1") : true;
+            PositionOrg = new Position() { Id = row.Table.Columns.Contains("id_position_org") ? Db.DbHelper.GetValueInt(row["id_position_org"]) : 0, Name = row.Table.Columns.Contains("position_org") ? row["position_org"].ToString() : String.Empty };
+            HasAdAccount = row.Table.Columns.Contains("has_ad_account") ? row["has_ad_account"].ToString().Equals("1"): false;
+            AdLogin = row.Table.Columns.Contains("ad_login") ? row["ad_login"].ToString() : String.Empty;
         }
 
         public Employee(int id, bool getPhoto = false)
@@ -107,21 +107,47 @@ namespace DataProvider.Models.Stuff
             }
         }
 
-        internal void Save()
+        public int GetManagerId(int idDep)
         {
+            var dep = new Department(idDep);
+            int id = dep.Chief.Id;
+
+            if (id == 0 && dep.ParentDepartment != null && dep.ParentDepartment.Id > 0)
+            {
+                id = GetManagerId(dep.ParentDepartment.Id);
+            }
+
+            return id;
+        }
+
+        internal void Save(bool isRefill = false, bool isAdSync = false)
+        {
+            bool isEdit = (Id == 0);
             if (String.IsNullOrEmpty(AdSid))
             {
                 AdSid = "";
             }
-            if (Manager == null)
+            if (Creator == null) Creator = new Employee();
+            if (Position == null) Position = new Position();
+            if (Department == null) Department = new Department();
+            if (Organization == null) Organization = new Organization();
+            if (City==null)City=new City();
+            if (PositionOrg==null)PositionOrg=new Position();
+            if (Manager==null)Manager = new Employee();
+            if (Department.Id != 0)
             {
-                try
+                Department = new Department(Department.Id);
+                if (Id != Department.Chief.Id)
                 {
-                    Manager = new Employee() { Id = new Department(Department.Id).Chief.Id };
+                    Manager = new Employee() {Id = GetManagerId(Department.Id)};
                 }
-                catch (Exception)
+                else
                 {
-                    Manager = new Employee();
+                    var parDep = new Department(Department.Id);
+                    if (parDep.ParentDepartment != null && parDep.ParentDepartment.Id > 0)
+                    {
+                        Manager = new Employee() {Id = GetManagerId(parDep.ParentDepartment.Id)};
+                    }
                 }
             }
 
@@ -129,7 +155,6 @@ namespace DataProvider.Models.Stuff
 
             FullName = String.Format("{0} {1} {2}", Surname, Name, Patronymic);
             DisplayName = String.Format("{0} {1}{2}", Surname, !String.IsNullOrEmpty(Name) ? Name[0] + "." : String.Empty, !String.IsNullOrEmpty(Patronymic) ? Patronymic[0] + "." : String.Empty);
-            if (Creator==null)Creator=new Employee();
 
             SqlParameter pId = new SqlParameter() { ParameterName = "id", SqlValue = Id, SqlDbType = SqlDbType.Int };
             SqlParameter pAdSid = new SqlParameter() { ParameterName = "ad_sid", SqlValue = AdSid, SqlDbType = SqlDbType.VarChar };
@@ -152,7 +177,7 @@ namespace DataProvider.Models.Stuff
             SqlParameter pMale = new SqlParameter() { ParameterName = "male", SqlValue = Male, SqlDbType = SqlDbType.Bit };
             SqlParameter pPositionOrg = new SqlParameter() { ParameterName = "id_position_org", SqlValue = PositionOrg.Id, SqlDbType = SqlDbType.Int };
             SqlParameter pHasAdAccount = new SqlParameter() { ParameterName = "has_ad_account", SqlValue = HasAdAccount, SqlDbType = SqlDbType.Bit };
-            SqlParameter pCreatorAdSid = new SqlParameter() { ParameterName = "creator_sid", SqlValue = Creator.AdSid, SqlDbType = SqlDbType.VarChar };
+            SqlParameter pCreatorAdSid = new SqlParameter() { ParameterName = "creator_sid", SqlValue = CurUserAdSid, SqlDbType = SqlDbType.VarChar };
 
             using (var conn = Db.Stuff.connection)
             {
@@ -202,13 +227,52 @@ namespace DataProvider.Models.Stuff
                 }
                 conn.Close();
             }
+
+            if (HasAdAccount && !isAdSync)
+            {
+                Employee e = new Employee(Id);
+                bool adCreate;
+                try
+                {
+                    string sid = AdHelper.SaveUser(ref e);
+                    //if (String.IsNullOrEmpty(AdSid) || AdSid != sid)
+                    //{
+                        //var em = new Employee(Id);
+                        if (String.IsNullOrEmpty(e.AdSid) || e.AdSid != sid)
+                        {
+                            e.AdSid = sid;
+                            e.Save(isAdSync: true);
+                        }
+                    //}
+                    AdSid = sid;
+                    adCreate = true;
+                }
+                catch (Exception ex)
+                {
+                    adCreate = false;
+                    string body = String.Format("<p>Не удалось создать/обновить пользователя в Active Directory по причине:</p><p>{0}</p>", ex.Message);
+                    MessageHelper.SendMailSmtp("Active Directory ERROR", body, true, Settings.Emails4SysError);
+                    //throw new Exception(String.Format("Не удалось создать пользователя в Active Directory по причине - {0}", ex.Message));
+                }
+
+                if (!isRefill && isEdit)
+                {
+                    string body = String.Format("<p>В систему введен новый сотрудник.</p><p>{0}</p><p>{1}</p><p>{2}</p>", FullName, Email,
+                        City.Name);
+                    if (!adCreate) body += "<p style='color:red; font-size: 14pt;'>Не удалось создать пользователя в AD!</p>";
+                    var recipients = AdHelper.GetRecipientsFromAdGroup(AdGroup.NewEmployeeNote); //Settings.Emails4NewEmployee;//
+                    MessageHelper.SendMailSmtp("Новый сотрудник", body, true, recipients);//Оповещение сисадмину
+                }
+            }
+
+            
         }
 
         public static IEnumerable<Employee> GetList(int? idDepartment = null, bool getPhoto = false)
         {
             SqlParameter pIdDepartment = new SqlParameter() { ParameterName = "id_department", SqlValue = idDepartment, SqlDbType = SqlDbType.Int };
             SqlParameter pGetPhoto = new SqlParameter() { ParameterName = "get_photo", SqlValue = getPhoto, SqlDbType = SqlDbType.Bit };
-            var dt = Db.Stuff.ExecuteQueryStoredProcedure("get_employee", pIdDepartment, pGetPhoto);
+            var dt = Db.Stuff.ExecuteQueryStoredProcedure("get_employee_list", pIdDepartment, pGetPhoto);
 
             var lst = new List<Employee>();
 
@@ -224,7 +288,21 @@ namespace DataProvider.Models.Stuff
         public static void Close(int id)
         {
             SqlParameter pId = new SqlParameter() { ParameterName = "id", SqlValue = id, SqlDbType = SqlDbType.Int };
-            var dt = Db.Stuff.ExecuteQueryStoredProcedure("close_employee", pId);
+            Db.Stuff.ExecuteStoredProcedure("close_employee", pId);
+        }
+
+        public static void SetStateFired(int id)
+        {
+            SqlParameter pId = new SqlParameter() { ParameterName = "id_employee", SqlValue = id, SqlDbType = SqlDbType.Int };
+            SqlParameter pIdEmpState = new SqlParameter() { ParameterName = "id_emp_state", SqlValue = EmpState.GetFiredState().Id, SqlDbType = SqlDbType.Int };
+            Db.Stuff.ExecuteStoredProcedure("set_employee_state", pId, pIdEmpState);
+        }
+
+        public static void SetStateDecree(int id)
+        {
+            SqlParameter pId = new SqlParameter() { ParameterName = "id_employee", SqlValue = id, SqlDbType = SqlDbType.Int };
+            SqlParameter pIdEmpState = new SqlParameter() { ParameterName = "id_emp_state", SqlValue = EmpState.GetDecreeState().Id, SqlDbType = SqlDbType.Int };
+            Db.Stuff.ExecuteStoredProcedure("set_employee_state", pId, pIdEmpState);
         }
 
         public static IEnumerable<string> GetFullRecipientList()
@@ -287,6 +365,64 @@ namespace DataProvider.Models.Stuff
             }
 
             return result;
+        }
+
+        internal static void RefillManager()
+        {
+            foreach (Employee emp in GetList())
+            {
+                emp.Save(true);
+            }
+        }
+
+        public static IEnumerable<Employee> GetNewbieList(DateTime dateCreate)
+        {
+            SqlParameter pDateCreate = new SqlParameter() { ParameterName = "date_came", SqlValue = dateCreate, SqlDbType = SqlDbType.Date };
+            var dt = Db.Stuff.ExecuteQueryStoredProcedure("get_employees_newbie", pDateCreate);
+
+            var lst = new List<Employee>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                var emp = new Employee(row);
+                lst.Add(emp);
+            }
+
+            return lst;
+        }
+
+        public static IEnumerable<Employee> GetFiredList(int? idDepartment = null)
+        {
+            SqlParameter pIdEmpState = new SqlParameter() { ParameterName = "id_emp_state", SqlValue = EmpState.GetFiredState().Id, SqlDbType = SqlDbType.Int };
+            SqlParameter pIdDepartment = new SqlParameter() { ParameterName = "id_department", SqlValue = idDepartment, SqlDbType = SqlDbType.Int };
+            var dt = Db.Stuff.ExecuteQueryStoredProcedure("get_other_employee_list", pIdEmpState, pIdDepartment);
+
+            var lst = new List<Employee>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                var emp = new Employee(row);
+                lst.Add(emp);
+            }
+
+            return lst;
+        }
+
+        public static IEnumerable<Employee> GetDecreeList(int? idDepartment = null)
+        {
+            SqlParameter pIdEmpState = new SqlParameter() { ParameterName = "id_emp_state", SqlValue = EmpState.GetDecreeState().Id, SqlDbType = SqlDbType.Int };
+            SqlParameter pIdDepartment = new SqlParameter() { ParameterName = "id_department", SqlValue = idDepartment, SqlDbType = SqlDbType.Int };
+            var dt = Db.Stuff.ExecuteQueryStoredProcedure("get_other_employee_list", pIdEmpState, pIdDepartment);
+
+            var lst = new List<Employee>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                var emp = new Employee(row);
+                lst.Add(emp);
+            }
+
+            return lst;
         }
     }
 }

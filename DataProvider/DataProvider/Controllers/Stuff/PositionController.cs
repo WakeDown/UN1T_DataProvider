@@ -30,7 +30,6 @@ namespace DataProvider.Controllers.Stuff
 
             try
             {
-                //pos.Creator = new Employee() {AdSid = GetCurUserSid()};
                 pos.Save();
                 response.Content = new StringContent(String.Format("{{\"id\":{0}}}", pos.Id));
             }

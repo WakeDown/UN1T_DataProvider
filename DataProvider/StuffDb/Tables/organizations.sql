@@ -8,5 +8,22 @@
     [display_in_list] BIT NOT NULL DEFAULT 1, 
     [full_name] NVARCHAR(500) NULL, 
     [order_num] INT NOT NULL DEFAULT 500, 
-    [creator_sid] VARCHAR(46) NULL
+    [creator_sid] VARCHAR(46) NULL, 
+    [address_ur] NVARCHAR(500) NULL, 
+    [address_fact] NVARCHAR(500) NULL, 
+    [phone] NVARCHAR(50) NULL, 
+    [email] NVARCHAR(50) NULL, 
+    [inn] NVARCHAR(12) NULL, 
+    [kpp] NVARCHAR(20) NULL, 
+    [ogrn] NVARCHAR(20) NULL, 
+    [rs] NVARCHAR(50) NULL, 
+    [bank] NVARCHAR(500) NULL, 
+    [ks] NVARCHAR(50) NULL, 
+    [bik] NVARCHAR(50) NULL, 
+    [okpo] NVARCHAR(50) NULL, 
+    [okved] NVARCHAR(50) NULL, 
+    [manager_name] NVARCHAR(150) NULL, 
+    [manager_name_dat] NVARCHAR(150) NULL, 
+    [manager_position] NVARCHAR(250) NULL, 
+    [manager_position_dat] NVARCHAR(250) NULL
 )

@@ -6,18 +6,19 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using DataProvider.Helpers;
+using DataProvider.Objects;
 using WebGrease.Css.Extensions;
 
 namespace DataProvider.Models.Stuff
 {
-    public class Department
+    public class Department:DbModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public Department ParentDepartment { get; set; }
         public Employee Chief { get; set; }
         public int EmployeeCount { get; set; }
-        public Employee Creator { get; set; }
+        //public Employee Creator { get; set; }
 
         public IEnumerable<Department> ChildList { get; set; }
         public int OrgStructureLevel { get; set; }
@@ -34,14 +35,14 @@ namespace DataProvider.Models.Stuff
         {
             Id = Db.DbHelper.GetValueInt(row["id"]);
             Name = row["name"].ToString();
-            ParentDepartment = new Department() { Id = Db.DbHelper.GetValueInt(row["id_parent"]), Name = row["parent"].ToString()};
+            ParentDepartment = new Department() { Id = Db.DbHelper.GetValueInt(row["id_parent"]), Name = row["parent"].ToString() };
             Chief = new Employee() { Id = Db.DbHelper.GetValueInt(row["id_chief"]), DisplayName = row["chief"].ToString() };
             EmployeeCount = Db.DbHelper.GetValueIntOrDefault(row["emp_count"]);
         }
 
         public Department(int id)
         {
-            SqlParameter pId = new SqlParameter() {ParameterName = "id", SqlValue = id,SqlDbType = SqlDbType.Int };
+            SqlParameter pId = new SqlParameter() { ParameterName = "id", SqlValue = id, SqlDbType = SqlDbType.Int };
             var dt = Db.Stuff.ExecuteQueryStoredProcedure("get_department", pId);
             if (dt.Rows.Count > 0)
             {
@@ -52,19 +53,67 @@ namespace DataProvider.Models.Stuff
 
         public void Save()
         {
-            if (Creator == null) Creator = new Employee();
-            SqlParameter pId = new SqlParameter() { ParameterName = "id", SqlValue = Id, SqlDbType = SqlDbType.Int };
-            SqlParameter pName = new SqlParameter() { ParameterName = "name", SqlValue = Name, SqlDbType = SqlDbType.NVarChar };
-            SqlParameter pParentDepartment = new SqlParameter() { ParameterName = "id_parent", SqlValue = ParentDepartment.Id, SqlDbType = SqlDbType.Int };
-            SqlParameter pChief = new SqlParameter() { ParameterName = "id_chief", SqlValue = Chief.Id, SqlDbType = SqlDbType.Int };
-            SqlParameter pCreatorAdSid = new SqlParameter() { ParameterName = "creator_sid", SqlValue = Creator.AdSid, SqlDbType = SqlDbType.VarChar };
-
-            var dt = Db.Stuff.ExecuteQueryStoredProcedure("save_department", pId, pName, pParentDepartment, pChief, pCreatorAdSid);
-            if (dt.Rows.Count > 0)
+            using (var conn = Db.Stuff.connection)
             {
-                int id;
-                int.TryParse(dt.Rows[0]["id"].ToString(), out id);
-                Id = id;
+                conn.Open();
+                using (SqlTransaction tran = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        //if (Creator == null) Creator = new Employee();
+                        SqlParameter pId = new SqlParameter()
+                        {
+                            ParameterName = "id",
+                            SqlValue = Id,
+                            SqlDbType = SqlDbType.Int
+                        };
+                        SqlParameter pName = new SqlParameter()
+                        {
+                            ParameterName = "name",
+                            SqlValue = Name,
+                            SqlDbType = SqlDbType.NVarChar
+                        };
+                        SqlParameter pParentDepartment = new SqlParameter()
+                        {
+                            ParameterName = "id_parent",
+                            SqlValue = ParentDepartment.Id,
+                            SqlDbType = SqlDbType.Int
+                        };
+                        SqlParameter pChief = new SqlParameter()
+                        {
+                            ParameterName = "id_chief",
+                            SqlValue = Chief.Id,
+                            SqlDbType = SqlDbType.Int
+                        };
+                        SqlParameter pCreatorAdSid = new SqlParameter()
+                        {
+                            ParameterName = "creator_sid",
+                            SqlValue = CurUserAdSid,
+                            SqlDbType = SqlDbType.VarChar
+                        };
+
+                        var dt = Db.Stuff.ExecuteQueryStoredProcedure("save_department", pId, pName, pParentDepartment,
+                            pChief, pCreatorAdSid);
+                        int id=0;
+                        if (dt.Rows.Count > 0)
+                        {
+                            int.TryParse(dt.Rows[0]["id"].ToString(), out id);
+                            Id = id;
+                        }
+
+                        //Пересохраняем руководителя у сотрудников
+                        Employee.RefillManager();
+
+                        tran.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        tran.Rollback();
+                        throw;
+                    }
+
+                }
+                conn.Close();
             }
         }
 
@@ -83,7 +132,7 @@ namespace DataProvider.Models.Stuff
 
             return lst;
         }
-        
+
         public static void Close(int id)
         {
             SqlParameter pId = new SqlParameter() { ParameterName = "id", SqlValue = id, SqlDbType = SqlDbType.Int };
@@ -92,7 +141,7 @@ namespace DataProvider.Models.Stuff
 
         public static IEnumerable<Department> GetOrgStructure()
         {
-            var deps = GetList(getEmpCount:true).ToList();
+            var deps = GetList(getEmpCount: true).ToList();
             var result = new List<Department>();
 
             //Отделяем подразделения без гавных

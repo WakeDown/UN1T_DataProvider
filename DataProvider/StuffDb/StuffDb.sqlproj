@@ -96,6 +96,13 @@
     <Build Include="Views\departments_view.sql" />
     <Build Include="StoredProc\Employee\get_employees_birthday.sql" />
     <Build Include="StoredProc\Department\check_employee_is_chief.sql" />
+    <Build Include="StoredProc\Employee\get_employees_newbie.sql" />
+    <Build Include="StoredProc\Employee\set_employee_state.sql" />
+    <Build Include="StoredProc\Employee\get_employee_list.sql" />
+    <Build Include="StoredProc\City\save_city.sql" />
+    <Build Include="StoredProc\City\close_city.sql" />
+    <Build Include="StoredProc\City\get_city_link_count.sql" />
+    <Build Include="StoredProc\Employee\get_other_employee_list.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="StuffDb.refactorlog" />

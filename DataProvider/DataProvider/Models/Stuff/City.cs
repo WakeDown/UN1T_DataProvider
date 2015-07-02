@@ -5,13 +5,15 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using DataProvider.Helpers;
+using DataProvider.Objects;
 
 namespace DataProvider.Models.Stuff
 {
-    public class City
+    public class City : DbModel
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public int EmpCount { get; set; }
 
         public City()
         {
@@ -22,7 +24,7 @@ namespace DataProvider.Models.Stuff
             FillSelf(row);
         }
 
-         public City(int id)
+        public City(int id)
         {
             SqlParameter pId = new SqlParameter() { ParameterName = "id", SqlValue = id, SqlDbType = SqlDbType.Int };
             var dt = Db.Stuff.ExecuteQueryStoredProcedure("get_city", pId);
@@ -37,6 +39,7 @@ namespace DataProvider.Models.Stuff
         {
             Id = Db.DbHelper.GetValueInt(row["id"]);
             Name = row["name"].ToString();
+            EmpCount = Db.DbHelper.GetValueInt(row["emp_count"]);
         }
 
         public static IEnumerable<City> GetList()
@@ -49,6 +52,38 @@ namespace DataProvider.Models.Stuff
                 lst.Add(city);
             }
             return lst;
+        }
+
+        public void Save()
+        {
+            SqlParameter pId = new SqlParameter() { ParameterName = "id", SqlValue = Id, SqlDbType = SqlDbType.Int };
+            SqlParameter pName = new SqlParameter() { ParameterName = "name", SqlValue = Name, SqlDbType = SqlDbType.NVarChar };
+            SqlParameter pCreatorAdSid = new SqlParameter() { ParameterName = "creator_sid", SqlValue = CurUserAdSid, SqlDbType = SqlDbType.VarChar };
+
+            var dt = Db.Stuff.ExecuteQueryStoredProcedure("save_city", pId, pName, pCreatorAdSid);
+            if (dt.Rows.Count > 0)
+            {
+                int id;
+                int.TryParse(dt.Rows[0]["id"].ToString(), out id);
+                Id = id;
+            }
+        }
+
+        public static void Close(int id)
+        {
+            SqlParameter pId = new SqlParameter() { ParameterName = "id", SqlValue = id, SqlDbType = SqlDbType.Int };
+
+            int count = (int)Db.Stuff.ExecuteScalar("get_city_link_count", pId);
+
+            if (count == 0)
+            {
+                SqlParameter pIdOrg = new SqlParameter() { ParameterName = "id", SqlValue = id, SqlDbType = SqlDbType.Int };
+                Db.Stuff.ExecuteStoredProcedure("close_city", pIdOrg);
+            }
+            else
+            {
+                throw new Exception("Невозможно удалить город так как есть привязка к сотрудникам!");
+            }
         }
     }
 }

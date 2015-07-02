@@ -24,7 +24,8 @@
     [male] BIT NOT NULL DEFAULT 1, 
     [id_position_org] INT NOT NULL, 
     [has_ad_account] BIT NOT NULL DEFAULT 0, 
-    [creator_sid] VARCHAR(46) NULL      
+    [creator_sid] VARCHAR(46) NULL, 
+    [ad_login] NVARCHAR(50) NULL      
 )
 
 GO

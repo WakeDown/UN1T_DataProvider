@@ -16,11 +16,28 @@ using DataProvider.Objects;
 
 namespace DataProvider.Controllers.Stuff
 {
-    public class EmployeeController : ApiController
+    public class EmployeeController : BaseApiController
     {
+        //[HttpGet]
+        //public void RefillManager()
+        //{
+        //    Employee.RefillManager();
+        //}
 
         [EnableQuery]
         public IQueryable<Employee> GetList(int? idDepartment = null)
+        {
+            return new EnumerableQuery<Employee>(Employee.GetList(idDepartment));
+        }
+
+        [EnableQuery]
+        public IQueryable<Employee> GetFiredList(int? idDepartment = null)
+        {
+            return new EnumerableQuery<Employee>(Employee.GetList(idDepartment));
+        }
+
+        [EnableQuery]
+        public IQueryable<Employee> GetDecreeList(int? idDepartment = null)
         {
             return new EnumerableQuery<Employee>(Employee.GetList(idDepartment));
         }
@@ -86,20 +103,12 @@ namespace DataProvider.Controllers.Stuff
         [AuthorizeAd(Groups =new[]{AdGroup.PersonalManager} )]
         public HttpResponseMessage Save(Employee emp)
         {
-            //TODO: Проверить может ли пользователь создавать новых сотрудников
-
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.Created);
 
             try
             {
+                emp.CurUserAdSid = GetCurUser().Sid;
                 emp.Save();
-
-                if (emp.HasAdAccount)
-                {
-                    Employee e = new Employee(emp.Id);
-                    AdHelper.SaveUser(ref e);
-                }
-
                 response.Content = new StringContent(String.Format("{{\"id\":{0}}}", emp.Id));
             }
             catch (Exception ex)
@@ -126,6 +135,40 @@ namespace DataProvider.Controllers.Stuff
             }
             return response;
         }
+        [AuthorizeAd(Groups = new[] { AdGroup.PersonalManager })]
+        public HttpResponseMessage SetStateFired(int id)
+        {
+            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.Created);
+
+            try
+            {
+                Employee.SetStateFired(id);
+            }
+            catch (Exception ex)
+            {
+                response = new HttpResponseMessage(HttpStatusCode.OK);
+                response.Content = new StringContent(MessageHelper.ConfigureExceptionMessage(ex));
+
+            }
+            return response;
+        }
+        [AuthorizeAd(Groups = new[] { AdGroup.PersonalManager })]
+        public HttpResponseMessage SetStateDecree(int id)
+        {
+            HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.Created);
+
+            try
+            {
+                Employee.SetStateDecree(id);
+            }
+            catch (Exception ex)
+            {
+                response = new HttpResponseMessage(HttpStatusCode.OK);
+                response.Content = new StringContent(MessageHelper.ConfigureExceptionMessage(ex));
+
+            }
+            return response;
+        }
 
         public IEnumerable<Employee> GetTodayBirthdayList()
         {
@@ -140,6 +183,11 @@ namespace DataProvider.Controllers.Stuff
         public IEnumerable<string> GetFullRecipientList()
         {
             return Employee.GetFullRecipientList();
+        }
+
+        public IEnumerable<Employee> GetNewbieList()
+        {
+            return Employee.GetNewbieList(DateTime.Now.AddDays(-1));
         }
     }
 }

@@ -4,7 +4,11 @@
 AS
 begin
 SET NOCOUNT ON;
-	select id, name from cities c
+	select id, name,
+	(
+	select count(1) from employees_view e  where e.id_city=c.id
+	) as emp_count
+	 from cities c
 	where c.enabled=1
 	AND ( @id IS NULL
                       OR ( @id IS NOT NULL
@@ -12,4 +16,5 @@ SET NOCOUNT ON;
                            AND c.id = @id
                          )
                     )
+					order by name
 end

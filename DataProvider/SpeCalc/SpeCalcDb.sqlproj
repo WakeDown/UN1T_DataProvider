@@ -162,6 +162,10 @@
     <Build Include="Stored Procedures\QuestionState\save_question_state.sql" />
     <Build Include="Tables\QuestionStateHistory.sql" />
     <Build Include="Stored Procedures\QuestionState\get_question_state.sql" />
+    <Build Include="Stored Procedures\QuestionState\get_que_state_history.sql" />
+    <Build Include="Stored Procedures\Question\get_question_curr_state.sql" />
+    <Build Include="Stored Procedures\Question\check_question_can_be_answered.sql" />
+    <Build Include="Stored Procedures\Question\check_question_can_be_sent.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SpeCalcDb.publish.xml" />

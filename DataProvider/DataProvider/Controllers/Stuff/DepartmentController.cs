@@ -30,6 +30,7 @@ namespace DataProvider.Controllers.Stuff
             var dep = new Department(id);
             return dep;
         }
+
         [AuthorizeAd(Groups = new[] { AdGroup.PersonalManager })]
         public HttpResponseMessage Save(Department dep)
         {
@@ -48,6 +49,7 @@ namespace DataProvider.Controllers.Stuff
             }
             return response;
         }
+
         [AuthorizeAd(Groups = new[] { AdGroup.PersonalManager })]
         public HttpResponseMessage Close(int id)
         {

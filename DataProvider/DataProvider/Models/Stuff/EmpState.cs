@@ -67,5 +67,15 @@ namespace DataProvider.Models.Stuff
         {
             return new EmpState("STUFF");
         }
+
+        public static EmpState GetFiredState()
+        {
+            return new EmpState("FIRED");
+        }
+
+        public static EmpState GetDecreeState()
+        {
+            return new EmpState("DECREE");
+        }
     }
 }

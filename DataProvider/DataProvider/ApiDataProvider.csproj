@@ -159,6 +159,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AdController.cs" />
     <Compile Include="Controllers\MessageController.cs" />
+    <Compile Include="Controllers\SpeCalc\QueStateController.cs" />
+    <Compile Include="Models\SpeCalc\DealType.cs" />
+    <Compile Include="Models\SpeCalc\HistoryQueState.cs" />
     <Compile Include="Controllers\SpeCalc\QuePosAnswerController.cs" />
     <Compile Include="Controllers\SpeCalc\QuePositionController.cs" />
     <Compile Include="Controllers\SpeCalc\QuestionController.cs" />
@@ -178,6 +181,8 @@
     <Compile Include="Models\SpeCalc\QueState.cs" />
     <Compile Include="Models\SpeCalc\Question.cs" />
     <Compile Include="Models\SpeCalc\QuePosition.cs" />
+    <Compile Include="Models\Settings.cs" />
+    <Compile Include="Models\SpeCalc\Tender.cs" />
     <Compile Include="Models\Stuff\City.cs" />
     <Compile Include="Models\Stuff\Department.cs" />
     <Compile Include="Models\Stuff\Employee.cs" />
@@ -186,9 +191,11 @@
     <Compile Include="Models\Stuff\Position.cs" />
     <Compile Include="Helpers\DbHelper.cs" />
     <Compile Include="Objects\AdGroup.cs" />
+    <Compile Include="Objects\AdUser.cs" />
     <Compile Include="Objects\AdUserGroup.cs" />
     <Compile Include="Objects\Authorization.cs" />
     <Compile Include="Objects\BaseApiController.cs" />
+    <Compile Include="Objects\DbModel.cs" />
     <Compile Include="Objects\DbModelParameter.cs" />
     <Compile Include="Objects\Transliteration.cs" />
     <Compile Include="Objects\WindowsImpersonationContextFacade.cs" />
@@ -207,8 +214,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Main\" />
     <Folder Include="Objects\Interfaces\" />
+    <Folder Include="Views\Claim\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />

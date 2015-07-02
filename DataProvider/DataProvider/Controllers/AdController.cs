@@ -49,7 +49,7 @@ namespace DataProvider.Controllers
             //RequestContext.Principal
 
             HttpResponseMessage response = new HttpResponseMessage(HttpStatusCode.Created);
-            string sid = GetCurUserSid();
+            string sid = GetCurUser().Sid;
             try
             {
                 foreach (Employee emp in Employee.GetList(getPhoto: true))
@@ -57,6 +57,10 @@ namespace DataProvider.Controllers
                     Employee e = emp;
                     try
                     {
+                        if (e.DisplayName == "Тестов Т.Т.")
+                        {
+                            string s = "";
+                        }
                         AdHelper.SaveUser(ref e);
                     }
                     catch (UnauthorizedAccessException ex)

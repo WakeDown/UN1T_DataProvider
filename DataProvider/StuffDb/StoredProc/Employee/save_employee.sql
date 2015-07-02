@@ -43,7 +43,7 @@ AS
                         email = @email ,
                         work_num = @work_num ,
                         mobil_num = @mobil_num ,
-                        id_emp_state = @id_emp_state ,
+                        --id_emp_state = @id_emp_state ,
                         id_department = @id_department ,
                         id_city = @id_city ,
                         date_came = @date_came,
