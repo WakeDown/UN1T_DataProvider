@@ -1,0 +1,21 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Alter
+       [dbo].[catalog_products] (Table)
+
+** Supporting actions
+     Refresh
+       [dbo].[save_catalog_product] (Procedure)
+
+If this deployment is executed, changes to [dbo].[catalog_products] might introduce run-time errors in [dbo].[get_catalog_product].
+The project and target databases have different collation settings. Deployment errors might occur.
+

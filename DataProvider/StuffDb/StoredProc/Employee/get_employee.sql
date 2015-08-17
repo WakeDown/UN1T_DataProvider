@@ -52,11 +52,15 @@ AS
                                     AND ph.id_employee = e.id
                           )
                      ELSE NULL
-                END AS photo
+                END AS photo,
+				full_name_dat,
+				full_name_rod,
 				--,
 				--CASE WHEN @id_department IS NOT NULL THEN 
 				--CASE WHEN EXISTS(SELECT 1 FROM departments dd WHERE dd.id=@id_department AND dd.id_chief=e.id) THEN 0 ELSE 1 end
 				--ELSE NULL END AS is_chief
+				d.hidden as is_hidden,
+				e.date_fired
         FROM    employees e
 		INNER JOIN employee_states es ON e.id_emp_state = es.id
                 INNER JOIN positions p ON e.id_position = p.id
@@ -64,5 +68,6 @@ AS
                 INNER JOIN organizations o ON e.id_organization = o.id
                 INNER JOIN cities c ON e.id_city = c.id
                 INNER JOIN departments d ON e.id_department = d.id
-        WHERE  e.id = @id
+        WHERE ((@id is null or @id <= 0) or (@id is not null and @id > 0 and e.id = @id))
+		and ((@ad_sid is null or @ad_sid = '') or (@ad_sid is not null and @ad_sid != '' and e.ad_sid = @ad_sid))
     END

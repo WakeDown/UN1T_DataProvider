@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>UnitProgDb</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{e10c5039-3662-437f-b3f3-41a0ece841ec}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql100DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>UnitProgDb</RootNamespace>
+    <AssemblyName>UnitProgDb</AssemblyName>
+    <ModelCollation>1049,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>Cyrillic_General_CI_AS</DefaultCollation>
+    <AnsiNulls>False</AnsiNulls>
+    <QuotedIdentifier>False</QuotedIdentifier>
+    <IsChangeTrackingOn>False</IsChangeTrackingOn>
+    <IsChangeTrackingAutoCleanupOn>True</IsChangeTrackingAutoCleanupOn>
+    <ChangeTrackingRetentionPeriod>2</ChangeTrackingRetentionPeriod>
+    <ChangeTrackingRetentionUnit>Days</ChangeTrackingRetentionUnit>
+    <IsEncryptionOn>False</IsEncryptionOn>
+    <IsBrokerPriorityHonored>False</IsBrokerPriorityHonored>
+    <Trustworthy>False</Trustworthy>
+    <AutoUpdateStatisticsAsynchronously>False</AutoUpdateStatisticsAsynchronously>
+    <PageVerify>CHECKSUM</PageVerify>
+    <ServiceBrokerOption>DisableBroker</ServiceBrokerOption>
+    <DateCorrelationOptimizationOn>False</DateCorrelationOptimizationOn>
+    <Parameterization>SIMPLE</Parameterization>
+    <AllowSnapshotIsolation>False</AllowSnapshotIsolation>
+    <ReadCommittedSnapshot>False</ReadCommittedSnapshot>
+    <VardecimalStorageFormatOn>True</VardecimalStorageFormatOn>
+    <SupplementalLoggingOn>False</SupplementalLoggingOn>
+    <CompatibilityMode>100</CompatibilityMode>
+    <AnsiNullDefault>False</AnsiNullDefault>
+    <AnsiPadding>False</AnsiPadding>
+    <AnsiWarnings>False</AnsiWarnings>
+    <ArithAbort>False</ArithAbort>
+    <ConcatNullYieldsNull>False</ConcatNullYieldsNull>
+    <NumericRoundAbort>False</NumericRoundAbort>
+    <RecursiveTriggersEnabled>False</RecursiveTriggersEnabled>
+    <DatabaseChaining>False</DatabaseChaining>
+    <DatabaseState>ONLINE</DatabaseState>
+    <CloseCursorOnCommitEnabled>False</CloseCursorOnCommitEnabled>
+    <DefaultCursor>GLOBAL</DefaultCursor>
+    <AutoClose>False</AutoClose>
+    <AutoCreateStatistics>True</AutoCreateStatistics>
+    <AutoShrink>False</AutoShrink>
+    <AutoUpdateStatistics>True</AutoUpdateStatistics>
+    <TornPageDetection>False</TornPageDetection>
+    <DatabaseAccess>MULTI_USER</DatabaseAccess>
+    <Recovery>SIMPLE</Recovery>
+    <EnableFullTextSearch>True</EnableFullTextSearch>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Security\" />
+    <Folder Include="Functions" />
+    <Folder Include="Stored Procedures" />
+    <Folder Include="Tables" />
+    <Folder Include="Views" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Security\agreements_sp_exec.sql" />
+    <Build Include="Security\UN1T_sqlUnit_prog.sql" />
+    <Build Include="Security\UN1T_sqlUnit_prog_1.sql" />
+    <Build Include="Security\sqlUnit_prog.sql" />
+    <Build Include="Security\sqlUnit_prog_1.sql" />
+    <Build Include="Security\sqlChecker.sql" />
+    <Build Include="Security\sqlChecker_1.sql" />
+    <Build Include="Security\UN1T_Alexandr.Medvedevski.sql" />
+    <Build Include="Security\UN1T_Alexandr_1.Medvedevski.sql" />
+    <Build Include="Security\UN1T_vera.spirina.sql" />
+    <Build Include="Security\sqltest.sql" />
+    <Build Include="Security\sqltest_1.sql" />
+    <Build Include="Security\UN1T_sergey.kokoulin.sql" />
+    <Build Include="Security\UN1T_sergey_1.kokoulin.sql" />
+    <Build Include="Security\UN1T_Anton.Rehov.sql" />
+    <Build Include="Security\UN1T_Anton_1.Rehov.sql" />
+    <Build Include="Security\UN1T_Alexey.Kobzarev.sql" />
+    <Build Include="Security\UN1T_Alexey_1.Kobzarev.sql" />
+    <Build Include="Security\RoleMemberships.sql" />
+    <Build Include="Security\Permissions.sql" />
+    <Build Include="Functions\ExplodeDates.sql" />
+    <Build Include="Functions\get_back_html_tags.sql" />
+    <Build Include="Functions\get_city_full_name.sql" />
+    <Build Include="Functions\get_contractor.sql" />
+    <Build Include="Functions\get_currency_price.sql" />
+    <Build Include="Functions\get_dates_list.sql" />
+    <Build Include="Functions\get_first_month_date.sql" />
+    <Build Include="Functions\get_last_month_date.sql" />
+    <Build Include="Functions\get_month_dates.sql" />
+    <Build Include="Functions\get_work_duration.sql" />
+    <Build Include="Functions\is_work_time.sql" />
+    <Build Include="Functions\minutes2HMString.sql" />
+    <Build Include="Functions\prepare.sql" />
+    <Build Include="Functions\prepare_name.sql" />
+    <Build Include="Functions\Split.sql" />
+    <Build Include="Functions\srvpl_check_contract_is_active.sql" />
+    <Build Include="Functions\srvpl_check_device_is_linked.sql" />
+    <Build Include="Functions\srvpl_fnc.sql" />
+    <Build Include="Functions\srvpl_get_device_name.sql" />
+    <Build Include="Functions\srvpl_get_service_claims.sql" />
+    <Build Include="Stored Procedures\auto_agreements.sql" />
+    <Build Include="Stored Procedures\get_invoices_from_etalon.sql" />
+    <Build Include="Stored Procedures\hp_call_details.sql" />
+    <Build Include="Stored Procedures\hp_exchange_rate.sql" />
+    <Build Include="Stored Procedures\rep_agreements.sql" />
+    <Build Include="Stored Procedures\sk_agreements.sql" />
+    <Build Include="Stored Procedures\sk_counter.sql" />
+    <Build Include="Stored Procedures\sk_device_install.sql" />
+    <Build Include="Stored Procedures\sk_log.sql" />
+    <Build Include="Stored Procedures\sk_send_message.sql" />
+    <Build Include="Stored Procedures\sk_sended_mails.sql" />
+    <Build Include="Stored Procedures\sk_service_planing.sql" />
+    <Build Include="Stored Procedures\sk_snmp_scanner.sql" />
+    <Build Include="Stored Procedures\sk_srvpl_cache.sql" />
+    <Build Include="Stored Procedures\sk_unit.sql" />
+    <Build Include="Stored Procedures\sk_users.sql" />
+    <Build Include="Stored Procedures\sk_work_days_insert.sql" />
+    <Build Include="Stored Procedures\sk_zip_claims.sql" />
+    <Build Include="Stored Procedures\spCBRRates.sql" />
+    <Build Include="Stored Procedures\spHTTPCall.sql" />
+    <Build Include="Stored Procedures\ui_agreements.sql" />
+    <Build Include="Stored Procedures\ui_device_install.sql" />
+    <Build Include="Stored Procedures\ui_service_client.sql" />
+    <Build Include="Stored Procedures\ui_service_planing.sql" />
+    <Build Include="Stored Procedures\ui_service_planing_2.sql" />
+    <Build Include="Stored Procedures\ui_service_planing_reports.sql" />
+    <Build Include="Stored Procedures\ui_unit.sql" />
+    <Build Include="Stored Procedures\ui_users.sql" />
+    <Build Include="Stored Procedures\ui_zip_claim_reports.sql" />
+    <Build Include="Stored Procedures\ui_zip_claims.sql" />
+    <Build Include="Tables\cities.sql" />
+    <Build Include="Tables\companies.sql" />
+    <Build Include="Tables\counter.sql" />
+    <Build Include="Tables\currency.sql" />
+    <Build Include="Tables\departments.sql" />
+    <Build Include="Tables\devinst_device_installs.sql" />
+    <Build Include="Tables\devinst_state_changes.sql" />
+    <Build Include="Tables\devinst_state_notify_recipients.sql" />
+    <Build Include="Tables\devinst_state_notifys.sql" />
+    <Build Include="Tables\devinst_states.sql" />
+    <Build Include="Tables\exchange_rate.sql" />
+    <Build Include="Tables\log_tab.sql" />
+    <Build Include="Tables\mlog_tab.sql" />
+    <Build Include="Tables\positions.sql" />
+    <Build Include="Tables\programs.sql" />
+    <Build Include="Tables\sended_mail_types.sql" />
+    <Build Include="Tables\sended_mails.sql" />
+    <Build Include="Tables\snmp_exchange_types.sql" />
+    <Build Include="Tables\snmp_exchanges.sql" />
+    <Build Include="Tables\snmp_requests.sql" />
+    <Build Include="Tables\srvpl_address_rename.sql" />
+    <Build Include="Tables\srvpl_addresses.sql" />
+    <Build Include="Tables\srvpl_akt_scans.sql" />
+    <Build Include="Tables\srvpl_cartridge_types.sql" />
+    <Build Include="Tables\srvpl_contract_price_descounts.sql" />
+    <Build Include="Tables\srvpl_contract_statuses.sql" />
+    <Build Include="Tables\srvpl_contract_types.sql" />
+    <Build Include="Tables\srvpl_contract_zip_states.sql" />
+    <Build Include="Tables\srvpl_contract2devices.sql" />
+    <Build Include="Tables\srvpl_contracts.sql" />
+    <Build Include="Tables\srvpl_device_data.sql" />
+    <Build Include="Tables\srvpl_device_imprints.sql" />
+    <Build Include="Tables\srvpl_device_model_max_volume_load.sql" />
+    <Build Include="Tables\srvpl_device_models.sql" />
+    <Build Include="Tables\srvpl_device_options.sql" />
+    <Build Include="Tables\srvpl_device_types.sql" />
+    <Build Include="Tables\srvpl_device2options.sql" />
+    <Build Include="Tables\srvpl_devices.sql" />
+    <Build Include="Tables\srvpl_devices_import.sql" />
+    <Build Include="Tables\srvpl_devices_no_graphik_load.sql" />
+    <Build Include="Tables\srvpl_getPlanExecuteContractorList_curr_month_cache.sql" />
+    <Build Include="Tables\srvpl_getPlanExecuteDeviceList_curr_month_cache.sql" />
+    <Build Include="Tables\srvpl_getPlanExecuteServAdminContractorList_curr_month_cache.sql" />
+    <Build Include="Tables\srvpl_getPlanExecuteServManagerContractorList_curr_month_cache.sql" />
+    <Build Include="Tables\srvpl_payment_tariffs.sql" />
+    <Build Include="Tables\srvpl_print_types.sql" />
+    <Build Include="Tables\srvpl_service_action_types.sql" />
+    <Build Include="Tables\srvpl_service_cames.sql" />
+    <Build Include="Tables\srvpl_service_claim_statuses.sql" />
+    <Build Include="Tables\srvpl_service_claim_types.sql" />
+    <Build Include="Tables\srvpl_service_claims.sql" />
+    <Build Include="Tables\srvpl_service_interval_plan_groups.sql" />
+    <Build Include="Tables\srvpl_service_intervals.sql" />
+    <Build Include="Tables\srvpl_service_types.sql" />
+    <Build Include="Tables\srvpl_service_zone2devices.sql" />
+    <Build Include="Tables\srvpl_service_zone2users.sql" />
+    <Build Include="Tables\srvpl_service_zones.sql" />
+    <Build Include="Tables\srvpl_settings.sql" />
+    <Build Include="Tables\srvpl_tariff_features.sql" />
+    <Build Include="Tables\srvpl_user_roles.sql" />
+    <Build Include="Tables\srvpl_user2user_roles.sql" />
+    <Build Include="Tables\tmp_device_counter_error.sql" />
+    <Build Include="Tables\user_groups.sql" />
+    <Build Include="Tables\user_states.sql" />
+    <Build Include="Tables\users.sql" />
+    <Build Include="Tables\users2et_users.sql" />
+    <Build Include="Tables\wd_holidays.sql" />
+    <Build Include="Tables\wd_short_days.sql" />
+    <Build Include="Tables\wd_work_holidays.sql" />
+    <Build Include="Tables\work_days.sql" />
+    <Build Include="Tables\work_hours.sql" />
+    <Build Include="Tables\zipcl_cat_name_change.sql" />
+    <Build Include="Tables\zipcl_claim_state_changes.sql" />
+    <Build Include="Tables\zipcl_claim_states.sql" />
+    <Build Include="Tables\zipcl_claim_unit_infos.sql" />
+    <Build Include="Tables\zipcl_claim_unit_state_changes.sql" />
+    <Build Include="Tables\zipcl_claim_units.sql" />
+    <Build Include="Tables\zipcl_engeneer_conclusions.sql" />
+    <Build Include="Tables\zipcl_manager2operators.sql" />
+    <Build Include="Tables\zipcl_nomenclature_price.sql" />
+    <Build Include="Tables\zipcl_numenclature_change.sql" />
+    <Build Include="Tables\zipcl_srvpl_contract_spec_prices.sql" />
+    <Build Include="Tables\zipcl_user_filters.sql" />
+    <Build Include="Tables\zipcl_zip_claims.sql" />
+    <Build Include="Tables\zipcl_zip_group2cat_nums.sql" />
+    <Build Include="Tables\zipcl_zip_groups.sql" />
+    <None Include="Views\report.sql" />
+    <Build Include="Views\report_agr_route.sql" />
+    <Build Include="Views\report_calls.sql" />
+    <Build Include="Views\report_contractors.sql" />
+    <Build Include="Views\snmp_requests_report.sql" />
+    <Build Include="Views\srvpl_active_device_coord_report.sql" />
+    <Build Include="Views\srvpl_contracts_report.sql" />
+    <Build Include="Views\srvpl_device_data_view.sql" />
+    <Build Include="Views\srvpl_device_list.sql" />
+    <Build Include="Views\srvpl_device_price_report.sql" />
+    <Build Include="Views\srvpl_devices_data_pivot.sql" />
+    <Build Include="Views\srvpl_devices_no_plan.sql" />
+    <Build Include="Views\srvpl_getEngeneerAllocList _curr_month.sql" />
+    <Build Include="Views\srvpl_getEngeneerDayAlloc_curr_month.sql" />
+    <Build Include="Views\srvpl_getPlanExecuteContractorList_curr_month.sql" />
+    <Build Include="Views\srvpl_getPlanExecuteDeviceList_curr_month.sql" />
+    <Build Include="Views\srvpl_getPlanExecuteEngeneerList_curr_month.sql" />
+    <Build Include="Views\srvpl_getPlanExecuteServAdminContractorList_curr_month.sql" />
+    <Build Include="Views\srvpl_getPlanExecuteServAdminList_curr_month.sql" />
+    <Build Include="Views\srvpl_getPlanExecuteServManagerContractorList_curr_month.sql" />
+    <Build Include="Views\srvpl_payment_report.sql" />
+    <Build Include="Views\srvpl_plan_report.sql" />
+    <Build Include="Views\srvpl_serv_admin_exec_report.sql" />
+    <Build Include="Views\zipcl_claim_unit_report.sql" />
+    <Build Include="Views\zipcl_claims_report.sql" />
+    <Build Include="Views\zipcl_counter_report.sql" />
+    <Build Include="Views\zipcl_units_report.sql" />
+  </ItemGroup>
+</Project>

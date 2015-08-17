@@ -1,0 +1,23 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Alter
+       [dbo].[close_doc_meet_link] (Procedure)
+       [dbo].[close_document] (Procedure)
+       [dbo].[get_document_list] (Procedure)
+       [dbo].[save_doc_meet_link] (Procedure)
+       [dbo].[save_document] (Procedure)
+       [dbo].[save_holiday_work_confirm] (Procedure)
+       [dbo].[save_holiday_work_document] (Procedure)
+     Create
+       [dbo].[get_doc_meet_link_list] (Procedure)
+
+** Supporting actions

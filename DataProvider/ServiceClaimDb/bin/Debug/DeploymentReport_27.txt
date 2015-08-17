@@ -1,0 +1,44 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[classifier]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The column [dbo].[classifier].[descr] is being dropped, data loss could occur.
+       The column [dbo].[classifier].[id] on table [dbo].[classifier] must be added, but the column has no default value and
+         does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must
+         either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults
+         as a deployment option.
+       The type for column id_parent in table [dbo].[classifier] is currently  INT NOT NULL but is being changed to  BIT NOT
+         NULL. Data loss could occur.
+
+** User actions
+     Rename
+       [dbo].[classifier].[id_category] (Column)
+     Drop
+       unnamed constraint on [dbo].[classifier] (Default Constraint)
+       unnamed constraint on [dbo].[classifier] (Default Constraint)
+       unnamed constraint on [dbo].[classifier] (Default Constraint)
+       unnamed constraint on [dbo].[classifier] (Default Constraint)
+       unnamed constraint on [dbo].[classifier] (Default Constraint)
+       unnamed constraint on [dbo].[classifier] (Default Constraint)
+       unnamed constraint on [dbo].[classifier] (Default Constraint)
+       unnamed constraint on [dbo].[classifier] (Default Constraint)
+     Table rebuild
+       [dbo].[classifier] (Table)
+     Create
+       [dbo].[classifier_categories] (Table)
+       Default Constraint: unnamed constraint on [dbo].[classifier_categories] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[classifier_categories] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[classifier_categories] (Default Constraint)
+
+** Supporting actions
+     Refresh
+       [dbo].[get_classifier_list] (Procedure)
+
+The column [dbo].[classifier].[descr] is being dropped, data loss could occur.
+The column [dbo].[classifier].[id] on table [dbo].[classifier] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+The type for column id_parent in table [dbo].[classifier] is currently  INT NOT NULL but is being changed to  BIT NOT NULL. Data loss could occur.
+

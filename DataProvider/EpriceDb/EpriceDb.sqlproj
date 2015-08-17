@@ -8,13 +8,13 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{b755aac5-e705-4879-a134-c9aa54562b6a}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql100DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
     <RootNamespace>EpriceDb</RootNamespace>
     <AssemblyName>EpriceDb</AssemblyName>
-    <ModelCollation>1033, CI</ModelCollation>
+    <ModelCollation>1033,CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -23,6 +23,8 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>SQL_Latin1_General_CP1_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -57,5 +59,49 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="Stored Procedures" />
+    <Folder Include="Tables" />
+    <Folder Include="Post" />
+    <Folder Include="Stored Procedures\Catalog" />
+    <Folder Include="Stored Procedures\Eprice" />
+    <Folder Include="Stored Procedures\Provider" />
+    <Folder Include="Stored Procedures\Product" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\Product.sql" />
+    <Build Include="Tables\ProductProperty.sql" />
+    <Build Include="Tables\ProviderCategory.sql" />
+    <Build Include="Tables\Stock.sql" />
+    <Build Include="Tables\UN1TCategory.sql" />
+    <None Include="Post\grant.sql" />
+    <PostDeploy Include="Post\post_script.sql" />
+    <Build Include="Tables\catalog_categories.sql" />
+    <Build Include="Tables\catalog_products.sql" />
+    <Build Include="Stored Procedures\Eprice\CreateProduct.sql" />
+    <Build Include="Stored Procedures\Eprice\CreateProviderCategory.sql" />
+    <Build Include="Stored Procedures\Eprice\CreateUN1TCategory.sql" />
+    <Build Include="Stored Procedures\Eprice\DeleteAllProviderCategories.sql" />
+    <Build Include="Stored Procedures\Eprice\DeleteProvidersCategories.sql" />
+    <Build Include="Stored Procedures\Eprice\DeleteStocksForProvider.sql" />
+    <Build Include="Stored Procedures\Eprice\DeleteUN1TCategory.sql" />
+    <Build Include="Stored Procedures\Eprice\LoadAllUN1TCategory.sql" />
+    <Build Include="Stored Procedures\Eprice\LoadProductsForCategory.sql" />
+    <Build Include="Stored Procedures\Eprice\LoadProviderCategories.sql" />
+    <Build Include="Stored Procedures\Eprice\LoadStocksForProducts.sql" />
+    <Build Include="Stored Procedures\Eprice\SaveProductProperty.sql" />
+    <Build Include="Stored Procedures\Eprice\SaveStock.sql" />
+    <Build Include="Stored Procedures\Eprice\UpdateUN1TCategory.sql" />
+    <Build Include="Stored Procedures\Catalog\save_catalog_category.sql" />
+    <Build Include="Tables\product_providers.sql" />
+    <Build Include="Stored Procedures\Product\save_catalog_product.sql" />
+    <Build Include="Stored Procedures\Provider\get_prod_provider.sql" />
+    <Build Include="Stored Procedures\Product\get_catalog_product.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="3. PRODUCT-EpriceDb.publish.xml" />
+    <None Include="Post\ins_product_providers.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="EpriceDb.refactorlog" />
   </ItemGroup>
 </Project>

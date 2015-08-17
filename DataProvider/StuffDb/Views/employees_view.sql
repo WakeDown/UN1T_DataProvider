@@ -36,7 +36,13 @@
 				p_org.name as position_org,
 				CASE WHEN e.has_ad_account = 1 THEN 1 ELSE 0 END AS has_ad_account,
 				ad_login,
-				e.dattim1 as date_create
+				e.dattim1 as date_create,
+				case when d.hidden=1 then 1 else 0 end as is_hidden,
+				e.newvbie_delivery,
+				d.sys_name as dep_sys_name,
+				p.sys_name as pos_sys_name,
+				e.full_name_dat,
+				e.full_name_rod
         FROM    employees e
                 INNER JOIN employee_states es ON e.id_emp_state = es.id
                 INNER JOIN positions p ON e.id_position = p.id

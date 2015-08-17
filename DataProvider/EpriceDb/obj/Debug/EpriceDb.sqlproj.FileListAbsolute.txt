@@ -1,0 +1,9 @@
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\EpriceDb\bin\Debug\EpriceDb.dacpac
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\EpriceDb\bin\Debug\EpriceDb.dll
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\EpriceDb\bin\Debug\EpriceDb.pdb
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\EpriceDb\obj\Debug\EpriceDb.dll
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\EpriceDb\obj\Debug\EpriceDb.pdb
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\EpriceDb\obj\Debug\Model.xml
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\EpriceDb\obj\Debug\refactor.xml
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\EpriceDb\obj\Debug\postdeploy.sql
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\EpriceDb\obj\Debug\predeploy.sql

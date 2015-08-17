@@ -1,0 +1,25 @@
+﻿CREATE TABLE [dbo].[srvpl_service_claims] (
+    [id_service_claim]        INT            IDENTITY (1, 1) NOT FOR REPLICATION NOT NULL,
+    [id_contract]             INT            NOT NULL,
+    [id_device]               INT            NOT NULL,
+    [id_service_admin]        INT            NULL,
+    [planing_date]            DATETIME       NULL,
+    [id_service_type]         INT            NULL,
+    [number]                  NVARCHAR (20)  NULL,
+    [id_service_engeneer]     INT            NULL,
+    [descr]                   NVARCHAR (MAX) NULL,
+    [id_service_claim_status] INT            NOT NULL,
+    [dattim1]                 DATETIME       CONSTRAINT [DF_srvpl_service_claims_dattim1] DEFAULT (getdate()) NOT NULL,
+    [dattim2]                 DATETIME       CONSTRAINT [DF_srvpl_service_claims_dattim2] DEFAULT ('3.3.3333') NOT NULL,
+    [enabled]                 BIT            CONSTRAINT [DF_srvpl_service_claims_enabled] DEFAULT ((1)) NOT NULL,
+    [id_creator]              INT            NOT NULL,
+    [order_num]               INT            CONSTRAINT [DF_srvpl_service_claims_order_num] DEFAULT ((500)) NOT NULL,
+    [id_contract2devices]     INT            NOT NULL,
+    [id_service_claim_type]   INT            NULL,
+    CONSTRAINT [PK_srvpl_service_claims] PRIMARY KEY CLUSTERED ([id_service_claim] ASC),
+    CONSTRAINT [FK_srvpl_service_claims_srvpl_contracts] FOREIGN KEY ([id_contract]) REFERENCES [dbo].[srvpl_contracts] ([id_contract]),
+    CONSTRAINT [FK_srvpl_service_claims_srvpl_devices] FOREIGN KEY ([id_device]) REFERENCES [dbo].[srvpl_devices] ([id_device]),
+    CONSTRAINT [FK_srvpl_service_claims_srvpl_service_claim_statuses] FOREIGN KEY ([id_service_claim_status]) REFERENCES [dbo].[srvpl_service_claim_statuses] ([id_service_claim_status]),
+    CONSTRAINT [FK_srvpl_service_claims_srvpl_service_types] FOREIGN KEY ([id_service_type]) REFERENCES [dbo].[srvpl_service_types] ([id_service_type])
+);
+

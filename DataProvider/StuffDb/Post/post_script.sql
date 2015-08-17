@@ -11,7 +11,7 @@
 */
 
 :r .\grant.sql
-:r .\ins_emp_states.sql
+--:r .\ins_emp_states.sql
 --:r .\ins_orgs.sql
 --:r .\ins_cities.sql
 --:r .\ins_positions.sql

@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [sqltest]
+    WITH PASSWORD = N'zmbp^cIlaJ{juA%Viry{spq9msFT7_&#$!~<pE7gunkyjjos', SID = 0x60F182AC506AB649BD8111A3D4867BCC, DEFAULT_LANGUAGE = [us_english], CHECK_POLICY = OFF;
+

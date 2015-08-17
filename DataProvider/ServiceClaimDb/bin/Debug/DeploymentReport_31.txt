@@ -1,0 +1,31 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[classifier]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The column [dbo].[classifier].[descr] is being dropped, data loss could occur.
+       The column [dbo].[classifier].[id_parent] is being dropped, data loss could occur.
+       The column [dbo].[classifier].[name] is being dropped, data loss could occur.
+       The column [dbo].[classifier].[number] is being dropped, data loss could occur.
+
+** User actions
+     Table rebuild
+       [dbo].[classifier] (Table)
+     Create
+       [dbo].[classifier_categories] (Table)
+       Default Constraint: unnamed constraint on [dbo].[classifier_categories] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[classifier_categories] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[classifier_categories] (Default Constraint)
+     Alter
+       [dbo].[get_classifier_list] (Procedure)
+
+** Supporting actions
+
+The column [dbo].[classifier].[descr] is being dropped, data loss could occur.
+The column [dbo].[classifier].[id_parent] is being dropped, data loss could occur.
+The column [dbo].[classifier].[name] is being dropped, data loss could occur.
+The column [dbo].[classifier].[number] is being dropped, data loss could occur.
+

@@ -20,7 +20,10 @@
 	@male bit,
 	@id_position_org int,
 	@has_ad_account bit,
-	@creator_sid varchar(46)=null
+	@creator_sid varchar(46)=null,
+	@date_fired date = null,
+	@full_name_dat nvarchar(150) = null,
+	@full_name_rod nvarchar(150) = null
 AS
     BEGIN
         SET NOCOUNT ON;
@@ -30,6 +33,15 @@ AS
                          FROM   employees
                          WHERE  id = @id )
             BEGIN
+			if (@full_name_dat is null or ltrim(rtrim(@full_name_dat)) = '')
+			begin
+				set @full_name_dat = (select full_name_dat from employees where id=@id)
+			end
+			if (@full_name_rod is null or ltrim(rtrim(@full_name_rod)) = '')
+			begin
+				set @full_name_rod = (select full_name_dat from employees where id=@id)
+			end
+
                 UPDATE  employees
                 SET     ad_sid = @ad_sid ,
                         id_manager = @id_manager ,
@@ -50,7 +62,9 @@ AS
 						birth_date=@birth_date,
 						male=@male,
 						id_position_org=@id_position_org,
-						has_ad_account = @has_ad_account
+						has_ad_account = @has_ad_account,
+						full_name_dat = @full_name_dat,
+						full_name_rod = @full_name_rod
                 WHERE   id = @id
             END
         ELSE
@@ -76,7 +90,9 @@ AS
 						  male,
 						  id_position_org,
 						  has_ad_account,
-						  creator_sid
+						  creator_sid,
+						  full_name_dat,
+						  full_name_rod
                         )
                 VALUES  ( @ad_sid ,
                           @id_manager ,
@@ -98,7 +114,9 @@ AS
 						  @male,
 						  @id_position_org,
 						  @has_ad_account,
-						  @creator_sid
+						  @creator_sid,
+						  @full_name_dat,
+						  @full_name_rod
                         )
 
                 SELECT  @id = @@IDENTITY

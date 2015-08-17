@@ -1,6 +1,0 @@
-D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\WcfDataProvider\bin\WcfDataProvider.dll.config
-D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\WcfDataProvider\bin\WcfDataProvider.dll
-D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\WcfDataProvider\bin\WcfDataProvider.pdb
-D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\WcfDataProvider\obj\Release\WcfDataProvider.csprojResolveAssemblyReference.cache
-D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\WcfDataProvider\obj\Release\WcfDataProvider.dll
-D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\WcfDataProvider\obj\Release\WcfDataProvider.pdb

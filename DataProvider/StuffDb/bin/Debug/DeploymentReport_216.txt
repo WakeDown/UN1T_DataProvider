@@ -1,0 +1,16 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Alter
+       [dbo].[get_holiday_work_confirms] (Procedure)
+       [dbo].[save_holiday_work_confirm] (Procedure)
+
+** Supporting actions

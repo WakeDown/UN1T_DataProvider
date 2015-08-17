@@ -14,7 +14,8 @@
                      ELSE 0
                 END AS male ,
                 id_position_org ,
-                p_org.name AS position_org
+                p_org.name AS position_org,
+				d.hidden as is_hidden
         FROM    employees e
                 INNER JOIN employee_states st ON e.id_emp_state = st.id
                 INNER JOIN positions p ON e.id_position = p.id

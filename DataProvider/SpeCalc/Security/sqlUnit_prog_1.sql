@@ -1,3 +1,0 @@
-﻿CREATE LOGIN [sqlUnit_prog]
-    WITH PASSWORD = N'Id;1rzj7j7htgs6qu|znejeamsFT7_&#$!~<ei6j1litcjys', SID = 0xDF6BB6678BAA4044A9A299D90E9F906E, DEFAULT_LANGUAGE = [русский], CHECK_POLICY = OFF;
-

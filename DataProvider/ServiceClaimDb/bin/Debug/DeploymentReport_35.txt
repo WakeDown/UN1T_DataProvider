@@ -1,0 +1,24 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[classifier_categories]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Drop
+       unnamed constraint on [dbo].[classifier_categories] (Default Constraint)
+       unnamed constraint on [dbo].[classifier_categories] (Default Constraint)
+       unnamed constraint on [dbo].[classifier_categories] (Default Constraint)
+       unnamed constraint on [dbo].[classifier_categories] (Default Constraint)
+     Table rebuild
+       [dbo].[classifier_categories] (Table)
+     Alter
+       [dbo].[save_classifier_category] (Procedure)
+
+** Supporting actions
+     Refresh
+       [dbo].[get_classifier_category] (Procedure)

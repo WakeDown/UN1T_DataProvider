@@ -1,0 +1,37 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[claim_states] (Table)
+       [dbo].[claim2claim_states] (Table)
+       [dbo].[claims] (Table)
+       [dbo].[claims].[IX_service_claims_enabled] (Index)
+       [dbo].[claims].[IX_service_claims_id_admin] (Index)
+       [dbo].[claims].[IX_service_claims_id_engeneer] (Index)
+       Default Constraint: unnamed constraint on [dbo].[claim_states] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[claim_states] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[claim_states] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[claim2claim_states] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[claim2claim_states] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[claims] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[claims] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[claims] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[claims] (Default Constraint)
+       [dbo].[claims_view] (View)
+       [dbo].[close_claim] (Procedure)
+       [dbo].[get_claim] (Procedure)
+       [dbo].[get_claim_list] (Procedure)
+       [dbo].[get_claim_state] (Procedure)
+       [dbo].[save_claim] (Procedure)
+       [dbo].[save_claim2claim_state] (Procedure)
+       [dbo].[set_claim_claim_state] (Procedure)
+
+** Supporting actions

@@ -1,0 +1,7 @@
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\UnitProgDb\bin\Debug\UnitProgDb.dacpac
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\UnitProgDb\obj\Debug\Model.xml
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\UnitProgDb\obj\Debug\refactor.xml
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\UnitProgDb\obj\Debug\postdeploy.sql
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\UnitProgDb\obj\Debug\predeploy.sql
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\UnitProgDb\obj\Debug\UnitProgDb.dll
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\UnitProgDb\obj\Debug\UnitProgDb.pdb

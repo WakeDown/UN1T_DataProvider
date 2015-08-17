@@ -10,6 +10,7 @@
                 ( SELECT    display_name
                   FROM      employees e
                   WHERE     e.id = d.id_chief
-                ) AS chief
+                ) AS chief,
+				case when d.hidden = 1 then 1 else 0 end as hidden
         FROM    departments d
         WHERE   d.enabled = 1

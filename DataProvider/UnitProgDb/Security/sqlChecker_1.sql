@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [sqlChecker]
+    WITH PASSWORD = N'3x;mzp{Rj8cir6y {NFspqZgmsFT7_&#$!~<upynkyjjUoZD', SID = 0x1D65BD1D295AD44494D894B882D5B55F, DEFAULT_LANGUAGE = [us_english];
+

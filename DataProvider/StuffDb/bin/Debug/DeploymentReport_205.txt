@@ -1,0 +1,20 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[wd_holidays] (Table)
+       [dbo].[wd_short_days] (Table)
+       [dbo].[wd_work_holidays] (Table)
+       [dbo].[work_days] (Table)
+       [dbo].[work_hours] (Table)
+       [dbo].[fill_work_days] (Procedure)
+
+** Supporting actions

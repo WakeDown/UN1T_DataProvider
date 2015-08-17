@@ -1,0 +1,27 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Create
+       [dbo].[classifier] (Table)
+       [dbo].[work_types] (Table)
+       Default Constraint: unnamed constraint on [dbo].[classifier] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[classifier] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[classifier] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[classifier] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[classifier] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[classifier] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[classifier] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[classifier] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[work_types] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[work_types] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[work_types] (Default Constraint)
+
+** Supporting actions

@@ -69,6 +69,11 @@
     <Folder Include="StoredProc\Organization" />
     <Folder Include="StoredProc\EmpStates" />
     <Folder Include="Views" />
+    <Folder Include="StoredProc\Document" />
+    <Folder Include="StoredProc\HolidayWork" />
+    <Folder Include="StoredProc\DocMeetLink" />
+    <Folder Include="Scripts" />
+    <Folder Include="StoredProc\WorkDay" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\cities.sql" />
@@ -97,23 +102,62 @@
     <Build Include="StoredProc\Employee\get_employees_birthday.sql" />
     <Build Include="StoredProc\Department\check_employee_is_chief.sql" />
     <Build Include="StoredProc\Employee\get_employees_newbie.sql" />
-    <Build Include="StoredProc\Employee\set_employee_state.sql" />
     <Build Include="StoredProc\Employee\get_employee_list.sql" />
     <Build Include="StoredProc\City\save_city.sql" />
     <Build Include="StoredProc\City\close_city.sql" />
     <Build Include="StoredProc\City\get_city_link_count.sql" />
     <Build Include="StoredProc\Employee\get_other_employee_list.sql" />
+    <Build Include="Views\employees_report.sql" />
+    <Build Include="Tables\org_state_images.sql" />
+    <Build Include="StoredProc\Organization\save_org_state_image.sql" />
+    <Build Include="StoredProc\Organization\get_org_state_image.sql" />
+    <Build Include="StoredProc\Organization\close_org_state_image.sql" />
+    <Build Include="StoredProc\EmpStates\set_employee_state.sql" />
+    <Build Include="StoredProc\Employee\set_employee_date_fired.sql" />
+    <Build Include="StoredProc\Document\get_document_list.sql" />
+    <Build Include="StoredProc\Document\save_document.sql" />
+    <Build Include="Tables\documents.sql" />
+    <Build Include="Tables\document_meets.sql" />
+    <Build Include="Tables\document_meet_links.sql" />
+    <Build Include="Tables\holiday_work_confirms.sql" />
+    <Build Include="Tables\holiday_work_documents.sql" />
+    <Build Include="StoredProc\HolidayWork\save_holiday_work_confirm.sql" />
+    <Build Include="StoredProc\HolidayWork\save_holiday_work_document.sql" />
+    <Build Include="StoredProc\Document\close_document.sql" />
+    <Build Include="StoredProc\DocMeetLink\save_doc_meet_link.sql" />
+    <Build Include="StoredProc\DocMeetLink\get_doc_meet_link_list.sql" />
+    <Build Include="StoredProc\DocMeetLink\close_doc_meet_link.sql" />
+    <Build Include="Tables\employee_import.sql" />
+    <Build Include="Tables\position_import.sql" />
+    <Build Include="StoredProc\Document\get_document_data.sql" />
+    <Build Include="Tables\work_days.sql" />
+    <Build Include="Tables\work_hours.sql" />
+    <Build Include="Tables\wd_work_holidays.sql" />
+    <Build Include="Tables\wd_short_days.sql" />
+    <Build Include="Tables\wd_holidays.sql" />
+    <Build Include="StoredProc\HolidayWork\get_holiday_work_confirms.sql" />
+    <Build Include="StoredProc\Employee\get_email.sql" />
+    <Build Include="StoredProc\Employee\set_employee_delivery_send.sql" />
+    <Build Include="StoredProc\Employee\get_employee_sm.sql" />
+    <Build Include="StoredProc\Employee\get_holiday_work_delivery_recipient_list.sql" />
+    <Build Include="StoredProc\WorkDay\check_is_work_day.sql" />
+    <Build Include="StoredProc\WorkDay\fill_work_days.sql" />
+    <Build Include="StoredProc\WorkDay\get_next_work_day.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="StuffDb.refactorlog" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="StuffDb.publish.xml" />
+    <None Include="3. PRODUCT-StuffDb.publish.xml" />
     <None Include="Post\grant.sql" />
     <None Include="Post\ins_emp_states.sql" />
     <None Include="Post\ins_orgs.sql" />
     <None Include="Post\ins_cities.sql" />
     <None Include="Post\ins_positions.sql" />
+    <None Include="2. TEST-StuffDb.publish.xml" />
+    <None Include="1. DEV-StuffDb.publish.xml" />
+    <None Include="Scripts\load_from_employee_import.sql" />
+    <None Include="Scripts\load_from_position_import.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\organizations.sql" />

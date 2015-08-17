@@ -3,7 +3,9 @@
     @id_emp_state INT = NULL ,
     @get_photo BIT = 0 ,
     @id_department INT = NULL,
-	@ad_sid VARCHAR(46) = NULL
+	@ad_sid VARCHAR(46) = NULL,
+	@id_city INT = NULL,
+	@id_manager int = null
 AS
     BEGIN
         SET NOCOUNT ON;
@@ -48,7 +50,8 @@ AS
 				id_position_org,
 				position_org,
 				has_ad_account,
-				ad_login
+				ad_login,
+				is_hidden
         FROM    employees_view e
         WHERE  
 		( @id IS NULL 
@@ -69,6 +72,22 @@ AS
                       OR ( @id_department IS NOT NULL
                            AND @id_department > 0
                            AND id_department = @id_department
+                         )
+                    )
+					AND ( ( @id_city IS NULL
+                        OR @id_city <= 0
+                      )
+                      OR ( @id_city IS NOT NULL
+                           AND @id_city > 0
+                           AND id_city = @id_city
+                         )
+                    )
+					AND ( ( @id_manager IS NULL
+                        OR @id_manager <= 0
+                      )
+                      OR ( @id_manager IS NOT NULL
+                           AND @id_manager > 0
+                           AND id_manager = @id_manager
                          )
                     )
 					ORDER BY is_chief, e.full_name

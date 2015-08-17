@@ -1,0 +1,41 @@
+﻿** Выделение
+     Таблицы, которые будут перестроены
+       [dbo].[catalog_categories]
+       [dbo].[catalog_products]
+     Кластеризованные индексы, которые будут удалены
+       Нет
+     Кластеризованные индексы, которые будут созданы
+       Нет
+     Возможные проблемы, связанные с данными
+       Тип столбца sid в таблице [dbo].[catalog_categories] на данный момент -  UNIQUEIDENTIFIER NOT NULL, но будет изменен на 
+         BIGINT IDENTITY (1, 1) NOT NULL. Отсутствует неявное или явное преобразование.
+       Тип столбца sid в таблице [dbo].[catalog_products] на данный момент -  UNIQUEIDENTIFIER NOT NULL, но будет изменен на 
+         BIGINT IDENTITY (1, 1) NOT NULL. Отсутствует неявное или явное преобразование.
+
+** Действия пользователя
+     Удалить
+       ограничение без названия для [dbo].[catalog_categories] (Ограничение по умолчанию)
+       ограничение без названия для [dbo].[catalog_categories] (Ограничение по умолчанию)
+       ограничение без названия для [dbo].[catalog_categories] (Ограничение по умолчанию)
+       ограничение без названия для [dbo].[catalog_categories] (Ограничение по умолчанию)
+       ограничение без названия для [dbo].[catalog_products] (Ограничение по умолчанию)
+       ограничение без названия для [dbo].[catalog_products] (Ограничение по умолчанию)
+       ограничение без названия для [dbo].[catalog_products] (Ограничение по умолчанию)
+       ограничение без названия для [dbo].[catalog_products] (Ограничение по умолчанию)
+       ограничение без названия для [dbo].[catalog_products] (Ограничение по умолчанию)
+       ограничение без названия для [dbo].[catalog_products] (Ограничение по умолчанию)
+     Восстановление таблицы
+       [dbo].[catalog_categories] (Таблица)
+       [dbo].[catalog_products] (Таблица)
+
+** Корректирующие действия
+     Создать
+       [dbo].[catalog_categories].[IX_catalog_categories_enabled] (Индекс)
+       [dbo].[catalog_categories].[IX_catalog_categories_id_provider] (Индекс)
+     Обновить
+       [dbo].[save_catalog_category] (процедуре)
+       [dbo].[save_catalog_product] (процедуре)
+
+Тип столбца sid в таблице [dbo].[catalog_categories] на данный момент -  UNIQUEIDENTIFIER NOT NULL, но будет изменен на  BIGINT IDENTITY (1, 1) NOT NULL. Отсутствует неявное или явное преобразование.
+Тип столбца sid в таблице [dbo].[catalog_products] на данный момент -  UNIQUEIDENTIFIER NOT NULL, но будет изменен на  BIGINT IDENTITY (1, 1) NOT NULL. Отсутствует неявное или явное преобразование.
+

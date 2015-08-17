@@ -1,0 +1,32 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Alter
+       [dbo].[employees_view] (View)
+     Refresh
+       [dbo].[get_department] (Procedure)
+
+** Supporting actions
+     Refresh
+       [dbo].[get_city] (Procedure)
+       [dbo].[get_city_link_count] (Procedure)
+       [dbo].[get_email] (Procedure)
+       [dbo].[get_employee_list] (Procedure)
+       [dbo].[get_employees_birthday] (Procedure)
+       [dbo].[get_employees_newbie] (Procedure)
+       [dbo].[get_holiday_work_delivery_recipient_list] (Procedure)
+       [dbo].[get_organization] (Procedure)
+       [dbo].[get_organization_link_count] (Procedure)
+       [dbo].[get_position] (Procedure)
+       [dbo].[get_position_link_count] (Procedure)
+
+If this deployment is executed, changes to [dbo].[employees_view] might introduce run-time errors in [dbo].[get_employees_bithday].
+

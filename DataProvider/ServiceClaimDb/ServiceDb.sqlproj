@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>ServiceDb</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{5cea1345-3f4b-4c7d-a1fa-fdf02fdea71e}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql100DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>ServiceClaimDb</RootNamespace>
+    <AssemblyName>ServiceClaimDb</AssemblyName>
+    <ModelCollation>1049,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>Cyrillic_General_CI_AS</DefaultCollation>
+    <DefaultFilegroup>PRIMARY</DefaultFilegroup>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="Tables\" />
+    <Folder Include="Views\" />
+    <Folder Include="Stored Procedures\" />
+    <Folder Include="Stored Procedures\Claim" />
+    <Folder Include="Stored Procedures\ClaimState" />
+    <Folder Include="Post" />
+    <Folder Include="Stored Procedures\Claim2ClaimState" />
+    <Folder Include="Stored Procedures\Device" />
+    <Folder Include="Stored Procedures\Classifier" />
+    <Folder Include="Stored Procedures\ClassifierCategory" />
+    <Folder Include="Stored Procedures\WorkType" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Stored Procedures\Claim\get_claim_list.sql" />
+    <Build Include="Stored Procedures\Claim\get_claim.sql" />
+    <Build Include="Stored Procedures\Claim\save_claim.sql" />
+    <Build Include="Stored Procedures\Claim\set_claim_claim_state.sql" />
+    <Build Include="Stored Procedures\ClaimState\get_claim_state.sql" />
+    <Build Include="Stored Procedures\Claim\close_claim.sql" />
+    <None Include="Post\grant.sql" />
+    <PostDeploy Include="Post\post_script.sql" />
+    <Build Include="Stored Procedures\Claim2ClaimState\save_claim2claim_state.sql" />
+    <Build Include="Stored Procedures\Claim2ClaimState\get_claim2claim_state_list.sql" />
+    <Build Include="Stored Procedures\Claim\set_claim_current_state.sql" />
+    <Build Include="Stored Procedures\Claim\get_claim_current_state.sql" />
+    <Build Include="Stored Procedures\ClaimState\get_next_claim_state.sql" />
+    <Build Include="Tables\claims.sql" />
+    <Build Include="Views\claims_view.sql" />
+    <Build Include="Tables\classifier.sql" />
+    <Build Include="Tables\work_types.sql" />
+    <Build Include="Stored Procedures\Classifier\get_classifier_list.sql" />
+    <Build Include="Tables\classifier_categories.sql" />
+    <Build Include="Stored Procedures\ClassifierCategory\save_classifier_category.sql" />
+    <Build Include="Stored Procedures\ClassifierCategory\get_classifier_category.sql" />
+    <Build Include="Stored Procedures\ClassifierCategory\get_lower_classifier_category_list.sql" />
+    <Build Include="Stored Procedures\WorkType\get_work_type_list.sql" />
+    <Build Include="Stored Procedures\WorkType\get_work_type.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="ServiceDb.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="1. DEV-ServiceDb.publish.xml" />
+    <None Include="2. TEST-ServiceDb.publish.xml" />
+    <None Include="3. PROD-ServiceDb.publish.xml" />
+    <None Include="Post\ins_claim_states.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\claim_states.sql" />
+    <Build Include="Tables\claim2claim_states.sql" />
+  </ItemGroup>
+</Project>

@@ -25,7 +25,11 @@
     [id_position_org] INT NOT NULL, 
     [has_ad_account] BIT NOT NULL DEFAULT 0, 
     [creator_sid] VARCHAR(46) NULL, 
-    [ad_login] NVARCHAR(50) NULL      
+    [ad_login] NVARCHAR(50) NULL, 
+    [date_fired] DATE NULL, 
+    [full_name_dat] NVARCHAR(150) NULL, 
+    [full_name_rod] NVARCHAR(150) NULL, 
+    [newvbie_delivery] BIT NOT NULL DEFAULT 0      
 )
 
 GO

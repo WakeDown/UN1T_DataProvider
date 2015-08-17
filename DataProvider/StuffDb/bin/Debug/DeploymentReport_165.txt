@@ -1,0 +1,71 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Rename
+       [dbo].[employees].[full_name_rod] (Column)
+     Alter
+       [dbo].[organizations] (Table)
+       [dbo].[positions] (Table)
+       [dbo].[get_employee] (Procedure)
+       [dbo].[get_organization] (Procedure)
+       [dbo].[save_organization] (Procedure)
+       [dbo].[get_employee_list] (Procedure)
+       [dbo].[get_employees_newbie] (Procedure)
+       [dbo].[get_position] (Procedure)
+       [dbo].[save_position] (Procedure)
+       [dbo].[save_employee] (Procedure)
+     Create
+       [dbo].[document_meet_links] (Table)
+       [dbo].[document_meets] (Table)
+       [dbo].[documents] (Table)
+       [dbo].[holiday_work_confirms] (Table)
+       [dbo].[holiday_work_documents] (Table)
+       [dbo].[org_state_images] (Table)
+       [dbo].[DF_document_links_dattim1] (Default Constraint)
+       [dbo].[DF_document_meet_links_enabled] (Default Constraint)
+       [dbo].[DF_document_meet_links_dattim2] (Default Constraint)
+       [dbo].[DF_document_meets_dattim1] (Default Constraint)
+       [dbo].[DF_documents_dattim1] (Default Constraint)
+       [dbo].[DF_documents_dattim2] (Default Constraint)
+       [dbo].[DF_documents_enabled] (Default Constraint)
+       [dbo].[DF_holiday_work_confirms_dattim1] (Default Constraint)
+       [dbo].[DF_holiday_work_delivery_dattim1] (Default Constraint)
+       [dbo].[DF_holiday_work_delivery_enabled] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[org_state_images] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[org_state_images] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[org_state_images] (Default Constraint)
+       Default Constraint: unnamed constraint on [dbo].[org_state_images] (Default Constraint)
+       [dbo].[close_doc_meet_link] (Procedure)
+       [dbo].[close_document] (Procedure)
+       [dbo].[close_org_state_image] (Procedure)
+       [dbo].[get_doc_meet_link_list] (Procedure)
+       [dbo].[get_document_list] (Procedure)
+       [dbo].[get_org_state_image] (Procedure)
+       [dbo].[save_doc_meet_link] (Procedure)
+       [dbo].[save_document] (Procedure)
+       [dbo].[save_holiday_work_confirm] (Procedure)
+       [dbo].[save_holiday_work_document] (Procedure)
+       [dbo].[save_org_state_image] (Procedure)
+       [dbo].[set_employee_date_fired] (Procedure)
+
+** Supporting actions
+     Refresh
+       [dbo].[employees_report] (View)
+       [dbo].[employees_view] (View)
+       [dbo].[close_organization] (Procedure)
+       [dbo].[get_other_employee_list] (Procedure)
+       [dbo].[get_city] (Procedure)
+       [dbo].[get_city_link_count] (Procedure)
+       [dbo].[get_department] (Procedure)
+       [dbo].[get_employees_birthday] (Procedure)
+       [dbo].[get_organization_link_count] (Procedure)
+       [dbo].[get_position_link_count] (Procedure)
+       [dbo].[close_position] (Procedure)

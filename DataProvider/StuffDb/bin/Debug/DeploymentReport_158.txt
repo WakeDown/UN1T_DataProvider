@@ -1,0 +1,40 @@
+﻿** Выделение
+     Таблицы, которые будут перестроены
+       Нет
+     Кластеризованные индексы, которые будут удалены
+       Нет
+     Кластеризованные индексы, которые будут созданы
+       Нет
+     Возможные проблемы, связанные с данными
+       Удаляется столбец [dbo].[positions].[name_vin], возможна потеря данных.
+
+** Действия пользователя
+     Переименование
+       [dbo].[employees].[full_name_rod] (Столбец)
+     Изменить
+       [dbo].[positions] (Таблица)
+       [dbo].[get_employee] (процедуре)
+       [dbo].[get_position] (процедуре)
+       [dbo].[save_position] (процедуре)
+       [dbo].[save_employee] (процедуре)
+     Обновить
+       [dbo].[employees_report] (Представление)
+       [dbo].[get_department] (процедуре)
+
+** Корректирующие действия
+     Обновить
+       [dbo].[employees_view] (Представление)
+       [dbo].[close_position] (процедуре)
+       [dbo].[get_other_employee_list] (процедуре)
+       [dbo].[get_city] (процедуре)
+       [dbo].[get_city_link_count] (процедуре)
+       [dbo].[get_employee_list] (процедуре)
+       [dbo].[get_employees_birthday] (процедуре)
+       [dbo].[get_employees_newbie] (процедуре)
+       [dbo].[get_organization] (процедуре)
+       [dbo].[get_organization_link_count] (процедуре)
+       [dbo].[get_position_link_count] (процедуре)
+
+Удаляется столбец [dbo].[positions].[name_vin], возможна потеря данных.
+Если выполнить это развертывание, изменения для [dbo].[employees_view] могут привести к ошибкам во время выполнения в [dbo].[get_employees_bithday].
+

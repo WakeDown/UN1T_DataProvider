@@ -1,6 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[get_city]
-	@id int = null
-	
+	@id int = null,
+	@sys_name nvarchar(50) = null	
 AS
 begin
 SET NOCOUNT ON;
@@ -14,6 +14,12 @@ SET NOCOUNT ON;
                       OR ( @id IS NOT NULL
                            AND @id > 0
                            AND c.id = @id
+                         )
+                    )
+AND ( @sys_name IS NULL or @sys_name = ''
+                      OR ( @sys_name IS NOT NULL
+                           AND @sys_name != ''
+                           AND c.sys_name = @sys_name
                          )
                     )
 					order by name

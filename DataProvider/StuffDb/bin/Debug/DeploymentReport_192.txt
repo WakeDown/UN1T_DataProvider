@@ -1,0 +1,25 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[documents]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Drop
+       unnamed constraint on [dbo].[documents] (Default Constraint)
+     Table rebuild
+       [dbo].[documents] (Table)
+
+** Supporting actions
+     Drop
+       [dbo].[DF_documents_dattim1] (Default Constraint)
+       [dbo].[DF_documents_dattim2] (Default Constraint)
+       [dbo].[DF_documents_enabled] (Default Constraint)
+     Refresh
+       [dbo].[close_document] (Procedure)
+       [dbo].[get_document_list] (Procedure)
+       [dbo].[save_document] (Procedure)

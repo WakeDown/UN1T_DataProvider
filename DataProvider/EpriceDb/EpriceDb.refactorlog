@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="f9c2a76e-9d03-43af-9ba4-971ec36a4920" ChangeDateTime="07/07/2015 08:50:33">
+    <Property Name="ElementName" Value="[dbo].[catalog_pivot].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[catalog_pivot]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="fa1fa576-5f45-415c-8c87-a72a0982f816" ChangeDateTime="07/07/2015 08:54:00">
+    <Property Name="ElementName" Value="[dbo].[catalog_positions].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[catalog_positions]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ccb7d34a-49d1-4a8c-a19d-8fffc4dfd12c" ChangeDateTime="07/07/2015 08:55:47">
+    <Property Name="ElementName" Value="[dbo].[catalog_positions].[provider_category_id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[catalog_positions]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="provider_id_category" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="1474fd18-4788-404f-b402-896405f0a5c3" ChangeDateTime="07/07/2015 08:57:22">
+    <Property Name="ElementName" Value="[dbo].[catalog_pivot].[provider_id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[catalog_pivot]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="provider_id_category" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="36866aff-012a-4e5b-974d-fa0c8f137267" ChangeDateTime="07/07/2015 08:57:30">
+    <Property Name="ElementName" Value="[dbo].[catalog_pivot].[provider_parent_id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[catalog_pivot]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="provider_parent_id_category" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="bb963e50-7bd0-4667-8643-521bb7b7d4ae" ChangeDateTime="07/07/2015 08:58:10">
+    <Property Name="ElementName" Value="[dbo].[catalog_pivot].[provider_id_category]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[catalog_pivot]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id_category" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="4ae02fb4-4068-45a5-852d-4113190de9ea" ChangeDateTime="07/07/2015 08:58:12">
+    <Property Name="ElementName" Value="[dbo].[catalog_pivot].[provider_parent_id_category]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[catalog_pivot]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="parent_id_category" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="951d23d1-bd4c-42df-824f-22b774c6c44f" ChangeDateTime="07/07/2015 08:58:20">
+    <Property Name="ElementName" Value="[dbo].[catalog_pivot].[parent_id_category]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[catalog_pivot]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id_parent_category" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="87681331-683a-4cf7-8024-fff398a6b2fe" ChangeDateTime="07/07/2015 09:09:15">
+    <Property Name="ElementName" Value="[dbo].[catalog_positions].[currency]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[catalog_positions]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id_currency" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="707e136b-4801-4ed5-b7eb-a23528dd6449" ChangeDateTime="07/08/2015 05:32:53">
+    <Property Name="ElementName" Value="[dbo].[product_providers].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[product_providers]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="06dc8b37-d21b-4408-9ae6-693e59877209" ChangeDateTime="07/09/2015 11:19:34">
+    <Property Name="ElementName" Value="[dbo].[catalog_products].[id_position]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[catalog_products]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id_product" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f73ff595-5ba3-4529-bd8e-46f0a845d8e9" ChangeDateTime="07/09/2015 11:20:34">
+    <Property Name="ElementName" Value="[dbo].[catalog_products].[id_product]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[catalog_products]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="35bc6fa0-c303-4a8a-99d6-e1fe416bd464" ChangeDateTime="07/09/2015 11:34:02">
+    <Property Name="ElementName" Value="[dbo].[catalog_products].[cat_sid]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[catalog_products]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="sid_cat" />
+  </Operation>
+</Operations>

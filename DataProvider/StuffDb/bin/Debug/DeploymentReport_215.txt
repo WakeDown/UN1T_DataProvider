@@ -1,0 +1,24 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       The column [dbo].[holiday_work_confirms].[full_name] on table [dbo].[holiday_work_confirms] must be added, but the
+         column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work.
+         To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the
+         generation of smart-defaults as a deployment option.
+
+** User actions
+     Alter
+       [dbo].[holiday_work_confirms] (Table)
+       [dbo].[get_holiday_work_confirms] (Procedure)
+
+** Supporting actions
+     Refresh
+       [dbo].[save_holiday_work_confirm] (Procedure)
+
+The column [dbo].[holiday_work_confirms].[full_name] on table [dbo].[holiday_work_confirms] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+

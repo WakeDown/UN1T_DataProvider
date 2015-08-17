@@ -5,7 +5,7 @@ AS
     BEGIN
         SELECT  *
         FROM    employees_view e
-        WHERE   ( @day IS NULL
+        WHERE  e.is_hidden = 0 and ( @day IS NULL
                   OR ( @day IS NOT NULL
                        AND month(e.birth_date) = month(@day) and day(e.birth_date) = day(@day)
                      )

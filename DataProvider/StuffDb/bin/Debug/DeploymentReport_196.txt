@@ -1,0 +1,19 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       [dbo].[documents]
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Table rebuild
+       [dbo].[documents] (Table)
+
+** Supporting actions
+     Refresh
+       [dbo].[close_document] (Procedure)
+       [dbo].[get_document_list] (Procedure)
+       [dbo].[save_document] (Procedure)

@@ -1,0 +1,5 @@
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\Global\bin\Debug\Global.dacpac
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\Global\obj\Debug\Global.dll
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\Global\obj\Debug\Global.pdb
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\Global\bin\Debug\Global.dll
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\Global\bin\Debug\Global.pdb

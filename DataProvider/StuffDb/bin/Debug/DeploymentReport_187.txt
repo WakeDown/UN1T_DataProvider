@@ -1,0 +1,40 @@
+﻿** Highlights
+     Tables that will be rebuilt
+       None
+     Clustered indexes that will be dropped
+       None
+     Clustered indexes that will be created
+       None
+     Possible data issues
+       None
+
+** User actions
+     Alter
+       [dbo].[departments] (Table)
+       [dbo].[organizations] (Table)
+       [dbo].[departments_view] (View)
+       [dbo].[employees_view] (View)
+       [dbo].[get_employee] (Procedure)
+       [dbo].[get_employee_list] (Procedure)
+       [dbo].[get_other_employee_list] (Procedure)
+       [dbo].[get_department] (Procedure)
+       [dbo].[get_employees_birthday] (Procedure)
+       [dbo].[get_employees_newbie] (Procedure)
+       [dbo].[get_organization] (Procedure)
+       [dbo].[save_organization] (Procedure)
+     Create
+       [dbo].[position_import] (Table)
+       Default Constraint: unnamed constraint on [dbo].[documents] (Default Constraint)
+
+** Supporting actions
+     Refresh
+       [dbo].[employees_report] (View)
+       [dbo].[check_employee_is_chief] (Procedure)
+       [dbo].[close_department] (Procedure)
+       [dbo].[save_department] (Procedure)
+       [dbo].[get_city] (Procedure)
+       [dbo].[get_city_link_count] (Procedure)
+       [dbo].[get_organization_link_count] (Procedure)
+       [dbo].[get_position] (Procedure)
+       [dbo].[get_position_link_count] (Procedure)
+       [dbo].[close_organization] (Procedure)

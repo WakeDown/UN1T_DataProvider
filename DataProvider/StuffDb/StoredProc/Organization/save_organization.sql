@@ -18,7 +18,10 @@
     @manager_name NVARCHAR(150) = NULL ,
     @manager_name_dat NVARCHAR(150) = NULL ,
     @manager_position NVARCHAR(250) = NULL ,
-    @manager_position_dat NVARCHAR(250) = NULL
+    @manager_position_dat NVARCHAR(250) = NULL,
+	@site NVARCHAR(50) = NULL,
+	@director_sid varchar(46)=null,
+	@id_director int
 AS
     BEGIN
         SET NOCOUNT ON;
@@ -30,23 +33,26 @@ AS
             BEGIN
                 UPDATE  organizations
                 SET     name = @name,
-				@address_ur =@address_ur,
-                          @address_fact = @address_fact,
-                          @phone = @phone,
-                          @email = @email,
-                          @inn = @inn,
-                          @kpp = @kpp,
-                          @ogrn = @ogrn,
-                          @rs = @rs,
-                          @bank = @bank,
-                          @ks = @ks,
-                          @bik = @bik,
-                          @okpo = @okpo,
-                          @okved = @okved,
-                          @manager_name = @manager_name,
-                          @manager_name_dat = @manager_name_dat,
-                          @manager_position = @manager_position,
-                          @manager_position_dat =@manager_position_dat
+				address_ur =@address_ur,
+                          address_fact = @address_fact,
+                          phone = @phone,
+                          email = @email,
+                          inn = @inn,
+                          kpp = @kpp,
+                          ogrn = @ogrn,
+                          rs = @rs,
+                          bank = @bank,
+                          ks = @ks,
+                          bik = @bik,
+                          okpo = @okpo,
+                          okved = @okved,
+                          manager_name = @manager_name,
+                          manager_name_dat = @manager_name_dat,
+                          manager_position = @manager_position,
+                          manager_position_dat =@manager_position_dat,
+						  SITE = @site,
+						  director_sid = @director_sid,
+						  id_director = @id_director
                 WHERE   id = @id
             END
         ELSE
@@ -70,7 +76,10 @@ AS
                           manager_name ,
                           manager_name_dat ,
                           manager_position ,
-                          manager_position_dat 
+                          manager_position_dat ,
+						  site,
+						  director_sid,
+						  id_director
                         )
                 VALUES  ( @name ,
                           @creator_sid ,
@@ -90,7 +99,10 @@ AS
                           @manager_name ,
                           @manager_name_dat ,
                           @manager_position ,
-                          @manager_position_dat 
+                          @manager_position_dat ,
+						  @site,
+						  @director_sid,
+						  @id_director
                         )
 
                 SELECT  @id = @@IDENTITY

@@ -1,7 +1,7 @@
 ﻿CREATE TABLE [dbo].[organizations]
 (
 	[id] INT NOT NULL PRIMARY KEY IDENTITY, 
-    [name] NVARCHAR(50) NOT NULL,      
+    [name] NVARCHAR(150) NOT NULL,      
 	[enabled] BIT NOT NULL DEFAULT 1,
     [dattim1] DATETIME NOT NULL DEFAULT getdate(), 
     [dattim2] DATETIME NOT NULL DEFAULT '3.3.3333', 
@@ -25,5 +25,9 @@
     [manager_name] NVARCHAR(150) NULL, 
     [manager_name_dat] NVARCHAR(150) NULL, 
     [manager_position] NVARCHAR(250) NULL, 
-    [manager_position_dat] NVARCHAR(250) NULL
+    [manager_position_dat] NVARCHAR(250) NULL, 
+    [site] NVARCHAR(50) NULL, 
+    [director_sid] VARCHAR(46) NULL, 
+    [sys_name] NVARCHAR(50) NULL, 
+    [id_director] INT NULL
 )

@@ -1,0 +1,71 @@
+22.07.2015 11:00:04	This log contains information about the import schema operation into project 'ServiceDb' on computer 'UC-1558' by user 'Anton.Rehov'.
+22.07.2015 11:00:04	Import of database schema has started.
+22.07.2015 11:00:38	Gathering database options
+22.07.2015 11:00:38	Gathering users
+22.07.2015 11:00:38	Gathering roles
+22.07.2015 11:00:38	Gathering application roles
+22.07.2015 11:00:38	Gathering role memberships
+22.07.2015 11:00:38	Gathering filegroups
+22.07.2015 11:00:38	Gathering full-text catalogs
+22.07.2015 11:00:38	Gathering assemblies
+22.07.2015 11:00:38	Gathering certificates
+22.07.2015 11:00:38	Gathering asymmetric keys
+22.07.2015 11:00:38	Gathering symmetric keys
+22.07.2015 11:00:38	Gathering encrypted symmetric keys
+22.07.2015 11:00:38	Gathering schemas
+22.07.2015 11:00:38	Gathering XML schema collections
+22.07.2015 11:00:38	Gathering user-defined data types
+22.07.2015 11:00:38	Gathering user-defined types
+22.07.2015 11:00:38	Gathering table types
+22.07.2015 11:00:38	Gathering unique keys for table types
+22.07.2015 11:00:38	Gathering primary keys for table types
+22.07.2015 11:00:38	Gathering check constraints for table types
+22.07.2015 11:00:38	Gathering default constraints for table types
+22.07.2015 11:00:38	Gathering partition functions
+22.07.2015 11:00:38	Gathering partition schemes
+22.07.2015 11:00:38	Gathering functions
+22.07.2015 11:00:38	Gathering encrypted functions
+22.07.2015 11:00:38	Gathering aggregates
+22.07.2015 11:00:38	Gathering procedures
+22.07.2015 11:00:40	Gathering encrypted procedures
+22.07.2015 11:00:40	Gathering tables
+22.07.2015 11:00:40	Gathering primary keys
+22.07.2015 11:00:40	Gathering unique constraints
+22.07.2015 11:00:40	Gathering foreign keys
+22.07.2015 11:00:40	Gathering default constraints
+22.07.2015 11:00:40	Gathering check constraints
+22.07.2015 11:00:40	Gathering views
+22.07.2015 11:00:40	Gathering encrypted views
+22.07.2015 11:00:40	Gathering indexes
+22.07.2015 11:00:40	Gathering statistics
+22.07.2015 11:00:40	Gathering full-text index stoplists
+22.07.2015 11:00:41	Gathering full-text indexes
+22.07.2015 11:00:41	Gathering spatial indexes
+22.07.2015 11:00:41	Gathering XML indexes
+22.07.2015 11:00:41	Gathering encrypted triggers
+22.07.2015 11:00:41	Gathering triggers
+22.07.2015 11:00:41	Gathering encrypted and clr ddl triggers
+22.07.2015 11:00:41	Gathering ddl triggers
+22.07.2015 11:00:41	Gathering synonyms
+22.07.2015 11:00:41	Gathering defaults
+22.07.2015 11:00:41	Gathering data constraint uddt bindings
+22.07.2015 11:00:41	Gathering rules
+22.07.2015 11:00:41	Gathering data constraint uddt bindings
+22.07.2015 11:00:41	Gathering message types
+22.07.2015 11:00:41	Gathering queues
+22.07.2015 11:00:41	Gathering contracts
+22.07.2015 11:00:41	Gathering services
+22.07.2015 11:00:41	Gathering event notifications
+22.07.2015 11:00:41	Gathering remote service bindings
+22.07.2015 11:00:41	Gathering broker priorities
+22.07.2015 11:00:41	Gathering signatures
+22.07.2015 11:00:41	Gathering data compression options
+22.07.2015 11:00:41	Gathering extended properties
+22.07.2015 11:00:45	Gathering credentials
+22.07.2015 11:00:45	Gathering logins
+22.07.2015 11:00:45	Gathering server audits
+22.07.2015 11:00:45	Scanning project for duplicate elements
+22.07.2015 11:00:45	Finished duplicate element processing
+22.07.2015 11:00:47	Finished importing database.
+22.07.2015 11:00:47	A summary of the import was saved to the following location: D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\ServiceClaimDb\Import Schema Logs\ServiceDb_20150722060004.log
+22.07.2015 11:00:47	Click Finish to continue...

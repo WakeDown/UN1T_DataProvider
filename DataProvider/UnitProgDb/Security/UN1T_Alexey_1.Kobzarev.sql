@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [UN1T\Alexey.Kobzarev]
+    FROM WINDOWS WITH DEFAULT_LANGUAGE = [us_english];
+

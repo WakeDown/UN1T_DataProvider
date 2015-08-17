@@ -1,0 +1,32 @@
+﻿** Выделение
+     Таблицы, которые будут перестроены
+       Нет
+     Кластеризованные индексы, которые будут удалены
+       Нет
+     Кластеризованные индексы, которые будут созданы
+       Нет
+     Возможные проблемы, связанные с данными
+       Нет
+
+** Действия пользователя
+     Изменить
+       [dbo].[organizations] (Таблица)
+       [dbo].[get_employee] (процедуре)
+       [dbo].[save_organization] (процедуре)
+
+** Корректирующие действия
+     Обновить
+       [dbo].[employees_report] (Представление)
+       [dbo].[employees_view] (Представление)
+       [dbo].[close_organization] (процедуре)
+       [dbo].[get_organization] (процедуре)
+       [dbo].[get_other_employee_list] (процедуре)
+       [dbo].[get_city] (процедуре)
+       [dbo].[get_city_link_count] (процедуре)
+       [dbo].[get_department] (процедуре)
+       [dbo].[get_employee_list] (процедуре)
+       [dbo].[get_employees_birthday] (процедуре)
+       [dbo].[get_employees_newbie] (процедуре)
+       [dbo].[get_organization_link_count] (процедуре)
+       [dbo].[get_position] (процедуре)
+       [dbo].[get_position_link_count] (процедуре)

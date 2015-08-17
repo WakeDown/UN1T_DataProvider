@@ -1,0 +1,39 @@
+﻿** Выделение
+     Таблицы, которые будут перестроены
+       Нет
+     Кластеризованные индексы, которые будут удалены
+       Нет
+     Кластеризованные индексы, которые будут созданы
+       Нет
+     Возможные проблемы, связанные с данными
+       Нет
+
+** Действия пользователя
+     Изменить
+       [dbo].[employees] (Таблица)
+       [dbo].[get_employee] (процедуре)
+       [dbo].[save_employee] (процедуре)
+     Обновить
+       [dbo].[employees_report] (Представление)
+       [dbo].[get_department] (процедуре)
+
+** Корректирующие действия
+     Обновить
+       [dbo].[departments_view] (Представление)
+       [dbo].[employees_view] (Представление)
+       [dbo].[close_employee] (процедуре)
+       [dbo].[get_other_employee_list] (процедуре)
+       [dbo].[set_employee_date_fired] (процедуре)
+       [dbo].[set_employee_state] (процедуре)
+       [dbo].[get_city] (процедуре)
+       [dbo].[get_city_link_count] (процедуре)
+       [dbo].[get_employee_list] (процедуре)
+       [dbo].[get_employees_birthday] (процедуре)
+       [dbo].[get_employees_newbie] (процедуре)
+       [dbo].[get_organization] (процедуре)
+       [dbo].[get_organization_link_count] (процедуре)
+       [dbo].[get_position] (процедуре)
+       [dbo].[get_position_link_count] (процедуре)
+
+Если выполнить это развертывание, изменения для [dbo].[employees_view] могут привести к ошибкам во время выполнения в [dbo].[get_employees_bithday].
+

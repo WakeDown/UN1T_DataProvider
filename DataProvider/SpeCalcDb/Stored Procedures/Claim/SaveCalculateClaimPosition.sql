@@ -1,0 +1,77 @@
+﻿
+CREATE PROCEDURE [dbo].[SaveCalculateClaimPosition]
+    (
+      @idPosition INT ,
+      @idClaim INT ,
+      @catalogNumber NVARCHAR(500) = '' ,
+      @name NVARCHAR(1000) = '' ,
+      @replaceValue NVARCHAR(1000) = '' ,
+      @priceCurrency DECIMAL(18, 2) = -1 ,
+      @sumCurrency DECIMAL(18, 2) = -1 ,
+      @priceRub DECIMAL(18, 2) = -1 ,
+      @sumRub DECIMAL(18, 2) = -1 ,
+      @provider NVARCHAR(150) = '' ,
+      @protectFact INT = NULL ,
+      @protectCondition NVARCHAR(500) = '' ,
+      @comment NVARCHAR(1500) = '' ,
+      @author NVARCHAR(150) ,
+      @currency INT = NULL ,
+      @priceUsd DECIMAL(18, 2) = NULL ,
+      @priceEur DECIMAL(18, 2) = NULL ,
+      @priceEurRicoh DECIMAL(18, 2) = NULL ,
+      @priceRubl DECIMAL(18, 2) = NULL ,
+      @deliveryTime INT = NULL
+    )
+AS
+    DECLARE @id INT;
+    INSERT  INTO CalculateClaimPosition
+            ( IdPosition ,
+              IdClaim ,
+              CatalogNumber ,
+              Name ,
+              ReplaceValue ,
+              PriceCurrency ,
+              SumCurrency ,
+              PriceRub ,
+              SumRub ,
+              Provider ,
+              ProtectFact ,
+              ProtectCondition ,
+              Comment ,
+              Author ,
+              DELETED ,
+              [DeletedUser] ,
+              [DeleteDate] ,
+			  [Currency],
+              [PriceUsd] ,
+              [PriceEur] ,
+              [PriceEurRicoh] ,
+              [PriceRubl] ,
+              [DeliveryTime]
+            )
+    VALUES  ( @idPosition ,
+              @idClaim ,
+              @catalogNumber ,
+              @name ,
+              @replaceValue ,
+              @priceCurrency ,
+              @sumCurrency ,
+              @priceRub ,
+              @sumRub ,
+              @provider ,
+              @protectFact ,
+              @protectCondition ,
+              @comment ,
+              @author ,
+              0 ,
+              NULL ,
+              NULL ,
+              NULL ,
+              @priceUsd ,
+              @priceEur ,
+              @priceEurRicoh ,
+              @priceRubl ,
+              @deliveryTime
+            )
+    SET @id = @@IDENTITY;
+    SELECT  @id;
