@@ -32,3 +32,11 @@
     CONSTRAINT [FK_TenderClaim_TenderStatus] FOREIGN KEY ([TenderStatus]) REFERENCES [dbo].[TenderStatus] ([Id]) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+
+GO
+
+CREATE INDEX [IX_TenderClaim_IdManager] ON [dbo].[TenderClaim] ([Manager])
+
+GO
+
+CREATE INDEX [IX_TenderClaim_ClaimState] ON [dbo].[TenderClaim] ([ClaimStatus])

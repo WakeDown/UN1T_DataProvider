@@ -36,546 +36,425 @@ IF N'$(__IsSqlCmdEnabled)' NOT LIKE N'True'
 
 
 GO
-IF EXISTS (SELECT 1
-           FROM   [master].[dbo].[sysdatabases]
-           WHERE  [name] = N'$(DatabaseName)')
-    BEGIN
-        ALTER DATABASE [$(DatabaseName)]
-            SET ARITHABORT ON,
-                CONCAT_NULL_YIELDS_NULL ON,
-                CURSOR_DEFAULT LOCAL 
-            WITH ROLLBACK IMMEDIATE;
-    END
-
-
-GO
-IF EXISTS (SELECT 1
-           FROM   [master].[dbo].[sysdatabases]
-           WHERE  [name] = N'$(DatabaseName)')
-    BEGIN
-        ALTER DATABASE [$(DatabaseName)]
-            SET PAGE_VERIFY NONE,
-                DISABLE_BROKER 
-            WITH ROLLBACK IMMEDIATE;
-    END
-
-
-GO
 USE [$(DatabaseName)];
 
 
 GO
-PRINT N'Rename refactoring operation with key b83b2a2d-c137-4b7b-804a-033fe63ffad0 is skipped, element [dbo].[service_claims].[Id] (SqlSimpleColumn) will not be renamed to id';
+/*
+The column [dbo].[client_access].[creator_sid] on table [dbo].[client_access] must be added, but the column has no default value and does not allow NULL values. If the table contains data, the ALTER script will not work. To avoid this issue you must either: add a default value to the column, mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+*/
+
+IF EXISTS (select top 1 1 from [dbo].[client_access])
+    RAISERROR (N'Rows were detected. The schema update is terminating because data loss might occur.', 16, 127) WITH NOWAIT
+
+GO
+/*
+The column sys_name on table [dbo].[work_types] must be changed from NULL to NOT NULL. If the table contains data, the ALTER script may not work. To avoid this issue, you must add values to this column for all rows or mark it as allowing NULL values, or enable the generation of smart-defaults as a deployment option.
+*/
+
+IF EXISTS (select top 1 1 from [dbo].[work_types])
+    RAISERROR (N'Rows were detected. The schema update is terminating because data loss might occur.', 16, 127) WITH NOWAIT
+
+GO
+PRINT N'Rename refactoring operation with key a5608576-0522-4309-9802-ccbe9f81affa is skipped, element [dbo].[attributes].[Id] (SqlSimpleColumn) will not be renamed to id';
 
 
 GO
-PRINT N'Rename refactoring operation with key aaf171b6-a888-4e7e-aeff-a29c64e3fc42 is skipped, element [dbo].[service_claims].[id_service_admin] (SqlSimpleColumn) will not be renamed to id_admin';
+PRINT N'Rename refactoring operation with key 46a8f6fe-98dd-4a63-a61c-46b8df2b0687 is skipped, element [dbo].[mobile_users].[Id] (SqlSimpleColumn) will not be renamed to id';
 
 
 GO
-PRINT N'Rename refactoring operation with key 11e3d99e-0851-4213-938e-9f8bae7069a6 is skipped, element [dbo].[service_claims].[IX_service_claims_id_amin] (SqlIndex) will not be renamed to [IX_service_claims_id_admin]';
+PRINT N'Rename refactoring operation with key 111a49ca-85c4-42ac-930d-174982701b67 is skipped, element [dbo].[client_access].[Id] (SqlSimpleColumn) will not be renamed to id';
 
 
 GO
-PRINT N'Rename refactoring operation with key 4f09af0f-807e-4953-bb87-a92f404ec92f is skipped, element [dbo].[service_claim_states].[Id] (SqlSimpleColumn) will not be renamed to id';
+PRINT N'Rename refactoring operation with key 6cb69371-9cd9-421b-89f1-28956ad2568b is skipped, element [dbo].[claim_state2user_group].[Id] (SqlSimpleColumn) will not be renamed to id';
 
 
 GO
-PRINT N'Rename refactoring operation with key 7f0686f2-d840-4408-a982-1085900f2aff is skipped, element [dbo].[claim2claim_states].[Id] (SqlSimpleColumn) will not be renamed to id';
+PRINT N'Rename refactoring operation with key 4a06ee9c-709d-45a8-8aec-eabe87dd76cf is skipped, element [dbo].[claim2claim_state_info].[id] (SqlSimpleColumn) will not be renamed to id_claim2claim_stateid';
 
 
 GO
-PRINT N'Rename refactoring operation with key d7b74989-299a-41a6-b637-c7d70c819e14 is skipped, element [dbo].[claim2claim_states].[id_claim_State] (SqlSimpleColumn) will not be renamed to id_claim_state';
+PRINT N'Rename refactoring operation with key a8ca860b-0458-4454-85bd-740de3cd9129 is skipped, element [dbo].[claim2claim_state_info].[id_] (SqlSimpleColumn) will not be renamed to id_work_type';
 
 
 GO
-PRINT N'Rename refactoring operation with key d0410b6b-6fe0-47fd-a24a-ec207fc51201 is skipped, element [dbo].[work_types].[Id] (SqlSimpleColumn) will not be renamed to id';
+PRINT N'Rename refactoring operation with key 4f53fb66-867b-4b33-b334-19d943369b0a is skipped, element [dbo].[claim2claim_state_info].[id_specialist] (SqlSimpleColumn) will not be renamed to specialist_sid';
 
 
 GO
-PRINT N'Rename refactoring operation with key 176e1e30-4914-4821-b04b-6a35390814d7, aad26eca-6787-447a-867c-403603616197 is skipped, element [dbo].[classifier].[cost_fot] (SqlSimpleColumn) will not be renamed to cost_people';
+PRINT N'Rename refactoring operation with key 35920f36-c991-407e-9c1e-a60dc51033af is skipped, element [dbo].[service_sheet].[Id] (SqlSimpleColumn) will not be renamed to id';
 
 
 GO
-PRINT N'Rename refactoring operation with key a06a2380-80e3-4368-9f01-6e326d5b3a38 is skipped, element [dbo].[classifier].[id] (SqlSimpleColumn) will not be renamed to id_category';
+PRINT N'Rename refactoring operation with key 20c77c65-cec2-41bb-8d9c-a2c8e863d0c1 is skipped, element [dbo].[service_sheet].[id_claim2_claim_state] (SqlSimpleColumn) will not be renamed to id_claim2claim_state';
 
 
 GO
-PRINT N'Rename refactoring operation with key ce76b1d5-10d2-42f1-a15c-c99d0bfe2991 is skipped, element [dbo].[classifier_categories].[Id] (SqlSimpleColumn) will not be renamed to id';
+PRINT N'Rename refactoring operation with key 281f8846-5ddc-4203-b831-223b89233182 is skipped, element [dbo].[service_sheet].[descr] (SqlSimpleColumn) will not be renamed to dattim1';
 
 
 GO
-PRINT N'Creating [dbo].[claim_states]...';
+PRINT N'Rename refactoring operation with key 0b2d8360-5498-4e60-b350-2b35cd4ce815 is skipped, element [dbo].[service_sheet].[counter] (SqlSimpleColumn) will not be renamed to counter_mono';
 
 
 GO
-CREATE TABLE [dbo].[claim_states] (
-    [id]               INT           IDENTITY (1, 1) NOT NULL,
-    [name]             NVARCHAR (50) NOT NULL,
-    [sys_name]         NVARCHAR (20) NOT NULL,
-    [order_num]        INT           NOT NULL,
-    [enabled]          BIT           NOT NULL,
-    [dattim1]          DATETIME      NOT NULL,
-    [background_color] NVARCHAR (50) NULL,
-    [foreground_color] NVARCHAR (50) NULL,
+PRINT N'Rename refactoring operation with key 23a45371-9b6a-4440-baa7-96f168819f56 is skipped, element [dbo].[contractor_access].[Id] (SqlSimpleColumn) will not be renamed to id';
+
+
+GO
+PRINT N'Rename refactoring operation with key f8495a8c-9b41-4156-b18c-73bc9ed8c57b is skipped, element [dbo].[service_issue].[Id] (SqlSimpleColumn) will not be renamed to id';
+
+
+GO
+PRINT N'Altering [dbo].[claim2claim_states]...';
+
+
+GO
+ALTER TABLE [dbo].[claim2claim_states]
+    ADD [specialist_sid] VARCHAR (46) NULL,
+        [id_work_type]   INT          NULL;
+
+
+GO
+PRINT N'Altering [dbo].[claims]...';
+
+
+GO
+ALTER TABLE [dbo].[claims]
+    ADD [id_work_type]      INT           DEFAULT 0 NOT NULL,
+        [specialist_sid]    VARCHAR (46)  NULL,
+        [date_state_change] DATETIME      DEFAULT getdate() NOT NULL,
+        [cliend_sd_num]     NVARCHAR (50) NULL;
+
+
+GO
+PRINT N'Altering [dbo].[client_access]...';
+
+
+GO
+ALTER TABLE [dbo].[client_access]
+    ADD [creator_sid] VARCHAR (46)   NOT NULL,
+        [deleter_sid] VARCHAR (46)   NULL,
+        [ad_sid]      VARCHAR (46)   NULL,
+        [name]        NVARCHAR (500) NULL,
+        [full_name]   NVARCHAR (500) NULL;
+
+
+GO
+PRINT N'Altering [dbo].[work_types]...';
+
+
+GO
+ALTER TABLE [dbo].[work_types] ALTER COLUMN [sys_name] NVARCHAR (20) NOT NULL;
+
+
+GO
+PRINT N'Creating [dbo].[claim_state2user_group]...';
+
+
+GO
+CREATE TABLE [dbo].[claim_state2user_group] (
+    [id]             INT        IDENTITY (1, 1) NOT NULL,
+    [user_group_sid] NCHAR (10) NOT NULL,
+    [id_claim_state] NCHAR (10) NOT NULL,
+    [enabled]        BIT        NOT NULL,
+    [dattim1]        DATETIME   NOT NULL,
+    [dattim2]        DATETIME   NOT NULL,
     PRIMARY KEY CLUSTERED ([id] ASC)
 );
 
 
 GO
-PRINT N'Creating [dbo].[claim2claim_states]...';
+PRINT N'Creating [dbo].[contractor_access]...';
 
 
 GO
-CREATE TABLE [dbo].[claim2claim_states] (
-    [id]             BIGINT         IDENTITY (1, 1) NOT NULL,
+CREATE TABLE [dbo].[contractor_access] (
+    [id]          INT            IDENTITY (1, 1) NOT NULL,
+    [ad_sid]      VARCHAR (46)   NULL,
+    [login]       NVARCHAR (50)  NOT NULL,
+    [password]    NVARCHAR (500) NOT NULL,
+    [dattim1]     DATETIME       NOT NULL,
+    [dattim2]     DATETIME       NOT NULL,
+    [enabled]     BIT            NOT NULL,
+    [creator_sid] VARCHAR (46)   NOT NULL,
+    [deleter_sid] VARCHAR (46)   NULL,
+    [name]        NVARCHAR (500) NOT NULL,
+    [org_name]    NVARCHAR (500) NULL,
+    [city]        NVARCHAR (500) NULL,
+    [org_sid]     VARCHAR (46)   NULL,
+    [email]       NVARCHAR (50)  NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC)
+);
+
+
+GO
+PRINT N'Creating [dbo].[service_issue]...';
+
+
+GO
+CREATE TABLE [dbo].[service_issue] (
+    [id]             INT            IDENTITY (1, 1) NOT NULL,
     [id_claim]       INT            NOT NULL,
-    [id_claim_state] INT            NOT NULL,
     [dattim1]        DATETIME       NOT NULL,
+    [dattim2]        DATETIME       NOT NULL,
     [enabled]        BIT            NOT NULL,
-    [creator_sid]    VARCHAR (46)   NOT NULL,
+    [date_plan]      DATETIME       NULL,
+    [specialist_sid] VARCHAR (46)   NULL,
     [descr]          NVARCHAR (MAX) NULL,
+    [creator_sid]    VARCHAR (46)   NOT NULL,
     PRIMARY KEY CLUSTERED ([id] ASC)
 );
 
 
 GO
-PRINT N'Creating [dbo].[claims]...';
+PRINT N'Creating [dbo].[service_sheet]...';
 
 
 GO
-CREATE TABLE [dbo].[claims] (
-    [id]              INT            IDENTITY (1, 1) NOT NULL,
-    [sid]             VARCHAR (46)   NOT NULL,
-    [id_contractor]   INT            NULL,
-    [id_contract]     INT            NULL,
-    [id_device]       INT            NULL,
-    [contractor_name] NVARCHAR (500) NULL,
-    [contract_number] NVARCHAR (150) NULL,
-    [device_name]     NVARCHAR (500) NULL,
-    [creator_sid]     VARCHAR (46)   NOT NULL,
-    [id_admin]        INT            NULL,
-    [id_engeneer]     INT            NULL,
-    [dattim1]         DATETIME       NOT NULL,
-    [dattim2]         DATETIME       NOT NULL,
-    [enabled]         BIT            NOT NULL,
-    [id_claim_state]  INT            NOT NULL,
-    [deleter_sid]     VARCHAR (46)   NULL,
+CREATE TABLE [dbo].[service_sheet] (
+    [id]                   INT            IDENTITY (1, 1) NOT NULL,
+    [id_claim2claim_state] INT            NOT NULL,
+    [process_enabled]      BIT            NOT NULL,
+    [device_enabled]       BIT            NOT NULL,
+    [zip_claim]            BIT            NOT NULL,
+    [dattim1]              DATETIME       NOT NULL,
+    [dattim2]              DATETIME       NOT NULL,
+    [enabled]              BIT            NOT NULL,
+    [creator_sid]          VARCHAR (46)   NOT NULL,
+    [counter_mono]         BIGINT         NULL,
+    [counter_color]        BIGINT         NULL,
+    [zip_claim_number]     NVARCHAR (50)  NULL,
+    [counter_total]        BIGINT         NULL,
+    [no_counter]           BIT            NOT NULL,
+    [descr]                NVARCHAR (MAX) NULL,
+    [counter_unavailable]  BIT            NOT NULL,
     PRIMARY KEY CLUSTERED ([id] ASC)
 );
 
 
 GO
-PRINT N'Creating [dbo].[claims].[IX_service_claims_enabled]...';
+PRINT N'Creating unnamed constraint on [dbo].[claim_state2user_group]...';
 
 
 GO
-CREATE NONCLUSTERED INDEX [IX_service_claims_enabled]
-    ON [dbo].[claims]([enabled] DESC);
-
-
-GO
-PRINT N'Creating [dbo].[claims].[IX_service_claims_id_admin]...';
-
-
-GO
-CREATE NONCLUSTERED INDEX [IX_service_claims_id_admin]
-    ON [dbo].[claims]([id_admin] ASC);
-
-
-GO
-PRINT N'Creating [dbo].[claims].[IX_service_claims_id_engeneer]...';
-
-
-GO
-CREATE NONCLUSTERED INDEX [IX_service_claims_id_engeneer]
-    ON [dbo].[claims]([id_engeneer] ASC);
-
-
-GO
-PRINT N'Creating [dbo].[classifier]...';
-
-
-GO
-CREATE TABLE [dbo].[classifier] (
-    [id_category]  INT             IDENTITY (1, 1) NOT NULL,
-    [id_work_type] INT             NOT NULL,
-    [time]         INT             NOT NULL,
-    [price]        DECIMAL (10, 2) NOT NULL,
-    [cost_people]  DECIMAL (10, 2) NOT NULL,
-    [cost_company] DECIMAL (10, 2) NOT NULL,
-    [dattim1]      DATETIME        NOT NULL,
-    [dattim2]      DATETIME        NOT NULL,
-    [enabled]      BIT             NOT NULL,
-    [creator_sid]  NVARCHAR (46)   NOT NULL,
-    [id]           INT             NOT NULL,
-    [id_parent]    BIT             NOT NULL,
-    [name]         NVARCHAR (4000) NOT NULL,
-    [number]       NVARCHAR (20)   NOT NULL,
-    PRIMARY KEY CLUSTERED ([id_category] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[classifier_categories]...';
-
-
-GO
-CREATE TABLE [dbo].[classifier_categories] (
-    [id]          INT             IDENTITY (1, 1) NOT NULL,
-    [id_parent]   BIT             NOT NULL,
-    [name]        NVARCHAR (4000) NOT NULL,
-    [number]      NVARCHAR (20)   NOT NULL,
-    [descr]       NVARCHAR (MAX)  NULL,
-    [dattim1]     DATETIME        NOT NULL,
-    [dattim2]     DATETIME        NOT NULL,
-    [enabled]     BIT             NOT NULL,
-    [creator_sid] NVARCHAR (46)   NOT NULL,
-    PRIMARY KEY CLUSTERED ([id] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[work_types]...';
-
-
-GO
-CREATE TABLE [dbo].[work_types] (
-    [id]          INT             IDENTITY (1, 1) NOT NULL,
-    [id_parent]   INT             NOT NULL,
-    [name]        NVARCHAR (1500) NOT NULL,
-    [sys_name]    NVARCHAR (20)   NULL,
-    [dattim1]     DATETIME        NOT NULL,
-    [dattim2]     DATETIME        NOT NULL,
-    [enabled]     BIT             NOT NULL,
-    [creator_sid] VARCHAR (46)    NULL,
-    PRIMARY KEY CLUSTERED ([id] ASC)
-);
-
-
-GO
-PRINT N'Creating unnamed constraint on [dbo].[claim_states]...';
-
-
-GO
-ALTER TABLE [dbo].[claim_states]
-    ADD DEFAULT 500 FOR [order_num];
-
-
-GO
-PRINT N'Creating unnamed constraint on [dbo].[claim_states]...';
-
-
-GO
-ALTER TABLE [dbo].[claim_states]
+ALTER TABLE [dbo].[claim_state2user_group]
     ADD DEFAULT 1 FOR [enabled];
 
 
 GO
-PRINT N'Creating unnamed constraint on [dbo].[claim_states]...';
+PRINT N'Creating unnamed constraint on [dbo].[claim_state2user_group]...';
 
 
 GO
-ALTER TABLE [dbo].[claim_states]
+ALTER TABLE [dbo].[claim_state2user_group]
     ADD DEFAULT getdate() FOR [dattim1];
 
 
 GO
-PRINT N'Creating unnamed constraint on [dbo].[claim2claim_states]...';
+PRINT N'Creating unnamed constraint on [dbo].[claim_state2user_group]...';
 
 
 GO
-ALTER TABLE [dbo].[claim2claim_states]
-    ADD DEFAULT getdate() FOR [dattim1];
-
-
-GO
-PRINT N'Creating unnamed constraint on [dbo].[claim2claim_states]...';
-
-
-GO
-ALTER TABLE [dbo].[claim2claim_states]
-    ADD DEFAULT 1 FOR [enabled];
-
-
-GO
-PRINT N'Creating unnamed constraint on [dbo].[claims]...';
-
-
-GO
-ALTER TABLE [dbo].[claims]
-    ADD DEFAULT newid() FOR [sid];
-
-
-GO
-PRINT N'Creating unnamed constraint on [dbo].[claims]...';
-
-
-GO
-ALTER TABLE [dbo].[claims]
-    ADD DEFAULT getdate() FOR [dattim1];
-
-
-GO
-PRINT N'Creating unnamed constraint on [dbo].[claims]...';
-
-
-GO
-ALTER TABLE [dbo].[claims]
+ALTER TABLE [dbo].[claim_state2user_group]
     ADD DEFAULT '3.3.3333' FOR [dattim2];
 
 
 GO
-PRINT N'Creating unnamed constraint on [dbo].[claims]...';
+PRINT N'Creating unnamed constraint on [dbo].[contractor_access]...';
 
 
 GO
-ALTER TABLE [dbo].[claims]
-    ADD DEFAULT 1 FOR [enabled];
-
-
-GO
-PRINT N'Creating unnamed constraint on [dbo].[classifier]...';
-
-
-GO
-ALTER TABLE [dbo].[classifier]
-    ADD DEFAULT 0 FOR [time];
-
-
-GO
-PRINT N'Creating unnamed constraint on [dbo].[classifier]...';
-
-
-GO
-ALTER TABLE [dbo].[classifier]
-    ADD DEFAULT 0 FOR [price];
-
-
-GO
-PRINT N'Creating unnamed constraint on [dbo].[classifier]...';
-
-
-GO
-ALTER TABLE [dbo].[classifier]
-    ADD DEFAULT 0 FOR [cost_people];
-
-
-GO
-PRINT N'Creating unnamed constraint on [dbo].[classifier]...';
-
-
-GO
-ALTER TABLE [dbo].[classifier]
-    ADD DEFAULT 0 FOR [cost_company];
-
-
-GO
-PRINT N'Creating unnamed constraint on [dbo].[classifier]...';
-
-
-GO
-ALTER TABLE [dbo].[classifier]
+ALTER TABLE [dbo].[contractor_access]
     ADD DEFAULT getdate() FOR [dattim1];
 
 
 GO
-PRINT N'Creating unnamed constraint on [dbo].[classifier]...';
+PRINT N'Creating unnamed constraint on [dbo].[contractor_access]...';
 
 
 GO
-ALTER TABLE [dbo].[classifier]
+ALTER TABLE [dbo].[contractor_access]
     ADD DEFAULT '3.3.3333' FOR [dattim2];
 
 
 GO
-PRINT N'Creating unnamed constraint on [dbo].[classifier]...';
+PRINT N'Creating unnamed constraint on [dbo].[contractor_access]...';
 
 
 GO
-ALTER TABLE [dbo].[classifier]
+ALTER TABLE [dbo].[contractor_access]
     ADD DEFAULT 1 FOR [enabled];
 
 
 GO
-PRINT N'Creating unnamed constraint on [dbo].[classifier_categories]...';
+PRINT N'Creating unnamed constraint on [dbo].[service_issue]...';
 
 
 GO
-ALTER TABLE [dbo].[classifier_categories]
+ALTER TABLE [dbo].[service_issue]
     ADD DEFAULT getdate() FOR [dattim1];
 
 
 GO
-PRINT N'Creating unnamed constraint on [dbo].[classifier_categories]...';
+PRINT N'Creating unnamed constraint on [dbo].[service_issue]...';
 
 
 GO
-ALTER TABLE [dbo].[classifier_categories]
+ALTER TABLE [dbo].[service_issue]
     ADD DEFAULT '3.3.3333' FOR [dattim2];
 
 
 GO
-PRINT N'Creating unnamed constraint on [dbo].[classifier_categories]...';
+PRINT N'Creating unnamed constraint on [dbo].[service_issue]...';
 
 
 GO
-ALTER TABLE [dbo].[classifier_categories]
+ALTER TABLE [dbo].[service_issue]
     ADD DEFAULT 1 FOR [enabled];
 
 
 GO
-PRINT N'Creating unnamed constraint on [dbo].[work_types]...';
+PRINT N'Creating unnamed constraint on [dbo].[service_sheet]...';
 
 
 GO
-ALTER TABLE [dbo].[work_types]
+ALTER TABLE [dbo].[service_sheet]
+    ADD DEFAULT 0 FOR [process_enabled];
+
+
+GO
+PRINT N'Creating unnamed constraint on [dbo].[service_sheet]...';
+
+
+GO
+ALTER TABLE [dbo].[service_sheet]
+    ADD DEFAULT 0 FOR [device_enabled];
+
+
+GO
+PRINT N'Creating unnamed constraint on [dbo].[service_sheet]...';
+
+
+GO
+ALTER TABLE [dbo].[service_sheet]
+    ADD DEFAULT 0 FOR [zip_claim];
+
+
+GO
+PRINT N'Creating unnamed constraint on [dbo].[service_sheet]...';
+
+
+GO
+ALTER TABLE [dbo].[service_sheet]
     ADD DEFAULT getdate() FOR [dattim1];
 
 
 GO
-PRINT N'Creating unnamed constraint on [dbo].[work_types]...';
+PRINT N'Creating unnamed constraint on [dbo].[service_sheet]...';
 
 
 GO
-ALTER TABLE [dbo].[work_types]
+ALTER TABLE [dbo].[service_sheet]
     ADD DEFAULT '3.3.3333' FOR [dattim2];
 
 
 GO
-PRINT N'Creating unnamed constraint on [dbo].[work_types]...';
+PRINT N'Creating unnamed constraint on [dbo].[service_sheet]...';
 
 
 GO
-ALTER TABLE [dbo].[work_types]
+ALTER TABLE [dbo].[service_sheet]
     ADD DEFAULT 1 FOR [enabled];
 
 
 GO
-PRINT N'Creating [dbo].[claims_view]...';
+PRINT N'Creating unnamed constraint on [dbo].[service_sheet]...';
 
 
 GO
-CREATE VIEW [dbo].[claims_view]
-	AS SELECT  c.id, c.sid, c.id_contractor, c.id_contract, c.id_device, c.contractor_name, c.contract_number, c.device_name, c.id_admin, c.id_engeneer, c.id_claim_state
+ALTER TABLE [dbo].[service_sheet]
+    ADD DEFAULT 0 FOR [no_counter];
+
+
+GO
+PRINT N'Creating unnamed constraint on [dbo].[service_sheet]...';
+
+
+GO
+ALTER TABLE [dbo].[service_sheet]
+    ADD DEFAULT 0 FOR [counter_unavailable];
+
+
+GO
+PRINT N'Altering [dbo].[claims_view]...';
+
+
+GO
+ALTER VIEW [dbo].[claims_view]
+	AS SELECT  c.id, c.sid, c.id_contractor, c.id_contract, c.id_device, c.contractor_name, 
+	c.contract_number, c.device_name, c.id_admin, c.id_engeneer, c.id_claim_state, c.id_work_type,
+	c.dattim1 as date_create, date_state_change, cliend_sd_num
 	FROM claims c where c.enabled = 1
 GO
-PRINT N'Creating [dbo].[close_claim]...';
+PRINT N'Altering [dbo].[get_claim2claim_state_list]...';
 
 
 GO
-CREATE PROCEDURE [dbo].[close_claim]@sid varchar(46), @deleter_sid varchar(46)
-AS
-    BEGIN
-        SET NOCOUNT ON;
-        UPDATE  claims
-        SET     enabled = 0, dattim2 = getdate(), deleter_sid=@deleter_sid
-        WHERE   sid = @sid
-    END
+ALTER PROCEDURE [dbo].[get_claim2claim_state_list]
+	@id_claim int
+	as begin set nocount on;
+	select c2cs.id, c2cs.id_claim, c2cs.id_claim_state, c2cs.dattim1, c2cs.creator_sid, c2cs.descr, cs.background_color, cs.foreground_color, cs.sys_name, cs.name, c2cs.specialist_sid, c2cs.id_work_type 
+	--,wt.sys_name as work_type_sys_name, wt.name as work_type_name
+	from claim2claim_states c2cs
+	inner join claim_states cs on c2cs.id_claim_state=cs.id
+	--inner join work_types wt on c2cs.id_work_type=wt.id
+	where c2cs.enabled=1 and cs.enabled=1 and c2cs.id_claim=@id_claim
+	end
 GO
-PRINT N'Creating [dbo].[get_claim]...';
+PRINT N'Altering [dbo].[save_claim2claim_state]...';
 
 
 GO
-CREATE PROCEDURE [dbo].[get_claim]
+ALTER PROCEDURE [dbo].[save_claim2claim_state]
+	@id_claim int,
+	@id_claim_state int,
+	@creator_sid varchar(46),
+	@descr nvarchar(max)=null,
+	@specialist_sid varchar(46)=null,
+	@id_work_type int = null
+	as begin set nocount on;
+	declare @id int
+	insert into claim2claim_states(id_claim, id_claim_state, creator_sid, descr, specialist_sid, id_work_type)
+	values (@id_claim, @id_claim_state, @creator_sid, @descr, @specialist_sid, @id_work_type)	
+	set @id = @@IDENTITY
+	select @id as id
+	end
+GO
+PRINT N'Altering [dbo].[get_claim]...';
+
+
+GO
+ALTER PROCEDURE [dbo].[get_claim]
 	@id int = null,
 	@sid varchar(46) = null
 	as begin
 	set nocount on;
-	select c.id, c.sid, c.id_contractor, c.id_contract, c.id_device, c.contractor_name, c.contract_number, c.device_name, c.id_admin, c.id_engeneer, c.id_claim_state
+	select c.id, c.sid, c.id_contractor, c.id_contract, c.id_device, c.contractor_name, c.contract_number, 
+	c.device_name, c.id_admin, c.id_engeneer, c.id_claim_state, c.id_work_type, c.specialist_sid,
+	c.dattim1 as date_create, date_state_change, cliend_sd_num
 	from claims c
 	where (@id is null or @id<= 0 or (@id is not null and @id> 0 and c.id=@id)) and
 	(@sid is null or @sid= '' or (@id is not null and @sid!= '' and c.sid=@sid))
 	end
 GO
-PRINT N'Creating [dbo].[get_claim_current_state]...';
+PRINT N'Altering [dbo].[save_claim]...';
 
 
 GO
-CREATE PROCEDURE [dbo].[get_claim_current_state]
-	@id_claim int
-	as begin
-	set nocount on;
-	select top 1 c2cd.id_claim, c2cd.id_claim_state, c2cd.descr, c2cd.creator_sid from claim2claim_states c2cd where c2cd.enabled=1 and c2cd.id_claim=@id_claim
-	order by id desc
-	end
-GO
-PRINT N'Creating [dbo].[get_claim_list]...';
-
-
-GO
-CREATE PROCEDURE [dbo].[get_claim_list]
-	@id_admin int = null,
-	@id_engeneer int = null,
-	@date_start date = null,
-	@date_end date = null,
-	@top_rows int = null
-	as begin
-	set nocount on;
-
-	select c.id, c.sid, c.id_contractor, c.id_contract, c.id_device, c.contractor_name, c.contract_number, c.device_name, c.id_admin, c.id_engeneer, c.id_claim_state
-	from claims_view c
-	order by c.id desc
-	end
-GO
-PRINT N'Creating [dbo].[get_claim_state]...';
-
-
-GO
-CREATE PROCEDURE [dbo].[get_claim_state]
-	@sys_name nvarchar(20) = null,
-	@id int = null
-	as begin set nocount on;
-	select id, name ,sys_name,order_num,background_color,foreground_color
-	from claim_states where enabled=1 and (@sys_name is null or @sys_name = '' or (@sys_name is not null and @sys_name != '' and sys_name= @sys_name))
-	and (@id is null or @id <=0 or (@id is not null and @id >0 and id= @id))
-
-	end
-GO
-PRINT N'Creating [dbo].[get_claim2claim_state_list]...';
-
-
-GO
-CREATE PROCEDURE [dbo].[get_claim2claim_state_list]
-	@id_claim int
-	as begin set nocount on;
-	select c2cs.id, c2cs.id_claim, c2cs.id_claim_state, c2cs.dattim1, c2cs.creator_sid, c2cs.descr, cs.background_color, cs.foreground_color, cs.sys_name, cs.name
-	from claim2claim_states c2cs
-	inner join claim_states cs on c2cs.id_claim_state=cs.id
-	where c2cs.enabled=1 and cs.enabled=1 and c2cs.id_claim=@id_claim
-	end
-GO
-PRINT N'Creating [dbo].[get_classifier_list]...';
-
-
-GO
-CREATE PROCEDURE [dbo].[get_classifier_list]
-AS
-	begin
-	select id, name, number, time,price,cost_company, cost_people
-from dbo.classifier c
-where c.enabled=1 and not exists(select 1 from classifier c2 where c2.enabled=1 and c.id=c2.id_parent)
-order by id_parent, convert(int, replace(number, '.', ''))
-
-	end
-GO
-PRINT N'Creating [dbo].[get_next_claim_state]...';
-
-
-GO
-CREATE PROCEDURE [dbo].[get_next_claim_state]
-	@id_claim_state int
-as begin set nocount on;
-	select top 1 id, name ,sys_name,order_num,background_color,foreground_color
-	from claim_states cs where enabled=1 and exists(select 1 from claim_states cs2 where cs2.enabled=1 and cs2.id=@id_claim_state and  cs.order_num > cs2.order_num)
-	order by order_num
-	end
-GO
-PRINT N'Creating [dbo].[save_claim]...';
-
-
-GO
-CREATE PROCEDURE [dbo].[save_claim]
+ALTER PROCEDURE [dbo].[save_claim]
 	@id int = null,
 	@sid varchar(46) = null,
 	@id_contractor int = null,
@@ -586,122 +465,703 @@ CREATE PROCEDURE [dbo].[save_claim]
 	@device_name nvarchar(500) = null,
 	@creator_sid varchar(46),
 	@id_admin int = null,
-	@id_engeneer int = null
+	@id_engeneer int = null,
+	@id_work_type int = null,
+	@specialist_sid varchar(46)=null,
+	@cliend_sd_num nvarchar(50)=null
 	--,	@id_claim_state int= null -- статус меняем отдельной процедурой
 	as begin
 	set nocount on;
+
+	
+
 	if (@id is not null and @id > 0 and exists(select 1 from claims where id=@id))
 	begin
+	--if @id_engeneer is null or @id_engeneer = 0 begin
+	--select @id_admin = isnull(@id_admin,(select id_admin from claims where id=@id))
+	--if @id_engeneer is null or @id_engeneer = 0 begin
+	--	select @id_engeneer = isnull(@id_engeneer,(select id_engeneer from claims where id=@id))
+	--	end
+		if @id_work_type is null or @id_work_type = 0 begin
+		select @id_work_type = id_work_type from claims where id=@id
+		end
+
+		select @specialist_sid = isnull(@specialist_sid,(select specialist_sid from claims where id=@id))
+
 		update claims
-		set creator_sid=@creator_sid,id_admin=@id_admin, id_engeneer=@id_engeneer
+		set 
+		--creator_sid=@creator_sid,
+		--id_admin=@id_admin, id_engeneer=@id_engeneer, 
+		id_work_type=@id_work_type, specialist_sid=@specialist_sid
 		--id_contractor = @id_contractor,id_contract=@id_contract,id_device=@id_device, contractor_name=@contractor_name, contract_number=@contract_number, device_name=@device_name, id_claim_state=@id_claim_state
 		where id=@id
 	end
 	else if (@sid is not null and @sid <> '' and exists(select 1 from claims where sid=@sid))
 	begin
+	--select @id_admin = isnull(@id_admin,(select id_admin from claims where sid=@sid))
+	--	select @id_engeneer = isnull(@id_engeneer,(select id_engeneer from claims where sid=@sid))
+		if @id_work_type is null or @id_work_type = 0 begin
+		select @id_work_type = id_work_type from claims where id=@id
+		end
+
 		update claims
-		set creator_sid=@creator_sid,id_admin=@id_admin, id_engeneer=@id_engeneer
+		set 
+		--creator_sid=@creator_sid,
+		--id_admin=@id_admin, id_engeneer=@id_engeneer, 
+		id_work_type=@id_work_type, specialist_sid=@specialist_sid
 		--id_contractor = @id_contractor,id_contract=@id_contract,id_device=@id_device, contractor_name=@contractor_name, contract_number=@contract_number, device_name=@device_name, id_claim_state=@id_claim_state
 		where sid=@sid
 	end
 	else
 	begin
-	insert into claims(id_contractor, id_contract, id_device, contractor_name, contract_number, device_name, creator_sid, id_admin, id_engeneer, id_claim_state)
-	values(@id_contractor, @id_contract, @id_device, @contractor_name, @contract_number, @device_name, @creator_sid, @id_admin, @id_engeneer, 0)
+	insert into claims(id_contractor, id_contract, id_device, contractor_name, contract_number, device_name, creator_sid, id_admin, id_engeneer, id_claim_state, id_work_type, date_state_change, cliend_sd_num)
+	values(@id_contractor, @id_contract, @id_device, @contractor_name, @contract_number, @device_name, @creator_sid, @id_admin, @id_engeneer, 0, 0, getdate(), @cliend_sd_num)
 		set @id = @@IDENTITY
 	end
 	select @id as id
 	end
 GO
-PRINT N'Creating [dbo].[save_claim2claim_state]...';
+PRINT N'Altering [dbo].[set_claim_current_state]...';
 
 
 GO
-CREATE PROCEDURE [dbo].[save_claim2claim_state]
-	@id_claim int,
-	@id_claim_state int,
-	@creator_sid varchar(46),
-	@descr nvarchar(max)
-	as begin set nocount on;
-	declare @id int
-	insert into claim2claim_states(id_claim, id_claim_state, creator_sid, descr)
-	values (@id_claim, @id_claim_state, @creator_sid, @descr)	
-	set @id = @@IDENTITY
-	select @id as id
-	end
-GO
-PRINT N'Creating [dbo].[set_claim_claim_state]...';
-
-
-GO
-CREATE PROCEDURE [dbo].[set_claim_claim_state]
-	@id int = null,
-	@sid varchar(46) = null,
-	@id_claim_state int
-AS
-begin
-set nocount on;
-if @id is not null and @id > 0
-begin
-update claims
-set id_claim_state=@id_claim_state
-where id=@id end 
-else if @sid is not null and @sid <> ''
-begin
-	update claims
-set id_claim_state=@id_claim_state
-where sid=@sid 
-end
-end
-GO
-PRINT N'Creating [dbo].[set_claim_current_state]...';
-
-
-GO
-CREATE PROCEDURE [dbo].[set_claim_current_state]
+ALTER PROCEDURE [dbo].[set_claim_current_state]
 	@id_claim int,
 	@id_claim_state int
 	as begin set nocount on;
 		update claims
-		set id_claim_state = @id_claim_state where id=@id_claim
+		set id_claim_state = @id_claim_state, date_state_change = getdate() where id=@id_claim
 	end
 GO
--- Refactoring step to update target server with deployed transaction logs
+PRINT N'Altering [dbo].[get_claim_list]...';
 
-IF OBJECT_ID(N'dbo.__RefactorLog') IS NULL
-BEGIN
-    CREATE TABLE [dbo].[__RefactorLog] (OperationKey UNIQUEIDENTIFIER NOT NULL PRIMARY KEY)
-    EXEC sp_addextendedproperty N'microsoft_database_tools_support', N'refactoring log', N'schema', N'dbo', N'table', N'__RefactorLog'
-END
+
 GO
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'b83b2a2d-c137-4b7b-804a-033fe63ffad0')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('b83b2a2d-c137-4b7b-804a-033fe63ffad0')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'aaf171b6-a888-4e7e-aeff-a29c64e3fc42')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('aaf171b6-a888-4e7e-aeff-a29c64e3fc42')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '11e3d99e-0851-4213-938e-9f8bae7069a6')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('11e3d99e-0851-4213-938e-9f8bae7069a6')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '4f09af0f-807e-4953-bb87-a92f404ec92f')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('4f09af0f-807e-4953-bb87-a92f404ec92f')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '7f0686f2-d840-4408-a982-1085900f2aff')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('7f0686f2-d840-4408-a982-1085900f2aff')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'd7b74989-299a-41a6-b637-c7d70c819e14')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('d7b74989-299a-41a6-b637-c7d70c819e14')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'c53a6450-31f9-456e-8e8d-1e5152581f2a')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('c53a6450-31f9-456e-8e8d-1e5152581f2a')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '63b3a29e-4704-48fd-a06c-9cde85517d34')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('63b3a29e-4704-48fd-a06c-9cde85517d34')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'd0410b6b-6fe0-47fd-a24a-ec207fc51201')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('d0410b6b-6fe0-47fd-a24a-ec207fc51201')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '176e1e30-4914-4821-b04b-6a35390814d7')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('176e1e30-4914-4821-b04b-6a35390814d7')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'aad26eca-6787-447a-867c-403603616197')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('aad26eca-6787-447a-867c-403603616197')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'e7cfdf59-cda9-4738-8887-6fce4a266726')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('e7cfdf59-cda9-4738-8887-6fce4a266726')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'a06a2380-80e3-4368-9f01-6e326d5b3a38')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('a06a2380-80e3-4368-9f01-6e326d5b3a38')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'ce76b1d5-10d2-42f1-a15c-c99d0bfe2991')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('ce76b1d5-10d2-42f1-a15c-c99d0bfe2991')
+ALTER PROCEDURE [dbo].[get_claim_list]
+	@id_admin int = null,
+	@id_engeneer int = null,
+	@date_start date = null,
+	@date_end date = null,
+	@top_rows int
+	as begin
+	set nocount on;
+	--/////////
+	-- Поправил запрос - ПОПРАВЬ ДАПРОС КОЛИЧЕСТВА get_claim_list_count
+	--/////////
+	select top (@top_rows) c.id, c.sid, c.id_contractor, c.id_contract, c.id_device, c.contractor_name, 
+	c.contract_number, c.device_name, c.id_admin, c.id_engeneer, c.id_claim_state, c.id_work_type,
+	c.date_create, date_state_change, cliend_sd_num
+	from claims_view c
+	order by c.id desc
+	end
+GO
+PRINT N'Creating [dbo].[check_client_access_is_exists]...';
+
+
+GO
+CREATE PROCEDURE [dbo].[check_client_access_is_exists]
+	@id_client_etalon int
+AS
+	begin set nocount on;
+
+	if exists(select 1 from client_access where enabled=1 and id_client_etalon=@id_client_etalon)
+	begin
+
+	select 1 as result
+	end
+	else
+	begin
+	select 0 as result
+	end
+	end
+GO
+PRINT N'Creating [dbo].[check_contractor_access_is_exists]...';
+
+
+GO
+CREATE PROCEDURE [dbo].[check_contractor_access_is_exists]
+	@login nvarchar(50)
+AS
+	begin set nocount on;
+
+	if exists(select 1 from contractor_access where enabled=1 and login=@login)
+	begin
+
+	select 1 as result
+	end
+	else
+	begin
+	select 0 as result
+	end
+	end
+GO
+PRINT N'Creating [dbo].[clear_claim]...';
+
+
+GO
+CREATE PROCEDURE [dbo].[clear_claim]
+	@id int = null,
+	@sid varchar(46) = null,
+	@clear_specialist_sid bit = 0,
+	@clear_id_work_type bit = 0
+	as begin
+	set nocount on;
+
+	
+
+	if (@id is not null and @id > 0 and exists(select 1 from claims where id=@id))
+	begin	
+		if @clear_specialist_sid = 1 
+		begin
+		update claims
+		set specialist_sid = null
+		where id=@id
+		end
+
+		if @clear_id_work_type = 1 
+		begin
+		update claims
+		set id_work_type = 0
+		where id=@id
+		end
+	end
+	else if (@sid is not null and @sid <> '' and exists(select 1 from claims where sid=@sid))
+	begin
+		if @clear_specialist_sid = 1 
+		begin
+		update claims
+		set specialist_sid = null
+		where sid=@sid
+		end
+
+		if @clear_id_work_type = 1 
+		begin
+		update claims
+		set id_work_type = 0
+		where sid=@sid
+		end
+	end
+	
+	select @id as id
+	end
+GO
+PRINT N'Creating [dbo].[close_client_access]...';
+
+
+GO
+CREATE PROCEDURE [dbo].[close_client_access] @id INT, @deleter_sid varchar(46)
+AS
+    BEGIN
+        SET NOCOUNT ON;
+        UPDATE  client_access
+        SET     enabled = 0, dattim2 = getdate(), deleter_sid=@deleter_sid
+        WHERE   id = @id
+    END
+GO
+PRINT N'Creating [dbo].[close_contractor_access]...';
+
+
+GO
+CREATE PROCEDURE [dbo].[close_contractor_access]
+@id INT, @deleter_sid varchar(46)
+AS
+    BEGIN
+        SET NOCOUNT ON;
+        UPDATE  contractor_access
+        SET     enabled = 0, dattim2 = getdate(), deleter_sid=@deleter_sid
+        WHERE   id = @id
+    END
+GO
+PRINT N'Creating [dbo].[get_claim_list_count]...';
+
+
+GO
+CREATE PROCEDURE [dbo].[get_claim_list_count]
+	@id_admin int = null,
+	@id_engeneer int = null,
+	@date_start date = null,
+	@date_end date = null
+	as begin
+	set nocount on;
+
+	select count(1) as cnt
+	from claims_view c
+	end
+GO
+PRINT N'Creating [dbo].[get_claim_state_user_group_list]...';
+
+
+GO
+CREATE PROCEDURE [dbo].[get_claim_state_user_group_list]
+	@id_claim_state int
+AS
+	begin
+	set nocount on;
+	select user_group_sid from claim_state2user_group where enabled=1 and id_claim_state=@id_claim_state
+	
+
+	end
+GO
+PRINT N'Creating [dbo].[get_classifier_attributes]...';
+
+
+GO
+CREATE PROCEDURE [dbo].[get_classifier_attributes]
+AS
+	begin
+	set nocount on;
+
+	select 
+	(select convert(decimal(10,2), value) from attributes where sys_name = 'CLSFRWAGE') as wage,
+	(select convert(decimal(10,2), value) from attributes where sys_name = 'CLSFROVERHEAD') as overhead
+
+	end
+GO
+PRINT N'Creating [dbo].[get_classifier_category]...';
+
+
+GO
+CREATE PROCEDURE [dbo].[get_classifier_category]
+	@id int = null,
+	@number nvarchar(20) = null
+	as begin set nocount on;
+
+	select id, id_parent, name, number, descr
+	from classifier_categories c
+	where c.enabled=1 and (@id is null or @id <= 0 or (@id is not null and @id > 0 and c.id=@id))
+	and (@number is null or @number ='' or (@number is not null and @number != '' and c.number=@number))
+	end
+GO
+PRINT N'Creating [dbo].[get_client_access]...';
+
+
+GO
+CREATE PROCEDURE [dbo].[get_client_access]
+	@id int = null
+AS
+	begin
+	set nocount on;
+
+	select id, login,ad_sid,id_client_etalon, name, full_name, password, case when zip_access=1 then 1 else 0 end as zip_access, case when counter_access=1 then 1 else 0 end as counter_access, ad_sid, name
+	from client_access
+	where enabled=1 and (@id is null or @id <= 0 or (@id is not null and @id > 0 and id=@id))
+	end
+GO
+PRINT N'Creating [dbo].[get_contractor_access]...';
+
+
+GO
+CREATE PROCEDURE [dbo].[get_contractor_access]
+	@id int = null
+AS
+	begin
+	set nocount on;
+
+	select id, login,ad_sid, name, password, name, org_name ,city, org_sid, email
+	from contractor_access
+	where enabled=1 and (@id is null or @id <= 0 or (@id is not null and @id > 0 and id=@id))
+	end
+GO
+PRINT N'Creating [dbo].[get_lower_classifier_category_list]...';
+
+
+GO
+CREATE PROCEDURE [dbo].[get_lower_classifier_category_list]
+	
+AS
+	begin
+	set nocount on;
+select id, id_parent, number, complexity, descr, cat.name
+from classifier_categories cat
+where cat.enabled=1 and not exists(select 1 from classifier_categories cat2 where cat2.enabled=1 and cat2.id_parent=cat.id)
+order by id_parent, convert(int, replace(number, '.', ''))
+end
+GO
+PRINT N'Creating [dbo].[get_mobile_user_list]...';
+
+
+GO
+CREATE PROCEDURE [dbo].[get_mobile_user_list]
+AS
+	begin
+	set nocount on;
+
+	select id, login, password from mobile_users
+	where enabled = 1
+
+	end
+GO
+PRINT N'Creating [dbo].[get_service_issue]...';
+
+
+GO
+CREATE PROCEDURE [dbo].[get_service_issue]
+	@id int 
+AS
+	begin set nocount on
+	select id, id_claim, date_plan, specialist_sid, descr, creator_sid, dattim1 as date_create  from service_issue
+	end
+GO
+PRINT N'Creating [dbo].[get_service_sheet]...';
+
+
+GO
+CREATE PROCEDURE [dbo].[get_service_sheet]
+	@id int = null,
+	@id_claim int = null,
+	@id_claim2claim_state int = null
+	as begin set nocount on;
+
+	select c2cs.id_claim, s.id_claim2claim_state, case when s.process_enabled=1 then 1 else 0 end as process_enabled, 
+	case when s.device_enabled=1 then 1 else 0 end as device_enabled, case when s.zip_claim=1 then 1 else 0 end as zip_claim, s.zip_claim_number, 
+	s.counter_mono, s.counter_color, counter_total, case when no_counter=1 then 1 else 0 end as no_counter,
+	s.dattim1 as date_create, s.descr, case when counter_unavailable=1 then 1 else 0 end as counter_unavailable
+	from service_sheet s inner join claim2claim_states c2cs on s.id_claim2claim_state=c2cs.id where s.enabled=1 and c2cs.enabled=1 and
+	(@id is null or @id <= 0 or (@id is not null and @id > 0 and s.id=@id)) and 
+	(@id_claim is null or @id_claim <= 0 or (@id_claim is not null and @id_claim > 0 and c2cs.id_claim=@id_claim)) and 
+	(@id_claim2claim_state is null or @id_claim2claim_state <= 0 or (@id_claim2claim_state is not null and @id_claim2claim_state > 0 and s.id_claim2claim_state=@id_claim2claim_state)) 
+
+	end
+GO
+PRINT N'Creating [dbo].[get_work_type]...';
+
+
+GO
+CREATE PROCEDURE [dbo].[get_work_type]
+	@id int = null,
+	@sys_name nvarchar(20) = null
+AS
+	begin set nocount on;
+
+	select id, id_parent, name, sys_name
+	from work_types
+	where (@id is null or @id <= 0 or (@id is not null and @id > 0 and id=@id)) and (@sys_name is null or @sys_name = '' or (@sys_name is not null and @sys_name != '' and enabled=1 and sys_name=@sys_name)) 
+
+	end
+GO
+PRINT N'Creating [dbo].[get_work_type_list]...';
+
+
+GO
+CREATE PROCEDURE [dbo].[get_work_type_list]
+	
+AS
+	begin
+	set nocount on;
+	select id, id_parent, name, sys_name
+	from work_types
+	where enabled=1
+	order by order_num
+
+	end
+GO
+PRINT N'Creating [dbo].[save_classifier_attributes]...';
+
+
+GO
+CREATE PROCEDURE [dbo].[save_classifier_attributes]
+	@wage decimal(10,2),
+	@overhead decimal(10,2)
+AS
+begin
+set nocount on;
+
+declare @wage_str nvarchar(50), @overhead_str nvarchar(50)
+
+set @wage_str = convert(nvarchar(50), @wage)
+set @overhead_str = convert(nvarchar(50), @overhead)
+
+update attributes
+set value = @wage_str
+where sys_name = 'CLSFRWAGE'
+
+update attributes
+set value = @overhead_str
+where sys_name = 'CLSFROVERHEAD'
+
+update c
+set c.cost_people = c.price + @wage, c.cost_company=c.price+@overhead
+from classifier c	
+
+end
+GO
+PRINT N'Creating [dbo].[save_classifier_category]...';
+
+
+GO
+CREATE PROCEDURE [dbo].[save_classifier_category]
+@id int = null,
+@id_parent int = 0,
+	@name nvarchar(4000) = '',
+	@number nvarchar(20) = '',
+	@descr nvarchar(max) = null,
+    @complexity INT  = NULL,
+	@creator_sid varchar(46)
+	as begin
+	set nocount on;
+
+		if (@id is not null and @id > 0 and exists(select 1 from classifier_categories where id=@id))
+		begin
+			update classifier_categories
+			set 
+			id_parent=@id_parent, 
+			name=@name, number=@number, complexity=@complexity
+			--,descr=@descr
+			where id=@id			
+		end 
+		else if (@number is not null and @number != '' and exists(select 1 from classifier_categories where enabled = 1 and number=@number))
+		begin
+			select top 1 @id = id from classifier_categories where enabled = 1 and number=@number order by id desc
+
+			update classifier_categories
+			set 
+			id_parent=@id_parent, 
+			name=@name, number=@number, complexity=@complexity
+			--,descr=@descr
+			where id=@id
+		end
+		else
+		begin
+			insert into classifier_categories (id_parent,name, number, descr,complexity, creator_sid)
+			values (@id_parent,@name, @number, @descr, @complexity, @creator_sid)
+			set @id = @@IDENTITY
+		end
+
+		select @id as id
+	end
+GO
+PRINT N'Creating [dbo].[save_classifier_item]...';
+
+
+GO
+CREATE PROCEDURE [dbo].[save_classifier_item]
+	@id_category int,
+	@id_work_type int,
+	@time int = null,
+	@price decimal(10,2)=null,
+	@cost_people decimal(10,2)=null,
+	@cost_company decimal(10,2)=null,
+	@creator_sid varchar(46)
+AS
+	begin
+	set nocount on;
+	declare @id int
+
+	if exists(select 1 from classifier c where c.enabled=1 and c.id_category=@id_category and c.id_work_type=@id_work_type)
+	begin
+		select @time = isnull(@time, (select time from classifier c where c.enabled=1 and c.id_category=@id_category and c.id_work_type=@id_work_type))
+		select @price = isnull(@price, (select price from classifier c where c.enabled=1 and c.id_category=@id_category and c.id_work_type=@id_work_type))
+		select @cost_people = isnull(@cost_people, (select cost_people from classifier c where c.enabled=1 and c.id_category=@id_category and c.id_work_type=@id_work_type))
+		select @cost_company = isnull(@cost_company, (select cost_company from classifier c where c.enabled=1 and c.id_category=@id_category and c.id_work_type=@id_work_type))
+
+		update c
+		set c.time=@time, c.price=@price, c.cost_people=@cost_people, c.cost_company=@cost_company, creator_sid=@creator_sid
+		from
+		 classifier c where c.enabled=1 and c.id_category=@id_category and c.id_work_type=@id_work_type
+
+		 select @id = c.id from classifier c where c.enabled=1 and c.id_category=@id_category and c.id_work_type=@id_work_type
+	end
+	else
+	begin
+	select @time = isnull(@time, -1)
+		select @price = isnull(@price, -1)
+		select @cost_people = isnull(@cost_people, -1)
+		select @cost_company = isnull(@cost_company, -1)
+
+		insert into classifier (id_category, id_work_type, time, price, cost_people, cost_company, creator_sid)
+		values (@id_category, @id_work_type, @time, @price, @cost_people, @cost_company, @creator_sid)
+		set @id = @@IDENTITY
+	end
+	select @id as id
+	end
+GO
+PRINT N'Creating [dbo].[save_client_access]...';
+
+
+GO
+CREATE PROCEDURE [dbo].[save_client_access]
+@id int = null,
+	@id_client_etalon int = null,
+	@login nvarchar(50),
+	--пароль приходит зашифрованый
+	@password nvarchar(500),
+	@creator_sid varchar(46),
+	@ad_sid varchar(46) = null,
+	@name nvarchar(500)=null,
+	@full_name nvarchar(500)=null,
+	@zip_access bit,
+	@counter_access bit
+AS
+	begin
+	set nocount on;
+	
+	if not exists(select 1 from client_access where id=@id)
+	begin
+	insert into client_access (id_client_etalon, login, password, creator_sid, ad_sid,zip_access,counter_access, name, full_name)
+	values (@id_client_etalon, @login, @password, @creator_sid, @ad_sid, @zip_access, @counter_access, @name, @full_name)
+	set @id = @@IDENTITY
+	end
+	else
+	begin
+		update client_access
+		set zip_access=@zip_access, counter_access=@counter_access
+		where id=@id
+	end
+	select @id as id
+	end
+GO
+PRINT N'Creating [dbo].[save_contractor_access]...';
+
+
+GO
+CREATE PROCEDURE [dbo].[save_contractor_access]
+	@id int = null,
+	@login nvarchar(50),
+	--пароль приходит зашифрованый
+	@password nvarchar(500),
+	@creator_sid varchar(46),
+	@ad_sid varchar(46) = null,
+	@name nvarchar(500)=null,
+	@org_name nvarchar(500)=null,
+	@city nvarchar(500)=null,
+	@org_sid varchar(46) = null, 
+	@email varchar(50) = null
+AS
+	begin
+	set nocount on;
+	
+	if not exists(select 1 from contractor_access where id=@id)
+	begin
+	insert into contractor_access (login, password, creator_sid, ad_sid, name, org_name, city, org_sid, email)
+	values (@login, @password, @creator_sid, @ad_sid, @name, @org_name, @city, @org_sid, @email)
+	set @id = @@IDENTITY
+	end
+	
+	select @id as id
+	end
+GO
+PRINT N'Creating [dbo].[save_service_issue]...';
+
+
+GO
+CREATE PROCEDURE [dbo].[save_service_issue]
+	@id int= null,
+	@id_claim int = null,
+	@date_plan datetime = null,
+	@specialist_sid varchar(46) = null,
+	@creator_sid varchar(46) = null,
+	@descr nvarchar(max) = null
+	as begin
+	set nocount on
+
+	if exists(select 1 from service_issue where id=@id)
+	begin
+	update service_issue
+	set id_claim=@id_claim, date_plan=@date_plan, specialist_sid=@specialist_sid, creator_sid=@creator_sid, descr=@descr
+	where id=@id
+	end
+	else
+	begin
+	insert into service_issue (id_claim, date_plan, specialist_sid, creator_sid, descr)
+	values (@id_claim, @date_plan, @specialist_sid, @creator_sid, @descr)
+	set @id = @@IDENTITY
+	end
+	select @id as id
+	end
+GO
+PRINT N'Creating [dbo].[save_service_sheet]...';
+
+
+GO
+CREATE PROCEDURE [dbo].[save_service_sheet]
+	@id int = null,
+	@id_claim2claim_state int,
+	@process_enabled bit = null,
+	@device_enabled bit = null,
+	@zip_claim bit = null,
+	@zip_claim_number nvarchar(50) = null,
+	@creator_sid varchar(46),
+	@counter_mono bigint = null,
+	@counter_color bigint = null,
+	@counter_total bigint = null,
+	@no_counter bit = 0,
+	@descr nvarchar(MAX) = null,
+	@counter_unavailable bit = 0
+
+	as begin set nocount on;
+
+	if exists(select 1 from service_sheet where id=@id)
+	begin
+		--update service_sheet
+		--set 
+		--where id=@id
+		select null
+	end
+	else begin
+		insert into service_sheet (id_claim2claim_state, process_enabled, device_enabled, zip_claim, zip_claim_number, creator_sid, counter_mono, counter_color, counter_total, no_counter,descr, counter_unavailable)
+		values(@id_claim2claim_state, @process_enabled, @device_enabled, @zip_claim, @zip_claim_number, @creator_sid, @counter_mono, @counter_color, @counter_total, @no_counter, @descr, @counter_unavailable)
+		set @id = @@IDENTITY
+	end
+
+	select @id as id
+
+	end
+GO
+PRINT N'Refreshing [dbo].[get_claim_current_state]...';
+
+
+GO
+EXECUTE sp_refreshsqlmodule N'[dbo].[get_claim_current_state]';
+
+
+GO
+PRINT N'Refreshing [dbo].[close_claim]...';
+
+
+GO
+EXECUTE sp_refreshsqlmodule N'[dbo].[close_claim]';
+
+
+GO
+PRINT N'Refreshing [dbo].[set_claim_claim_state]...';
+
+
+GO
+EXECUTE sp_refreshsqlmodule N'[dbo].[set_claim_claim_state]';
+
+
+GO
+-- Refactoring step to update target server with deployed transaction logs
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'a5608576-0522-4309-9802-ccbe9f81affa')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('a5608576-0522-4309-9802-ccbe9f81affa')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '46a8f6fe-98dd-4a63-a61c-46b8df2b0687')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('46a8f6fe-98dd-4a63-a61c-46b8df2b0687')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '111a49ca-85c4-42ac-930d-174982701b67')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('111a49ca-85c4-42ac-930d-174982701b67')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '6cb69371-9cd9-421b-89f1-28956ad2568b')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('6cb69371-9cd9-421b-89f1-28956ad2568b')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '3adc9956-12af-40c4-ad80-243ddd710a0a')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('3adc9956-12af-40c4-ad80-243ddd710a0a')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'ca5817e2-160d-4ba1-9782-fc7c0b4a9190')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('ca5817e2-160d-4ba1-9782-fc7c0b4a9190')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '4a06ee9c-709d-45a8-8aec-eabe87dd76cf')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('4a06ee9c-709d-45a8-8aec-eabe87dd76cf')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'a8ca860b-0458-4454-85bd-740de3cd9129')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('a8ca860b-0458-4454-85bd-740de3cd9129')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '4f53fb66-867b-4b33-b334-19d943369b0a')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('4f53fb66-867b-4b33-b334-19d943369b0a')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '35920f36-c991-407e-9c1e-a60dc51033af')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('35920f36-c991-407e-9c1e-a60dc51033af')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '20c77c65-cec2-41bb-8d9c-a2c8e863d0c1')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('20c77c65-cec2-41bb-8d9c-a2c8e863d0c1')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '281f8846-5ddc-4203-b831-223b89233182')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('281f8846-5ddc-4203-b831-223b89233182')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '0b2d8360-5498-4e60-b350-2b35cd4ce815')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('0b2d8360-5498-4e60-b350-2b35cd4ce815')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '23a45371-9b6a-4440-baa7-96f168819f56')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('23a45371-9b6a-4440-baa7-96f168819f56')
+IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'f8495a8c-9b41-4156-b18c-73bc9ed8c57b')
+INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('f8495a8c-9b41-4156-b18c-73bc9ed8c57b')
 
 GO
 
@@ -729,6 +1189,15 @@ begin
 	values (N'Назначено', N'SET', 30)
 	insert into claim_states (name, sys_name, order_num)
 	values (N'Выполнена', N'END', 40)
+end
+if not exists(select 1 from attributes)
+begin
+
+insert into attributes(sys_name, value)
+values('CLSFRWAGE', '')
+insert into attributes(sys_name, value)
+values('CLSFROVERHEAD', '')
+
 end
 GO
 

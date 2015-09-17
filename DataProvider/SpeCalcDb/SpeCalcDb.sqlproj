@@ -72,6 +72,9 @@
     <Folder Include="Stored Procedures\QuePosAnswer" />
     <Folder Include="Stored Procedures\QuestionState" />
     <Folder Include="Stored Procedures\Report" />
+    <Folder Include="Stored Procedures\Claim\TenderClaimFiles" />
+    <Folder Include="Stored Procedures\Claim\CalculatePosition" />
+    <Folder Include="Stored Procedures\Claim\Position" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Storage\ContentDBFSGroup.sql" />
@@ -79,7 +82,6 @@
     <PostDeploy Include="Post\post_script.sql" />
     <Build Include="Functions\Split.sql" />
     <Build Include="Views\questions_view.sql" />
-    <Build Include="Stored Procedures\Claim\ChangeClaimPositionState.sql" />
     <Build Include="Stored Procedures\Claim\ChangePositionsProduct.sql" />
     <Build Include="Stored Procedures\Claim\ChangePositionsState.sql" />
     <Build Include="Stored Procedures\Claim\ChangeTenderClaimClaimStatus.sql" />
@@ -103,10 +105,7 @@
     <Build Include="Stored Procedures\Claim\HasClaimTranmissedPosition.sql" />
     <Build Include="Stored Procedures\Claim\IsPositionsReadyToConfirm.sql" />
     <Build Include="Stored Procedures\Claim\LoadApproachingTenderClaim.sql" />
-    <Build Include="Stored Procedures\Claim\LoadCalculateClaimPositionForClaim.sql" />
     <Build Include="Stored Procedures\Claim\LoadClaimCertList.sql" />
-    <Build Include="Stored Procedures\Claim\LoadClaimPositionForTenderClaim.sql" />
-    <Build Include="Stored Procedures\Claim\LoadClaimPositionForTenderClaimForProduct.sql" />
     <Build Include="Stored Procedures\Claim\LoadClaimStatus.sql" />
     <Build Include="Stored Procedures\Claim\LoadCurrencies.sql" />
     <Build Include="Stored Procedures\Claim\LoadDealTypes.sql" />
@@ -124,7 +123,6 @@
     <Build Include="Stored Procedures\Claim\LoadTenderStatus.sql" />
     <Build Include="Stored Procedures\Claim\SaveCalculateClaimPosition.sql" />
     <Build Include="Stored Procedures\Claim\SaveClaimCertFile.sql" />
-    <Build Include="Stored Procedures\Claim\SaveClaimPosition.sql" />
     <Build Include="Stored Procedures\Claim\SaveClaimStatusHistory.sql" />
     <Build Include="Stored Procedures\Claim\SaveTenderClaim.sql" />
     <Build Include="Stored Procedures\Claim\SetPositionsToConfirm.sql" />
@@ -165,6 +163,20 @@
     <Build Include="Stored Procedures\Question\check_question_can_be_answered.sql" />
     <Build Include="Stored Procedures\Question\check_question_can_be_sent.sql" />
     <Build Include="Stored Procedures\Report\get_manager_position_report.sql" />
+    <Build Include="Stored Procedures\Claim\UpdateClaimDeadline.sql" />
+    <Build Include="Tables\PositionStateHistory.sql" />
+    <Build Include="Tables\TenderClaimFiles.sql" />
+    <Build Include="Stored Procedures\Claim\TenderClaimFiles\SaveTenderClaimFile.sql" />
+    <Build Include="Stored Procedures\Claim\TenderClaimFiles\LoadTenderClaimFiles.sql" />
+    <Build Include="Stored Procedures\Claim\TenderClaimFiles\GetTenderClaimFile.sql" />
+    <Build Include="Stored Procedures\Claim\CalculatePosition\LoadCalculateClaimPositionForClaim.sql" />
+    <Build Include="Stored Procedures\Claim\Position\CopyPositionsForNewVersion.sql" />
+    <Build Include="Stored Procedures\Claim\Position\LoadClaimPositionForTenderClaim.sql" />
+    <Build Include="Stored Procedures\Claim\Position\LoadClaimPositionForTenderClaimForProduct.sql" />
+    <Build Include="Stored Procedures\Claim\Position\SaveClaimPosition.sql" />
+    <Build Include="Stored Procedures\Claim\Position\GetCalcVersionList.sql" />
+    <Build Include="Stored Procedures\Claim\Position\ChangeClaimPositionState.sql" />
+    <Build Include="Stored Procedures\Claim\CalculatePosition\GetCalcPositionsChanges.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="3. PRODUCT-SpeCalcDb.publish.xml" />

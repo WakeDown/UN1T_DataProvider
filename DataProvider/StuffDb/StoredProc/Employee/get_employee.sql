@@ -60,7 +60,8 @@ AS
 				--CASE WHEN EXISTS(SELECT 1 FROM departments dd WHERE dd.id=@id_department AND dd.id_chief=e.id) THEN 0 ELSE 1 end
 				--ELSE NULL END AS is_chief
 				d.hidden as is_hidden,
-				e.date_fired
+				e.date_fired,
+				id_budget
         FROM    employees e
 		INNER JOIN employee_states es ON e.id_emp_state = es.id
                 INNER JOIN positions p ON e.id_position = p.id

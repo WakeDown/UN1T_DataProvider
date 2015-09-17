@@ -70,6 +70,11 @@
     <Folder Include="Stored Procedures\Classifier" />
     <Folder Include="Stored Procedures\ClassifierCategory" />
     <Folder Include="Stored Procedures\WorkType" />
+    <Folder Include="Stored Procedures\Mobile" />
+    <Folder Include="Stored Procedures\ClientAccess" />
+    <Folder Include="Stored Procedures\ServiceSheet" />
+    <Folder Include="Stored Procedures\ContractorAccess" />
+    <Folder Include="Stored Procedures\ServiceIssue" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Stored Procedures\Claim\get_claim_list.sql" />
@@ -96,6 +101,35 @@
     <Build Include="Stored Procedures\ClassifierCategory\get_lower_classifier_category_list.sql" />
     <Build Include="Stored Procedures\WorkType\get_work_type_list.sql" />
     <Build Include="Stored Procedures\WorkType\get_work_type.sql" />
+    <Build Include="Stored Procedures\Classifier\save_classifier_item.sql" />
+    <Build Include="Tables\attributes.sql" />
+    <Build Include="Stored Procedures\Classifier\get_classifier_attributes.sql" />
+    <Build Include="Stored Procedures\Classifier\save_classifier_attributes.sql" />
+    <Build Include="Tables\mobile_users.sql" />
+    <Build Include="Stored Procedures\Mobile\get_mobile_user_list.sql" />
+    <Build Include="Tables\client_access.sql" />
+    <Build Include="Stored Procedures\ClientAccess\save_client_access.sql" />
+    <Build Include="Stored Procedures\ClientAccess\get_client_access.sql" />
+    <Build Include="Stored Procedures\Claim\get_claim_list_count.sql" />
+    <Build Include="Tables\claim_state2user_group.sql" />
+    <Build Include="Stored Procedures\ClaimState\get_claim_state_user_group_list.sql" />
+    <Build Include="Stored Procedures\ClientAccess\close_client_access.sql" />
+    <Build Include="Tables\service_sheet.sql" />
+    <Build Include="Stored Procedures\ServiceSheet\save_service_sheet.sql" />
+    <Build Include="Stored Procedures\ServiceSheet\get_service_sheet.sql" />
+    <Build Include="Stored Procedures\ClientAccess\check_client_access_is_exists.sql" />
+    <Build Include="Stored Procedures\Claim\clear_claim.sql" />
+    <Build Include="Tables\contractor_access.sql" />
+    <Build Include="Stored Procedures\ContractorAccess\save_contractor_access.sql" />
+    <Build Include="Stored Procedures\ContractorAccess\get_contractor_access.sql" />
+    <Build Include="Stored Procedures\ContractorAccess\close_contractor_access.sql" />
+    <Build Include="Stored Procedures\ContractorAccess\check_contractor_access_is_exists.sql" />
+    <Build Include="Tables\service_issue.sql" />
+    <Build Include="Stored Procedures\ServiceIssue\save_service_issue.sql" />
+    <Build Include="Stored Procedures\ServiceIssue\get_service_issue.sql" />
+    <Build Include="Stored Procedures\Claim\get_last_service_sheet.sql" />
+    <Build Include="Tables\mobile_cames.sql" />
+    <Build Include="Stored Procedures\Mobile\save_mobile_came.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ServiceDb.refactorlog" />
@@ -105,6 +139,7 @@
     <None Include="2. TEST-ServiceDb.publish.xml" />
     <None Include="3. PROD-ServiceDb.publish.xml" />
     <None Include="Post\ins_claim_states.sql" />
+    <None Include="Post\ins_attributes.sql" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\claim_states.sql" />

@@ -189,4 +189,67 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="id" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="3fcaf8df-f502-49b6-8b6a-04a6d2381137" ChangeDateTime="09/07/2015 13:26:09">
+    <Property Name="ElementName" Value="[dbo].[budget].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[budget]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f3912622-2bbc-46ce-bd79-aeb95464ad49" ChangeDateTime="09/14/2015 04:21:41">
+    <Property Name="ElementName" Value="[dbo].[vendor_states].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[vendor_states]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a941cad8-0dba-4f16-9cc0-2f7c8e81ab84" ChangeDateTime="09/14/2015 04:23:02">
+    <Property Name="ElementName" Value="[dbo].[vendor_states].[vendor]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[vendor_states]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="vendor_name" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="75cfe720-4a20-4aff-82c1-227145f811dc" ChangeDateTime="09/14/2015 04:24:56">
+    <Property Name="ElementName" Value="[dbo].[vendors].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[vendors]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="40221f0d-0f03-48f7-a1d9-c93b888a56f5" ChangeDateTime="09/14/2015 04:26:32">
+    <Property Name="ElementName" Value="[dbo].[vendor_states].[vendor_name]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[vendor_states]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id_vendor" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="097bbe22-a5f8-49ce-a2a1-89e1cac8f268" ChangeDateTime="09/14/2015 04:27:21">
+    <Property Name="ElementName" Value="[dbo].[vendor_states].[language]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[vendor_states]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id_language" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="bcd24a28-35bb-4db4-9fa8-ed851f026412" ChangeDateTime="09/14/2015 04:52:17">
+    <Property Name="ElementName" Value="[dbo].[languages].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[languages]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="22aa0e5a-6677-4925-bb04-b0480e05ab86" ChangeDateTime="09/17/2015 10:12:06">
+    <Property Name="ElementName" Value="[dbo].[vendor_states].[has_delivery]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[vendor_states]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="newbie_delivery_sent" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9dd1cee7-c0be-40c2-8c49-083c4f13be17" ChangeDateTime="09/17/2015 10:12:22">
+    <Property Name="ElementName" Value="[dbo].[vendor_states].[newbie_delivery_sent]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[vendor_states]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="expired_delivery_sent" />
+  </Operation>
 </Operations>

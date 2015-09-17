@@ -42,7 +42,8 @@
 				d.sys_name as dep_sys_name,
 				p.sys_name as pos_sys_name,
 				e.full_name_dat,
-				e.full_name_rod
+				e.full_name_rod,
+				e.id_budget
         FROM    employees e
                 INNER JOIN employee_states es ON e.id_emp_state = es.id
                 INNER JOIN positions p ON e.id_position = p.id

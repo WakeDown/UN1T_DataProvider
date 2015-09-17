@@ -22,4 +22,13 @@ begin
 	insert into claim_states (name, sys_name, order_num)
 	values (N'Выполнена', N'END', 40)
 end
+if not exists(select 1 from attributes)
+begin
+
+insert into attributes(sys_name, value)
+values('CLSFRWAGE', '')
+insert into attributes(sys_name, value)
+values('CLSFROVERHEAD', '')
+
+end
 GO

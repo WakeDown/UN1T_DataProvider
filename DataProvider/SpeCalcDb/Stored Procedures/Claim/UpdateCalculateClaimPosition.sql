@@ -24,6 +24,9 @@ CREATE procedure [dbo].[UpdateCalculateClaimPosition]
 as
 Update CalculateClaimPosition set CatalogNumber = @catalogNumber, Name = @name, ReplaceValue = @replaceValue, 
 	PriceCurrency = @priceCurrency, SumCurrency = @sumCurrency, PriceRub = @priceRub, SumRub = @sumRub, Provider = @provider, 
-	ProtectFact = @protectFact, ProtectCondition = @protectCondition, Comment = @comment, Author = @author, Currency = @currency,
-	PriceUsd = @priceUsd, PriceEur=@priceEur, PriceEurRicoh=@priceEurRicoh, PriceRubl=@priceRubl,DeliveryTime=@deliveryTime
+	ProtectFact = @protectFact, ProtectCondition = @protectCondition, Comment = @comment, 
+	--Author = @author, 
+	Currency = @currency,
+	PriceUsd = @priceUsd, PriceEur=@priceEur, PriceEurRicoh=@priceEurRicoh, PriceRubl=@priceRubl,DeliveryTime=@deliveryTime,
+	LastModifer = @author
 	where Id = @id

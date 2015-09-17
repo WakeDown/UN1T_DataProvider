@@ -5,7 +5,8 @@
     @id_department INT = NULL,
 	@ad_sid VARCHAR(46) = NULL,
 	@id_city INT = NULL,
-	@id_manager int = null
+	@id_manager int = null,
+	@id_budget int = null
 AS
     BEGIN
         SET NOCOUNT ON;
@@ -51,7 +52,8 @@ AS
 				position_org,
 				has_ad_account,
 				ad_login,
-				is_hidden
+				is_hidden,
+				id_budget
         FROM    employees_view e
         WHERE  
 		( @id IS NULL 
@@ -88,6 +90,14 @@ AS
                       OR ( @id_manager IS NOT NULL
                            AND @id_manager > 0
                            AND id_manager = @id_manager
+                         )
+                    )
+					AND ( ( @id_budget IS NULL
+                        OR @id_budget <= 0
+                      )
+                      OR ( @id_budget IS NOT NULL
+                           AND @id_budget > 0
+                           AND id_budget = @id_budget
                          )
                     )
 					ORDER BY is_chief, e.full_name

@@ -74,6 +74,10 @@
     <Folder Include="StoredProc\DocMeetLink" />
     <Folder Include="Scripts" />
     <Folder Include="StoredProc\WorkDay" />
+    <Folder Include="StoredProc\Budget" />
+    <Folder Include="StoredProc\VendorState" />
+    <Folder Include="StoredProc\Vendor" />
+    <Folder Include="StoredProc\Language" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\cities.sql" />
@@ -143,6 +147,27 @@
     <Build Include="StoredProc\WorkDay\check_is_work_day.sql" />
     <Build Include="StoredProc\WorkDay\fill_work_days.sql" />
     <Build Include="StoredProc\WorkDay\get_next_work_day.sql" />
+    <Build Include="Tables\budget.sql" />
+    <Build Include="StoredProc\Budget\save_budget.sql" />
+    <Build Include="StoredProc\Budget\get_budget.sql" />
+    <Build Include="StoredProc\Budget\get_budget_list.sql" />
+    <Build Include="StoredProc\Budget\close_budget.sql" />
+    <Build Include="Tables\vendor_states.sql" />
+    <Build Include="Tables\vendors.sql" />
+    <Build Include="Tables\vendor_state_pictures.sql" />
+    <Build Include="StoredProc\VendorState\save_vendor_state.sql" />
+    <Build Include="StoredProc\VendorState\get_vendor_state_list.sql" />
+    <Build Include="Tables\languages.sql" />
+    <Build Include="StoredProc\VendorState\get_vendor_state.sql" />
+    <Build Include="StoredProc\VendorState\close_vendor_state.sql" />
+    <Build Include="StoredProc\Vendor\save_vendor.sql" />
+    <Build Include="StoredProc\Vendor\get_vendor.sql" />
+    <Build Include="StoredProc\Vendor\close_vendor.sql" />
+    <Build Include="StoredProc\VendorState\get_vendor_state_history.sql" />
+    <Build Include="StoredProc\Language\get_language_list.sql" />
+    <Build Include="StoredProc\VendorState\get_expires_vendor_state_list.sql" />
+    <Build Include="StoredProc\VendorState\set_vendor_state_delivery_sent.sql" />
+    <Build Include="StoredProc\VendorState\check_vendor_state_is_changed.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="StuffDb.refactorlog" />

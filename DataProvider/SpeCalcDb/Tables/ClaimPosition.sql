@@ -21,6 +21,10 @@
     [SumTzr]         DECIMAL (18, 2) DEFAULT ((-1)) NOT NULL,
     [PriceNds]       DECIMAL (18, 2) DEFAULT ((-1)) NOT NULL,
     [SumNds]         DECIMAL (18, 2) DEFAULT ((-1)) NOT NULL,
+    [Version] INT NOT NULL DEFAULT 1, 
+    [CopyFromVersion] INT NOT NULL DEFAULT 1, 
+    [RecordDate] DATETIME NOT NULL DEFAULT getdate(), 
+    [IdPositionParent] INT NULL, 
     PRIMARY KEY CLUSTERED ([Id] ASC),
     CONSTRAINT [FK_ClaimPosition_Currency] FOREIGN KEY ([Currency]) REFERENCES [dbo].[Currency] ([Id]),
     CONSTRAINT [FK_ClaimPosition_PositionState] FOREIGN KEY ([PositionState]) REFERENCES [dbo].[PositionState] ([Id]) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -32,3 +36,32 @@ GO
 CREATE NONCLUSTERED INDEX [i_idClaim_claimPosition]
     ON [dbo].[ClaimPosition]([IdClaim] ASC);
 
+
+GO
+
+CREATE TRIGGER [dbo].[Trigger_ClaimPosition]
+    ON [dbo].[ClaimPosition]
+    FOR 
+	INSERT, 
+	UPDATE
+    AS
+    BEGIN
+        SET NoCount ON
+		declare @dt datetime
+		
+		select @dt = getdate()
+		insert into PositionStateHistory (IdPosition, IdState, DateCreate,Creator)
+		select Id, PositionState, @dt, ProductManager from inserted
+    END
+GO
+
+
+CREATE INDEX [IX_ClaimPosition_ProductManager] ON [dbo].[ClaimPosition] ([ProductManager])
+
+GO
+
+CREATE INDEX [IX_ClaimPosition_PosState] ON [dbo].[ClaimPosition] ([PositionState])
+
+GO
+
+CREATE INDEX [IX_ClaimPosition_Version] ON [dbo].[ClaimPosition] ([Version])

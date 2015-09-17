@@ -15,7 +15,16 @@
     [dattim2] DATETIME NOT NULL DEFAULT '3.3.3333', 
     [enabled] BIT NOT NULL DEFAULT 1, 
     [id_claim_state] INT NOT NULL, 
-    [deleter_sid] VARCHAR(46) NULL 
+    [deleter_sid] VARCHAR(46) NULL, 
+    [id_work_type] INT NOT NULL DEFAULT 0, 
+    [specialist_sid] VARCHAR(46) NULL, 
+    [date_state_change] DATETIME NOT NULL DEFAULT getdate(), 
+    [client_sd_num] NVARCHAR(50) NULL, 
+    [changer_sid] VARCHAR(46) NULL, 
+    [cur_engeneer_sid] VARCHAR(46) NULL, 
+    [cur_admin_sid] VARCHAR(46) NULL, 
+    [cur_tech_sid] VARCHAR(46) NULL, 
+    [cur_manager_sid] VARCHAR(46) NULL 
 )
 
 GO

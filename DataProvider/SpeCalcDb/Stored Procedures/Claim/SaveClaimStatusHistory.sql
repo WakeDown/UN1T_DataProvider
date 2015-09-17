@@ -3,7 +3,7 @@ create procedure SaveClaimStatusHistory
 (
 	@idClaim int,
 	@idStatus int,
-	@comment nvarchar(1000) = '',
+	@comment nvarchar(MAX) = '',
 	@idUser nvarchar(500),
 	@recordDate datetime
 )

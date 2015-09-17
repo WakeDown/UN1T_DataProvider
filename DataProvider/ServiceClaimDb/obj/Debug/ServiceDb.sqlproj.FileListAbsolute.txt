@@ -1,8 +1,8 @@
 D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\ServiceClaimDb\bin\Debug\ServiceDb.dacpac
-D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\ServiceClaimDb\obj\Debug\ServiceClaimDb.dll
-D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\ServiceClaimDb\obj\Debug\ServiceClaimDb.pdb
 D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\ServiceClaimDb\bin\Debug\ServiceClaimDb.dll
 D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\ServiceClaimDb\bin\Debug\ServiceClaimDb.pdb
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\ServiceClaimDb\obj\Debug\ServiceClaimDb.dll
+D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\ServiceClaimDb\obj\Debug\ServiceClaimDb.pdb
 D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\ServiceClaimDb\obj\Debug\Model.xml
 D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\ServiceClaimDb\obj\Debug\refactor.xml
 D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\ServiceClaimDb\obj\Debug\postdeploy.sql

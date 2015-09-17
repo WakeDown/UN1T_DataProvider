@@ -6,5 +6,8 @@
     [dattim1] DATETIME NOT NULL DEFAULT getdate(), 
     [enabled] BIT NOT NULL DEFAULT 1, 
     [creator_sid] VARCHAR(46) NOT NULL, 
-    [descr] NVARCHAR(MAX) NULL
+    [descr] NVARCHAR(MAX) NULL, 
+    [specialist_sid] VARCHAR(46) NULL, 
+    [id_work_type] INT NULL, 
+    [id_service_sheet] INT NULL
 )

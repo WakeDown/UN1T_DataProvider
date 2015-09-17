@@ -77,4 +77,60 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="id" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="9cc19cef-347e-4d59-9eff-a66a96220691" ChangeDateTime="08/27/2015 08:47:16">
+    <Property Name="ElementName" Value="[dbo].[PositionStateHistory].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PositionStateHistory]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5f6454b6-95b7-4b0c-b140-88f0372ec190" ChangeDateTime="08/27/2015 08:47:45">
+    <Property Name="ElementName" Value="[dbo].[PositionStateHistory].[id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PositionStateHistory]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3d4a056a-ce62-4e0e-9b19-ae7cf442f189" ChangeDateTime="08/27/2015 08:47:51">
+    <Property Name="ElementName" Value="[dbo].[PositionStateHistory].[IdPosition]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PositionStateHistory]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="ClaimPositionId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c17ec99d-bf0f-4a00-b776-a4792666ac93" ChangeDateTime="08/27/2015 08:48:58">
+    <Property Name="ElementName" Value="[dbo].[PositionStateHistory].[ClaimPositionId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[PositionStateHistory]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IdPosition" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ac11aed8-7d9b-4803-92d6-6cc89ca5c6d1" ChangeDateTime="09/09/2015 05:52:14">
+    <Property Name="ElementName" Value="[dbo].[PositionStateHistory].[IX_PositionStateHistory_IdPosition]" />
+    <Property Name="ElementType" Value="SqlIndex" />
+    <Property Name="ParentElementName" Value="[dbo].[PositionStateHistory]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[IX_PositionStateHistory_IdPositionIdState]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="59eda7ed-b709-4c28-b11a-533e5e843ddc" ChangeDateTime="09/09/2015 06:07:02">
+    <Property Name="ElementName" Value="[dbo].[TenderClaim].[IX_TenderClaim_IdProduct]" />
+    <Property Name="ElementType" Value="SqlIndex" />
+    <Property Name="ParentElementName" Value="[dbo].[TenderClaim]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[IX_TenderClaim_IdProductManager]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f4c5bc83-990d-437c-a18a-315bb20a8940" ChangeDateTime="09/09/2015 06:08:16">
+    <Property Name="ElementName" Value="[dbo].[TenderClaim].[IX_TenderClaim_IdProductManager]" />
+    <Property Name="ElementType" Value="SqlIndex" />
+    <Property Name="ParentElementName" Value="[dbo].[TenderClaim]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[IX_TenderClaim_ClaimState]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="33dca1a8-968e-400f-946f-271b37536119" ChangeDateTime="09/09/2015 09:58:05">
+    <Property Name="ElementName" Value="[dbo].[ClaimPosition].[IX_ClaimPosition_Column]" />
+    <Property Name="ElementType" Value="SqlIndex" />
+    <Property Name="ParentElementName" Value="[dbo].[ClaimPosition]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[IX_ClaimPosition_Version]" />
+  </Operation>
 </Operations>

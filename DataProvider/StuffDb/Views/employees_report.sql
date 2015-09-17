@@ -36,7 +36,8 @@
 				p_org.name as position_org,
 				CASE WHEN e.has_ad_account = 1 THEN 1 ELSE 0 END AS has_ad_account,
 				ad_login,
-				e.dattim1 as date_create
+				e.dattim1 as date_create,
+				case when ad_login is not null then ad_login else replace(e.email, '@unitgroup.ru', '') end as logon_name
         FROM    employees e
                 INNER JOIN employee_states es ON e.id_emp_state = es.id
                 INNER JOIN positions p ON e.id_position = p.id

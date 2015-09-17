@@ -12,3 +12,4 @@
 
 :r .\grant.sql
 :r .\ins_claim_states.sql
+:r .\ins_attributes.sql
