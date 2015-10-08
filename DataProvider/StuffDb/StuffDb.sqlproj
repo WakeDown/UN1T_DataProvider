@@ -78,6 +78,8 @@
     <Folder Include="StoredProc\VendorState" />
     <Folder Include="StoredProc\Vendor" />
     <Folder Include="StoredProc\Language" />
+    <Folder Include="StoredProc\RestHoliday" />
+    <Folder Include="Functions" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\cities.sql" />
@@ -170,6 +172,12 @@
     <Build Include="StoredProc\VendorState\check_vendor_state_is_changed.sql" />
     <Build Include="StoredProc\VendorState\get_vendor_state_prev_version.sql" />
     <Build Include="StoredProc\Employee\get_subordinate_list.sql" />
+    <Build Include="Tables\rest_holidays.sql" />
+    <Build Include="StoredProc\RestHoliday\rest_holiday_list.sql" />
+    <Build Include="StoredProc\RestHoliday\rest_holiday_save.sql" />
+    <Build Include="StoredProc\RestHoliday\rest_holiday_close.sql" />
+    <Build Include="StoredProc\RestHoliday\rest_holiday_list_confirm.sql" />
+    <Build Include="Functions\SplitInt.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="StuffDb.refactorlog" />
