@@ -11072,13 +11072,95 @@ where vs.id=@id
 				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[rest_holiday_close]&#xD;&#xA;&#x9;@id int,&#xD;&#xA;&#x9;@deleter_sid varchar(46)&#xD;&#xA;AS" />
 			</Annotation>
 		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[rest_holiday_get]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+	begin
+	set nocount on;
+	select rh.id, rh.start_date, rh.end_date, rh.duration, case when can_edit=1 and confirmed=0 then 1 else 0 end as can_edit,case when confirmed=1 then 1 else 0 end as confirmed, employee_sid, e.display_name as employee_name
+	from rest_holidays rh
+	inner join employees e on rh.employee_sid = e.ad_sid
+	where rh.id=@id
+	end]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[rest_holidays]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[employees]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[rest_holidays].[employee_sid]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[employees].[ad_sid]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[rest_holidays].[id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[rest_holidays].[start_date]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[rest_holidays].[end_date]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[rest_holidays].[duration]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[rest_holidays].[can_edit]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[rest_holidays].[confirmed]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[rest_holidays].[employee_sid]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[employees].[display_name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[rest_holiday_get].[@id]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[rest_holiday_get].[@id]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="408" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[rest_holiday_get]&#xD;&#xA;&#x9;@id int&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
 		<Element Type="SqlProcedure" Name="[dbo].[rest_holiday_list]">
 			<Property Name="BodyScript">
 				<Value><![CDATA[
 	begin
 	set nocount on;
 
-	select rh.id, rh.start_date, rh.end_date, rh.duration, case when can_edit=1 then 1 else 0 end as can_edit,case when confirmed=1 then 1 else 0 end as confirmed, employee_sid, e.display_name as employee_name
+	select rh.id, rh.start_date, rh.end_date, rh.duration, case when can_edit=1 and confirmed=0 then 1 else 0 end as can_edit,case when confirmed=1 then 1 else 0 end as confirmed, employee_sid, e.display_name as employee_name
 	from rest_holidays rh
 	inner join employees e on rh.employee_sid = e.ad_sid
 	where rh.enabled=1
@@ -11174,7 +11256,7 @@ where vs.id=@id
 				</Entry>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="477" />
+				<Property Name="Length" Value="493" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
 				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[rest_holiday_list]&#xD;&#xA;&#x9;@employee_sid varchar(46) = null,&#xD;&#xA;&#x9;@year int&#xD;&#xA;AS" />
