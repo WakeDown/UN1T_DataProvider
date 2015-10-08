@@ -11160,11 +11160,14 @@ where vs.id=@id
 	begin
 	set nocount on;
 
-	select rh.id, rh.start_date, rh.end_date, rh.duration, case when can_edit=1 and confirmed=0 then 1 else 0 end as can_edit,case when confirmed=1 then 1 else 0 end as confirmed, employee_sid, e.display_name as employee_name
+	select rh.id, rh.start_date, rh.end_date, rh.duration, case when can_edit=1 and confirmed=0 then 1 else 0 end as can_edit,
+	case when confirmed=1 then 1 else 0 end as confirmed, employee_sid, e.display_name as employee_name, rh.year
 	from rest_holidays rh
 	inner join employees e on rh.employee_sid = e.ad_sid
 	where rh.enabled=1
-	order by employee_sid, start_date
+	and (@employee_sid is null or @employee_sid = '' or (@employee_sid is not null and @employee_sid != '' and rh.employee_sid=@employee_sid))
+	and (@year is null or @year <=0 or (@year is not null and @year > 0 and year=@year))
+	order by employee_sid, year, start_date
 	
 
 	end]]></Value>
@@ -11208,7 +11211,19 @@ where vs.id=@id
 					<References Name="[dbo].[employees].[display_name]" />
 				</Entry>
 				<Entry>
+					<References Name="[dbo].[rest_holidays].[year]" />
+				</Entry>
+				<Entry>
 					<References Name="[dbo].[rest_holidays].[enabled]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[rest_holiday_list].[@employee_sid]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[rest_holiday_list].[@year]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[rest_holidays].[year]" />
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[rest_holidays].[start_date]" />
@@ -11256,7 +11271,7 @@ where vs.id=@id
 				</Entry>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="493" />
+				<Property Name="Length" Value="739" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
 				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[rest_holiday_list]&#xD;&#xA;&#x9;@employee_sid varchar(46) = null,&#xD;&#xA;&#x9;@year int&#xD;&#xA;AS" />
@@ -11384,12 +11399,24 @@ end]]></Value>
 				<Value><![CDATA[
 begin
 set nocount on;
-insert into rest_holidays(employee_sid, start_date,end_date,duration, can_edit,creator_sid)
-values(@employee_sid, @start_date,@end_date,@duration, @can_edit,@creator_sid)
+
+if @year is null or @year <= 0
+begin
+select @year = Year(@start_date)
+end
+
+insert into rest_holidays(employee_sid, start_date,end_date,duration, can_edit,creator_sid, year)
+values(@employee_sid, @start_date,@end_date,@duration, @can_edit,@creator_sid, @year)
 end]]></Value>
 			</Property>
 			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[rest_holiday_save].[@year]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[rest_holiday_save].[@start_date]" />
+				</Entry>
 				<Entry>
 					<References Name="[dbo].[rest_holidays]" />
 				</Entry>
@@ -11412,10 +11439,10 @@ end]]></Value>
 					<References Name="[dbo].[rest_holidays].[creator_sid]" />
 				</Entry>
 				<Entry>
-					<References Name="[dbo].[rest_holiday_save].[@employee_sid]" />
+					<References Name="[dbo].[rest_holidays].[year]" />
 				</Entry>
 				<Entry>
-					<References Name="[dbo].[rest_holiday_save].[@start_date]" />
+					<References Name="[dbo].[rest_holiday_save].[@employee_sid]" />
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[rest_holiday_save].[@end_date]" />
@@ -11541,6 +11568,24 @@ end]]></Value>
 						</Relationship>
 					</Element>
 				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[rest_holiday_save].[@year]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[null]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
 			</Relationship>
 			<Relationship Name="Schema">
 				<Entry>
@@ -11548,10 +11593,10 @@ end]]></Value>
 				</Entry>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="402" />
+				<Property Name="Length" Value="517" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
-				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[rest_holiday_save]&#xD;&#xA;&#x9;@id int = null,&#xD;&#xA;&#x9;@employee_sid varchar(46),&#xD;&#xA;&#x9;@start_date datetime,&#xD;&#xA;&#x9;@end_date datetime,&#xD;&#xA;&#x9;@duration int,&#xD;&#xA;&#x9;@can_edit bit,&#xD;&#xA;&#x9;@creator_sid varchar(46)&#xD;&#xA;AS" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[rest_holiday_save]&#xD;&#xA;&#x9;@id int = null,&#xD;&#xA;&#x9;@employee_sid varchar(46),&#xD;&#xA;&#x9;@start_date datetime,&#xD;&#xA;&#x9;@end_date datetime,&#xD;&#xA;&#x9;@duration int,&#xD;&#xA;&#x9;@can_edit bit,&#xD;&#xA;&#x9;@creator_sid varchar(46),&#xD;&#xA;&#x9;@year int = null&#xD;&#xA;AS" />
 			</Annotation>
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[rest_holidays]">
