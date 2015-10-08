@@ -252,4 +252,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="expired_delivery_sent" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="51cee6bb-6dd2-4018-aa4a-85232e79ede1" ChangeDateTime="09/21/2015 11:01:43" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+    <Property Name="ElementName" Value="[dbo].[vendor_states].[is_new_delivery]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[vendor_states]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="new_delivery_sent" />
+  </Operation>
 </Operations>

@@ -54,11 +54,10 @@ AS
                      ELSE NULL
                 END AS photo,
 				full_name_dat,
-				full_name_rod,
-				--,
-				--CASE WHEN @id_department IS NOT NULL THEN 
-				--CASE WHEN EXISTS(SELECT 1 FROM departments dd WHERE dd.id=@id_department AND dd.id_chief=e.id) THEN 0 ELSE 1 end
-				--ELSE NULL END AS is_chief
+				full_name_rod,				
+				CASE WHEN e.id_department IS NOT NULL THEN 
+				CASE WHEN EXISTS(SELECT 1 FROM departments dd WHERE dd.enabled=1 and dd.id_chief=e.id) THEN 1 ELSE 0 end
+				ELSE NULL END AS is_chief,
 				d.hidden as is_hidden,
 				e.date_fired,
 				id_budget

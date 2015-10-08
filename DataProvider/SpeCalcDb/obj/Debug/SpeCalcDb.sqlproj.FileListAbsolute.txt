@@ -8,7 +8,3 @@ D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\SpeCalcDb\bin\Debug\
 D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\SpeCalcDb\bin\Debug\SpeCalc.pdb
 D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\SpeCalcDb\obj\Debug\SpeCalc.dll
 D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\SpeCalcDb\obj\Debug\SpeCalc.pdb
-D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\SpeCalcDb\obj\Debug\Model.xml
-D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\SpeCalcDb\obj\Debug\refactor.xml
-D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\SpeCalcDb\obj\Debug\postdeploy.sql
-D:\GoogleDrive\Dev\GitHub\DB\UN1T_DataProvider\DataProvider\SpeCalcDb\obj\Debug\predeploy.sql

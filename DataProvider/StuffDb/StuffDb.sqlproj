@@ -165,9 +165,11 @@
     <Build Include="StoredProc\Vendor\close_vendor.sql" />
     <Build Include="StoredProc\VendorState\get_vendor_state_history.sql" />
     <Build Include="StoredProc\Language\get_language_list.sql" />
-    <Build Include="StoredProc\VendorState\get_expires_vendor_state_list.sql" />
+    <Build Include="StoredProc\VendorState\get_vendor_state_delivery_list.sql" />
     <Build Include="StoredProc\VendorState\set_vendor_state_delivery_sent.sql" />
     <Build Include="StoredProc\VendorState\check_vendor_state_is_changed.sql" />
+    <Build Include="StoredProc\VendorState\get_vendor_state_prev_version.sql" />
+    <Build Include="StoredProc\Employee\get_subordinate_list.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="StuffDb.refactorlog" />

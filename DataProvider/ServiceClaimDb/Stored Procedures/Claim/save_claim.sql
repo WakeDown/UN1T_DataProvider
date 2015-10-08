@@ -16,7 +16,10 @@
 	@cur_engeneer_sid varchar(46) = null,
 	@cur_admin_sid varchar(46) = null,
 	@cur_tech_sid varchar(46) = null,
-	@cur_manager_sid varchar(46) = null
+	@cur_manager_sid varchar(46) = null,
+	@serial_num nvarchar(150) = null,
+	@cur_service_issue_id int = null,
+	@id_service_came int = null
 
 	--,	@id_claim_state int= null -- статус меняем отдельной процедурой
 	as begin
@@ -39,13 +42,15 @@
 		select @cur_admin_sid = isnull(@cur_admin_sid,(select cur_admin_sid from claims where id=@id))
 		select @cur_tech_sid = isnull(@cur_tech_sid,(select cur_tech_sid from claims where id=@id))
 		select @cur_manager_sid = isnull(@cur_manager_sid,(select cur_manager_sid from claims where id=@id))
+		select @cur_service_issue_id = isnull(@cur_service_issue_id,(select cur_service_issue_id from claims where id=@id))
+		
 
 		update claims
 		set 
 		--creator_sid=@creator_sid,
 		--id_admin=@id_admin, id_engeneer=@id_engeneer, 
 		id_work_type=@id_work_type, specialist_sid=@specialist_sid,
-		cur_engeneer_sid = @cur_engeneer_sid, cur_admin_sid=@cur_admin_sid, cur_tech_sid=@cur_tech_sid, cur_manager_sid=@cur_manager_sid
+		cur_engeneer_sid = @cur_engeneer_sid, cur_admin_sid=@cur_admin_sid, cur_tech_sid=@cur_tech_sid, cur_manager_sid=@cur_manager_sid, cur_service_issue_id = @cur_service_issue_id
 		--id_contractor = @id_contractor,id_contract=@id_contract,id_device=@id_device, contractor_name=@contractor_name, contract_number=@contract_number, device_name=@device_name, id_claim_state=@id_claim_state
 		where id=@id
 	end
@@ -63,22 +68,23 @@
 		select @cur_admin_sid = isnull(@cur_admin_sid,(select cur_admin_sid from claims where sid=@sid))
 		select @cur_tech_sid = isnull(@cur_tech_sid,(select cur_tech_sid from claims where sid=@sid))
 		select @cur_manager_sid = isnull(@cur_manager_sid,(select cur_manager_sid from claims where sid=@sid))
+		select @cur_service_issue_id = isnull(@cur_service_issue_id,(select cur_service_issue_id from claims where sid=@sid))
 
 		update claims
 		set 
 		--creator_sid=@creator_sid,
 		--id_admin=@id_admin, id_engeneer=@id_engeneer, 
 		id_work_type=@id_work_type, specialist_sid=@specialist_sid,
-		cur_engeneer_sid = @cur_engeneer_sid, cur_admin_sid=@cur_admin_sid, cur_tech_sid=@cur_tech_sid, cur_manager_sid=@cur_manager_sid
+		cur_engeneer_sid = @cur_engeneer_sid, cur_admin_sid=@cur_admin_sid, cur_tech_sid=@cur_tech_sid, cur_manager_sid=@cur_manager_sid, cur_service_issue_id = @cur_service_issue_id
 		--id_contractor = @id_contractor,id_contract=@id_contract,id_device=@id_device, contractor_name=@contractor_name, contract_number=@contract_number, device_name=@device_name, id_claim_state=@id_claim_state
 		where sid=@sid
 	end
 	else
 	begin
 	insert into claims(id_contractor, id_contract, id_device, contractor_name, contract_number, device_name, creator_sid, 
-	id_admin, id_engeneer, id_claim_state, id_work_type, date_state_change, client_sd_num, cur_engeneer_sid, cur_admin_sid, cur_tech_sid, cur_manager_sid)
+	id_admin, id_engeneer, id_claim_state, id_work_type, date_state_change, client_sd_num, cur_engeneer_sid, cur_admin_sid, cur_tech_sid, cur_manager_sid, serial_num, id_service_came)
 	values(@id_contractor, @id_contract, @id_device, @contractor_name, @contract_number, @device_name, @creator_sid, 
-	@id_admin, @id_engeneer, 0, 0, getdate(), @client_sd_num, @cur_engeneer_sid, @cur_admin_sid, @cur_tech_sid, @cur_manager_sid)
+	@id_admin, @id_engeneer, 0, 0, getdate(), @client_sd_num, @cur_engeneer_sid, @cur_admin_sid, @cur_tech_sid, @cur_manager_sid, @serial_num, @id_service_came)
 		set @id = @@IDENTITY
 	end
 	select @id as id

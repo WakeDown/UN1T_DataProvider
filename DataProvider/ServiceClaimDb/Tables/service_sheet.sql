@@ -15,5 +15,10 @@
     [no_counter] BIT NOT NULL DEFAULT 0, 
     [descr] NVARCHAR(MAX) NULL, 
     [counter_unavailable] BIT NULL , 
-    [counter_descr] NVARCHAR(MAX) NULL 
+    [counter_descr] NVARCHAR(MAX) NULL, 
+    [admin_sid] VARCHAR(46) NULL, 
+    [engeneer_sid] VARCHAR(46) NULL, 
+    [id_service_issue] INT NOT NULL, 
+    [id_claim] INT NOT NULL, 
+    [time_on_work_minutes] INT NULL    
 )

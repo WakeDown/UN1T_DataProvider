@@ -2,7 +2,7 @@
 	@id int
 AS begin
 set nocount on;
-	select vs.id, vs.id_vendor , vs.descr, date_end, vs.id_organization, vs.id_language, pic_data, creator_sid
+	select vs.id, vs.id_vendor , vs.descr, date_end, vs.id_organization, vs.id_language, pic_data, creator_sid, vs.name
 	from vendor_states  vs 	
 	where vs.id=@id
 end

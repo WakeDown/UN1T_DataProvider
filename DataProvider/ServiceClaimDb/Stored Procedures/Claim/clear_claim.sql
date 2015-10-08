@@ -6,7 +6,8 @@
 	@clear_engeneer_sid bit = 0,
 	@clear_admin_sid bit = 0,
 	@clear_tech_sid bit = 0,
-	@clear_manager_sid bit =0
+	@clear_manager_sid bit =0,
+	@clear_service_issue_id bit = 0
 	as begin
 	set nocount on;
 
@@ -55,6 +56,14 @@
 		set cur_manager_sid = 0
 		where id=@id
 		end
+
+		if @clear_service_issue_id = 1 
+		begin
+		update claims
+		set cur_service_issue_id = 0
+		where id=@id
+		end
+		
 	end
 	else if (@sid is not null and @sid <> '' and exists(select 1 from claims where sid=@sid))
 	begin
@@ -99,7 +108,14 @@
 		set cur_manager_sid = 0
 		where sid=@sid
 		end
+
+		if @clear_service_issue_id = 1 
+		begin
+		update claims
+		set cur_service_issue_id = 0
+		where sid=@sid
+		end
 	end
 	
-	select @id as id
+	select @id as id, @sid as sid
 	end

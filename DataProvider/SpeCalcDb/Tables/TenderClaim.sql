@@ -35,7 +35,7 @@
 
 GO
 
-CREATE INDEX [IX_TenderClaim_IdManager] ON [dbo].[TenderClaim] ([Manager])
+CREATE INDEX [IX_TenderClaim_IdManager] ON [dbo].[TenderClaim] ([Manager], [ClaimStatus])
 
 GO
 

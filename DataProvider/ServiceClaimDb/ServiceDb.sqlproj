@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{5cea1345-3f4b-4c7d-a1fa-fdf02fdea71e}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql100DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql110DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -75,6 +75,7 @@
     <Folder Include="Stored Procedures\ServiceSheet" />
     <Folder Include="Stored Procedures\ContractorAccess" />
     <Folder Include="Stored Procedures\ServiceIssue" />
+    <Folder Include="Stored Procedures\ServiceIssuePlan" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Stored Procedures\Claim\get_claim_list.sql" />
@@ -130,6 +131,14 @@
     <Build Include="Stored Procedures\Claim\get_last_service_sheet.sql" />
     <Build Include="Tables\mobile_cames.sql" />
     <Build Include="Stored Procedures\Mobile\save_mobile_came.sql" />
+    <Build Include="Tables\service_issue_plan.sql" />
+    <Build Include="Stored Procedures\ServiceIssuePlan\save_service_issue_plan.sql" />
+    <Build Include="Stored Procedures\ServiceIssuePlan\get_service_issue_plan_list.sql" />
+    <Build Include="Stored Procedures\ServiceIssuePlan\get_service_issue_plan.sql" />
+    <Build Include="Stored Procedures\ClaimState\get_claim_state_list_filter.sql" />
+    <Build Include="Stored Procedures\Claim\get_claim_list_count_by_states.sql" />
+    <Build Include="Stored Procedures\Claim\get_claim_client_list.sql" />
+    <Build Include="Stored Procedures\Claim2ClaimState\get_claim_last_added_claim_state.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ServiceDb.refactorlog" />

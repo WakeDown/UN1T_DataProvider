@@ -9,5 +9,6 @@
     [descr] NVARCHAR(MAX) NULL, 
     [specialist_sid] VARCHAR(46) NULL, 
     [id_work_type] INT NULL, 
-    [id_service_sheet] INT NULL
+    [id_service_sheet] INT NULL, 
+    [id_zip_claim] INT NULL
 )

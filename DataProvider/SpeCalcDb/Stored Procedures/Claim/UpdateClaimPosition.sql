@@ -23,6 +23,8 @@ CREATE procedure [dbo].[UpdateClaimPosition]
 as
 update ClaimPosition set RowNumber = @rowNumber, CatalogNumber = @catalogNumber, Name = @name, 
 	ReplaceValue = @replaceValue, Unit = @unit, Value = @value, ProductManager = @productManager, 
-	Comment = @comment, Price = @price, SumMax = @sumMax, PositionState = @positionState, Author = @author,
+	Comment = @comment, Price = @price, SumMax = @sumMax, 
+	--PositionState = @positionState, 
+	Author = @author,
 	--Currency = @currency,
 	 PriceTzr = @priceTzr, SumTzr = @sumTzr, PriceNds = @priceNds, SumNds = @sumNds where Id = @id

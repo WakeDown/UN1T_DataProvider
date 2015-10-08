@@ -7,5 +7,7 @@
     [enabled] BIT NOT NULL DEFAULT 1, 
     [dattim1] DATETIME NOT NULL DEFAULT getdate(), 
     [background_color] NVARCHAR(50) NULL, 
-    [foreground_color] NVARCHAR(50) NULL
+    [foreground_color] NVARCHAR(50) NULL, 
+    [is_end] BIT NOT NULL DEFAULT 0, 
+    [filter_display] BIT NOT NULL DEFAULT 1 
 )

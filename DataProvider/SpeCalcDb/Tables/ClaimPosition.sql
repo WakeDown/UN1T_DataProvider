@@ -34,7 +34,7 @@
 
 GO
 CREATE NONCLUSTERED INDEX [i_idClaim_claimPosition]
-    ON [dbo].[ClaimPosition]([IdClaim] ASC);
+    ON [dbo].[ClaimPosition]([IdClaim] DESC, [Version] DESC);
 
 
 GO
@@ -63,5 +63,3 @@ GO
 CREATE INDEX [IX_ClaimPosition_PosState] ON [dbo].[ClaimPosition] ([PositionState])
 
 GO
-
-CREATE INDEX [IX_ClaimPosition_Version] ON [dbo].[ClaimPosition] ([Version])

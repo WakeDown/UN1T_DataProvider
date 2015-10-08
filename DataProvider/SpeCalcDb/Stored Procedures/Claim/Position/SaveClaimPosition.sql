@@ -30,7 +30,7 @@ if (@Version = 0) set @Version=1
 insert into ClaimPosition ([IdClaim],[RowNumber],[CatalogNumber],[Name],[ReplaceValue],[Unit],[Value],[ProductManager],[Comment],[Price],[SumMax],[PositionState],[Author],[Deleted],
 [DeletedUser],[DeleteDate],[Currency],[PriceTzr],[SumTzr],[PriceNds],[SumNds], Version )
 values(@idClaim, @rowNumber, @catalogNumber, @name, @replaceValue, @unit,
-	@value, @productManager, @comment, @price, @sumMax, @positionState, @author, 0, null, null, @currency,
+	@value, @productManager, @comment, @price, @sumMax, 1, @author, 0, null, null, @currency,
 	@priceTzr, @sumTzr, @priceNds, @sumNds, @Version)
 
 set @id = SCOPE_IDENTITY()--@@IDENTITY;

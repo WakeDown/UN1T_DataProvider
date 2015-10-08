@@ -14,6 +14,8 @@ CREATE PROCEDURE FilterTenderClaims
       @author NVARCHAR(150) = NULL
     )
 AS
+	
+
     SELECT TOP ( @rowCount )
             *
     FROM    TenderClaim
@@ -37,8 +39,7 @@ AS
                 )
             AND ( ( @manager IS NULL )
                   OR ( @manager IS NOT NULL
-                       AND (Manager = @manager OR Author=@manager)
-
+                       AND (Manager in (select value from SplitStr(@manager, ',')) OR Author in (select value from SplitStr(@manager, ',')))
                      )
                 )
             AND ( ( @managerSubDivision IS NULL )
@@ -53,10 +54,10 @@ AS
                 )
             AND ( ( @idProductManager IS NULL )
                   OR ( @idProductManager IS NOT NULL
-                       AND @idProductManager IN (
-                       SELECT   ProductManager
+                       AND exists(
+                       SELECT   1
                        FROM     ClaimPosition
-                       WHERE    IdClaim = [TenderClaim].Id )
+                       WHERE    IdClaim = [TenderClaim].Id and ProductManager in (select value from SplitStr(@idProductManager, ',')) )
                      )
                 )
             AND ( ( @overdie IS NULL )

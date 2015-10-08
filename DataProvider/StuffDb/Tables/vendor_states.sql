@@ -14,5 +14,8 @@
     [old_id] INT NULL,
 	pic_data varbinary(max) filestream NULL,
 	pic_guid uniqueidentifier default newid() unique rowguidcol NOT null, 
-    [expired_delivery_sent] BIT NOT NULL DEFAULT 0
+    [expired_delivery_sent] BIT NOT NULL DEFAULT 0, 
+    [name] NVARCHAR(150) NULL, 
+    [new_delivery_sent] BIT NOT NULL DEFAULT 0, 
+    [update_delivery_sent] BIT NOT NULL DEFAULT 1
 )

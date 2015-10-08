@@ -491,307 +491,19 @@
 		</Element>
 		<Element Type="SqlDefaultConstraint">
 			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[1]]></Value>
+				<Value><![CDATA[500]]></Value>
 			</Property>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[positions]" />
+					<References Name="[dbo].[languages]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForColumn">
 				<Entry>
-					<References Name="[dbo].[positions].[enabled]" />
+					<References Name="[dbo].[languages].[order_num]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="31" />
-		</Element>
-		<Element Type="SqlDefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[getdate()]]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[positions]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[positions].[dattim1]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="32" />
-		</Element>
-		<Element Type="SqlDefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA['3.3.3333']]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[positions]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[positions].[dattim2]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="33" />
-		</Element>
-		<Element Type="SqlDefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[500]]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[positions]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[positions].[order_num]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="34" />
-		</Element>
-		<Element Type="SqlDefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[1]]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[photos]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[photos].[enabled]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="35" />
-		</Element>
-		<Element Type="SqlDefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[getdate()]]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[photos]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[photos].[dattim1]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="36" />
-		</Element>
-		<Element Type="SqlDefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA['3.3.3333']]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[photos]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[photos].[dattim2]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="37" />
-		</Element>
-		<Element Type="SqlDefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[1]]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[organizations]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[organizations].[enabled]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="38" />
-		</Element>
-		<Element Type="SqlDefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[getdate()]]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[organizations]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[organizations].[dattim1]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="39" />
-		</Element>
-		<Element Type="SqlDefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA['3.3.3333']]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[organizations]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[organizations].[dattim2]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="40" />
-		</Element>
-		<Element Type="SqlDefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[1]]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[organizations]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[organizations].[display_in_list]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="41" />
-		</Element>
-		<Element Type="SqlDefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[500]]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[organizations]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[organizations].[order_num]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="42" />
-		</Element>
-		<Element Type="SqlDefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[getdate()]]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[budget]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[budget].[dattim1]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="43" />
-		</Element>
-		<Element Type="SqlDefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA['3.3.3333']]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[budget]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[budget].[dattim2]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="44" />
-		</Element>
-		<Element Type="SqlDefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[1]]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[budget]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[budget].[enabled]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="45" />
-		</Element>
-		<Element Type="SqlDefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[500]]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[budget]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[budget].[order_num]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="46" />
-		</Element>
-		<Element Type="SqlDefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[getdate()]]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[vendors]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[vendors].[dattim1]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="47" />
-		</Element>
-		<Element Type="SqlDefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA['3.3.3333']]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[vendors]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[vendors].[dattim2]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="48" />
-		</Element>
-		<Element Type="SqlDefaultConstraint">
-			<Property Name="DefaultExpressionScript">
-				<Value><![CDATA[1]]></Value>
-			</Property>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[vendors]" />
-				</Entry>
-			</Relationship>
-			<Relationship Name="ForColumn">
-				<Entry>
-					<References Name="[dbo].[vendors].[enabled]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="49" />
 		</Element>
 		<Element Type="SqlDefaultConstraint">
 			<Property Name="DefaultExpressionScript">
@@ -807,7 +519,7 @@
 					<References Name="[dbo].[vendor_state_pictures].[enabled]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="50" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="32" />
 		</Element>
 		<Element Type="SqlDefaultConstraint">
 			<Property Name="DefaultExpressionScript">
@@ -823,6 +535,294 @@
 					<References Name="[dbo].[vendor_state_pictures].[file_fuid]" />
 				</Entry>
 			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="33" />
+		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[getdate()]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[vendors]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[vendors].[dattim1]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="34" />
+		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA['3.3.3333']]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[vendors]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[vendors].[dattim2]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="35" />
+		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[1]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[vendors]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[vendors].[enabled]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="36" />
+		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[getdate()]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[budget]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[budget].[dattim1]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="37" />
+		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA['3.3.3333']]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[budget]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[budget].[dattim2]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="38" />
+		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[1]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[budget]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[budget].[enabled]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="39" />
+		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[500]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[budget]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[budget].[order_num]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="40" />
+		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[1]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[positions]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[positions].[enabled]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="41" />
+		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[getdate()]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[positions]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[positions].[dattim1]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="42" />
+		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA['3.3.3333']]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[positions]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[positions].[dattim2]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="43" />
+		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[500]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[positions]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[positions].[order_num]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="44" />
+		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[1]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[photos]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[photos].[enabled]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="45" />
+		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[getdate()]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[photos]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[photos].[dattim1]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="46" />
+		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA['3.3.3333']]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[photos]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[photos].[dattim2]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="47" />
+		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[1]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[organizations]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[organizations].[enabled]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="48" />
+		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[getdate()]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[organizations]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[organizations].[dattim1]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="49" />
+		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA['3.3.3333']]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[organizations]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[organizations].[dattim2]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="50" />
+		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[1]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[organizations]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[organizations].[display_in_list]" />
+				</Entry>
+			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="51" />
 		</Element>
 		<Element Type="SqlDefaultConstraint">
@@ -831,12 +831,12 @@
 			</Property>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[languages]" />
+					<References Name="[dbo].[organizations]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="ForColumn">
 				<Entry>
-					<References Name="[dbo].[languages].[order_num]" />
+					<References Name="[dbo].[organizations].[order_num]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="52" />
@@ -921,6 +921,38 @@
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="57" />
 		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[0]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[vendor_states]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[vendor_states].[new_delivery_sent]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="58" />
+		</Element>
+		<Element Type="SqlDefaultConstraint">
+			<Property Name="DefaultExpressionScript">
+				<Value><![CDATA[1]]></Value>
+			</Property>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[vendor_states]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="ForColumn">
+				<Entry>
+					<References Name="[dbo].[vendor_states].[update_delivery_sent]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="59" />
+		</Element>
 		<Element Type="SqlPrimaryKeyConstraint">
 			<Relationship Name="ColumnSpecifications">
 				<Entry>
@@ -938,7 +970,7 @@
 					<References Name="[dbo].[employees]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="58" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="60" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -957,7 +989,7 @@
 					<References Name="[dbo].[employee_states]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="59" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="61" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -976,7 +1008,7 @@
 					<References Name="[dbo].[departments]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="60" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="62" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -995,7 +1027,7 @@
 					<References Name="[dbo].[cities]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="61" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="63" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -1014,7 +1046,7 @@
 					<References Name="[dbo].[org_state_images]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="62" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="64" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -1033,7 +1065,7 @@
 					<References Name="[dbo].[position_import]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="63" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="65" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -1052,44 +1084,6 @@
 					<References Name="[dbo].[employee_import]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="64" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[positions].[id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[positions]" />
-				</Entry>
-			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="65" />
-		</Element>
-		<Element Type="SqlPrimaryKeyConstraint">
-			<Relationship Name="ColumnSpecifications">
-				<Entry>
-					<Element Type="SqlIndexedColumnSpecification">
-						<Relationship Name="Column">
-							<Entry>
-								<References Name="[dbo].[photos].[id]" />
-							</Entry>
-						</Relationship>
-					</Element>
-				</Entry>
-			</Relationship>
-			<Relationship Name="DefiningTable">
-				<Entry>
-					<References Name="[dbo].[photos]" />
-				</Entry>
-			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="66" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint">
@@ -1098,7 +1092,7 @@
 					<Element Type="SqlIndexedColumnSpecification">
 						<Relationship Name="Column">
 							<Entry>
-								<References Name="[dbo].[organizations].[id]" />
+								<References Name="[dbo].[languages].[id]" />
 							</Entry>
 						</Relationship>
 					</Element>
@@ -1106,7 +1100,7 @@
 			</Relationship>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[organizations]" />
+					<References Name="[dbo].[languages]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="67" />
@@ -1117,7 +1111,7 @@
 					<Element Type="SqlIndexedColumnSpecification">
 						<Relationship Name="Column">
 							<Entry>
-								<References Name="[dbo].[budget].[id]" />
+								<References Name="[dbo].[vendor_state_pictures].[id]" />
 							</Entry>
 						</Relationship>
 					</Element>
@@ -1125,7 +1119,7 @@
 			</Relationship>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[budget]" />
+					<References Name="[dbo].[vendor_state_pictures]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="68" />
@@ -1155,7 +1149,7 @@
 					<Element Type="SqlIndexedColumnSpecification">
 						<Relationship Name="Column">
 							<Entry>
-								<References Name="[dbo].[vendor_state_pictures].[id]" />
+								<References Name="[dbo].[budget].[id]" />
 							</Entry>
 						</Relationship>
 					</Element>
@@ -1163,7 +1157,7 @@
 			</Relationship>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[vendor_state_pictures]" />
+					<References Name="[dbo].[budget]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="70" />
@@ -1174,7 +1168,7 @@
 					<Element Type="SqlIndexedColumnSpecification">
 						<Relationship Name="Column">
 							<Entry>
-								<References Name="[dbo].[languages].[id]" />
+								<References Name="[dbo].[positions].[id]" />
 							</Entry>
 						</Relationship>
 					</Element>
@@ -1182,10 +1176,48 @@
 			</Relationship>
 			<Relationship Name="DefiningTable">
 				<Entry>
-					<References Name="[dbo].[languages]" />
+					<References Name="[dbo].[positions]" />
 				</Entry>
 			</Relationship>
 			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="71" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[photos].[id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[photos]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="72" />
+		</Element>
+		<Element Type="SqlPrimaryKeyConstraint">
+			<Relationship Name="ColumnSpecifications">
+				<Entry>
+					<Element Type="SqlIndexedColumnSpecification">
+						<Relationship Name="Column">
+							<Entry>
+								<References Name="[dbo].[organizations].[id]" />
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="DefiningTable">
+				<Entry>
+					<References Name="[dbo].[organizations]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="73" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -1204,7 +1236,7 @@
 					<References Name="[dbo].[vendor_states]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="72" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="74" />
 		</Element>
 		<Element Type="SqlUniqueConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -1223,7 +1255,7 @@
 					<References Name="[dbo].[org_state_images]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="73" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="75" />
 		</Element>
 		<Element Type="SqlUniqueConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -1242,7 +1274,7 @@
 					<References Name="[dbo].[vendor_state_pictures]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="74" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="76" />
 		</Element>
 		<Element Type="SqlUniqueConstraint">
 			<Relationship Name="ColumnSpecifications">
@@ -1261,7 +1293,7 @@
 					<References Name="[dbo].[vendor_states]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="75" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="77" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[budget]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -1281,7 +1313,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="68" />
+						<AttachedAnnotation Disambiguator="70" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1315,7 +1347,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="43" />
+						<AttachedAnnotation Disambiguator="37" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1332,7 +1364,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="44" />
+						<AttachedAnnotation Disambiguator="38" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1349,7 +1381,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="45" />
+						<AttachedAnnotation Disambiguator="39" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1383,7 +1415,7 @@
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="46" />
+						<AttachedAnnotation Disambiguator="40" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -1562,6 +1594,136 @@ end]]></Value>
 				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[check_is_work_day]&#xD;&#xA;&#x9;@date date&#xD;&#xA;AS" />
 			</Annotation>
 		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[check_vendor_state_is_changed]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[ begin
+
+	if exists(select 1 
+from vendor_states vs inner join vendor_states vs_old on vs.id=vs_old.old_id AND vs_old.id = (SELECT MAX(id) FROM vendor_states old WHERE old.old_id=@id)
+where vs.id=@id AND (vs.id_vendor != vs_old.id_vendor or LTRIM(RTRIM(vs.descr))!=RTRIM(LTRIM(vs_old.descr)) 
+or vs.date_end!=vs_old.date_end or vs.id_organization != vs_old.id_organization or vs.id_language!=vs_old.id_language or vs.pic_data!=vs_old.pic_data))
+begin
+select vs_old.*
+from vendor_states vs inner join vendor_states vs_old on vs.id=vs_old.old_id AND vs_old.id = (SELECT MAX(id) FROM vendor_states old WHERE old.old_id=@id)
+where vs.id=@id 
+--AND vs.id_vendor = vs_old.id_vendor AND LTRIM(RTRIM(vs.descr))=RTRIM(LTRIM(vs_old.descr)) AND vs.date_end=vs_old.date_end AND vs.id_organization = vs_old.id_organization AND vs.id_langu
+	
+end
+else begin
+	select null
+end
+	end]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[vendor_states]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[old_id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[old_id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[check_vendor_state_is_changed].[@id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id_vendor]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id_vendor]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[descr]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[descr]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[date_end]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[date_end]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id_organization]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id_organization]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id_language]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id_language]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[pic_data]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[pic_data]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[old_id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[old_id]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[check_vendor_state_is_changed].[@id]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="948" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[check_vendor_state_is_changed]&#xD;&#xA;&#x9;@id int&#xD;&#xA;&#x9;as" />
+			</Annotation>
+		</Element>
 		<Element Type="SqlTable" Name="[dbo].[cities]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Relationship Name="Columns">
@@ -1580,7 +1742,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="61" />
+						<AttachedAnnotation Disambiguator="63" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -2633,7 +2795,7 @@ END]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="60" />
+						<AttachedAnnotation Disambiguator="62" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -3260,7 +3422,7 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="76" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="78" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[document_meets]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -3342,7 +3504,7 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="77" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="79" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[documents]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -3529,8 +3691,8 @@ END]]></Value>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="78" />
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="79" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="80" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="81" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[employee_import]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -3549,7 +3711,7 @@ END]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="64" />
+						<AttachedAnnotation Disambiguator="66" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -3608,7 +3770,7 @@ END]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="59" />
+						<AttachedAnnotation Disambiguator="61" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -3755,7 +3917,7 @@ END]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="58" />
+						<AttachedAnnotation Disambiguator="60" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -4886,7 +5048,10 @@ END]]></Value>
 				p.sys_name as pos_sys_name,
 				e.full_name_dat,
 				e.full_name_rod,
-				e.id_budget
+				e.id_budget,
+				CASE WHEN e.id_department IS NOT NULL THEN 
+				CASE WHEN EXISTS(SELECT 1 FROM departments dd WHERE dd.enabled=1 and dd.id_chief=e.id) THEN 1 ELSE 0 end
+				ELSE NULL END AS is_chief 
         FROM    employees e
                 INNER JOIN employee_states es ON e.id_emp_state = es.id
                 INNER JOIN positions p ON e.id_position = p.id
@@ -5219,6 +5384,9 @@ END]]></Value>
 						</Relationship>
 					</Element>
 				</Entry>
+				<Entry>
+					<Element Type="SqlComputedColumn" Name="[dbo].[employees_view].[is_chief]" />
+				</Entry>
 			</Relationship>
 			<Relationship Name="QueryDependencies">
 				<Entry>
@@ -5402,6 +5570,18 @@ END]]></Value>
 					<References Name="[dbo].[employees].[id_budget]" />
 				</Entry>
 				<Entry>
+					<References Name="[dbo].[departments]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[departments].[enabled]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[departments].[id_chief]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[employees].[id]" />
+				</Entry>
+				<Entry>
 					<References Name="[dbo].[employees].[enabled]" />
 				</Entry>
 				<Entry>
@@ -5414,7 +5594,7 @@ END]]></Value>
 				</Entry>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="2049" />
+				<Property Name="Length" Value="2241" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
 				<Property Name="HeaderContents" Value="CREATE VIEW [dbo].[employees_view]&#xD;&#xA;&#x9;AS" />
@@ -6399,7 +6579,8 @@ END]]></Value>
 		<Element Type="SqlProcedure" Name="[dbo].[get_email]">
 			<Property Name="BodyScript">
 				<Value><![CDATA[ begin set nocount on;
-	select email from employees_view e where e.full_name = @full_name
+	select top 1 email from employees_view e where (@full_name is null or @full_name ='' or (@full_name is not null and @full_name <> '' and e.full_name = @full_name))
+	and (@sid is null or @sid ='' or (@sid is not null and @sid <> '' and e.ad_sid = @sid))
 
 	end;]]></Value>
 			</Property>
@@ -6412,15 +6593,24 @@ END]]></Value>
 					<References Name="[dbo].[employees_view].[email]" />
 				</Entry>
 				<Entry>
+					<References Name="[dbo].[get_email].[@full_name]" />
+				</Entry>
+				<Entry>
 					<References Name="[dbo].[employees_view].[full_name]" />
 				</Entry>
 				<Entry>
-					<References Name="[dbo].[get_email].[@full_name]" />
+					<References Name="[dbo].[get_email].[@sid]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[employees_view].[ad_sid]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="Parameters">
 				<Entry>
 					<Element Type="SqlSubroutineParameter" Name="[dbo].[get_email].[@full_name]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[null]]></Value>
+						</Property>
 						<Relationship Name="Type">
 							<Entry>
 								<Element Type="SqlTypeSpecifier">
@@ -6435,6 +6625,25 @@ END]]></Value>
 						</Relationship>
 					</Element>
 				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[get_email].[@sid]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[null]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="46" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
 			</Relationship>
 			<Relationship Name="Schema">
 				<Entry>
@@ -6442,10 +6651,10 @@ END]]></Value>
 				</Entry>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="165" />
+				<Property Name="Length" Value="387" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
-				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[get_email]&#xD;&#xA;&#x9;@full_name nvarchar(150)&#xD;&#xA;&#x9;as" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[get_email]&#xD;&#xA;&#x9;@full_name nvarchar(150) = null,&#xD;&#xA;&#x9;@sid varchar(46) = null&#xD;&#xA;&#x9;as" />
 			</Annotation>
 		</Element>
 		<Element Type="SqlProcedure" Name="[dbo].[get_emp_state]">
@@ -6597,11 +6806,10 @@ end]]></Value>
                      ELSE NULL
                 END AS photo,
 				full_name_dat,
-				full_name_rod,
-				--,
-				--CASE WHEN @id_department IS NOT NULL THEN 
-				--CASE WHEN EXISTS(SELECT 1 FROM departments dd WHERE dd.id=@id_department AND dd.id_chief=e.id) THEN 0 ELSE 1 end
-				--ELSE NULL END AS is_chief
+				full_name_rod,				
+				CASE WHEN e.id_department IS NOT NULL THEN 
+				CASE WHEN EXISTS(SELECT 1 FROM departments dd WHERE dd.enabled=1 and dd.id_chief=e.id) THEN 1 ELSE 0 end
+				ELSE NULL END AS is_chief,
 				d.hidden as is_hidden,
 				e.date_fired,
 				id_budget
@@ -6802,6 +7010,18 @@ end]]></Value>
 					<References Name="[dbo].[employees].[full_name_rod]" />
 				</Entry>
 				<Entry>
+					<References Name="[dbo].[departments]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[departments].[enabled]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[departments].[id_chief]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[employees].[id]" />
+				</Entry>
+				<Entry>
 					<References Name="[dbo].[departments].[hidden]" />
 				</Entry>
 				<Entry>
@@ -6883,7 +7103,7 @@ end]]></Value>
 				</Entry>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="2787" />
+				<Property Name="Length" Value="2770" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
 				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[get_employee]&#xD;&#xA;    @id INT = NULL ,&#xD;&#xA;    @get_photo BIT = 0 ,&#xD;&#xA;&#x9;@ad_sid VARCHAR(46) = NULL&#xD;&#xA;AS" />
@@ -7556,16 +7776,40 @@ end]]></Value>
 			<Property Name="BodyScript">
 				<Value><![CDATA[ begin
 set nocount on;
-	select vs.id,  v.name as vendor_name, vs.descr, date_end, o.name as organization_name, l.name as language, pic_data
+if @expires = 1
+begin
+	select vs.id,  v.name as vendor_name, vs.descr, date_end, o.name as organization_name, l.name as language, pic_data, vs.name
 	from vendor_states vs 
 	inner join vendors v on v.id=vs.id_vendor
 	inner join organizations o on o.id=vs.id_organization
 	inner join languages l on l.id=vs.id_language
-	where vs.enabled=1 and expired_delivery_sent = 0 
+	where vs.enabled=1 and convert(date,date_end) <= convert(date,dateadd(month, 2, getdate())) and expired_delivery_sent = 0 
+	end
+	else if @newbie = 1
+	begin
+	select vs.id,  v.name as vendor_name, vs.descr, date_end, o.name as organization_name, l.name as language, pic_data, vs.name
+	from vendor_states vs 
+	inner join vendors v on v.id=vs.id_vendor
+	inner join organizations o on o.id=vs.id_organization
+	inner join languages l on l.id=vs.id_language
+	where vs.enabled=1 and new_delivery_sent = 0 
+	end
+	else if @updated = 1
+	begin
+	select vs.id,  v.name as vendor_name, vs.descr, date_end, o.name as organization_name, l.name as language, pic_data, vs.name
+	from vendor_states vs 
+	inner join vendors v on v.id=vs.id_vendor
+	inner join organizations o on o.id=vs.id_organization
+	inner join languages l on l.id=vs.id_language
+	where vs.enabled=1 and update_delivery_sent = 0 
+	end
 end]]></Value>
 			</Property>
 			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[get_expires_vendor_state_list].[@expires]" />
+				</Entry>
 				<Entry>
 					<References Name="[dbo].[vendor_states]" />
 				</Entry>
@@ -7618,10 +7862,87 @@ end]]></Value>
 					<References Name="[dbo].[vendor_states].[pic_data]" />
 				</Entry>
 				<Entry>
+					<References Name="[dbo].[vendor_states].[name]" />
+				</Entry>
+				<Entry>
 					<References Name="[dbo].[vendor_states].[enabled]" />
 				</Entry>
 				<Entry>
+					<References ExternalSource="BuiltIns" Name="[date]" />
+				</Entry>
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[date]" />
+				</Entry>
+				<Entry>
 					<References Name="[dbo].[vendor_states].[expired_delivery_sent]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[get_expires_vendor_state_list].[@newbie]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[new_delivery_sent]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[get_expires_vendor_state_list].[@updated]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[update_delivery_sent]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[get_expires_vendor_state_list].[@expires]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[0]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bit]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[get_expires_vendor_state_list].[@newbie]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[0]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bit]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[get_expires_vendor_state_list].[@updated]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[0]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bit]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
 				</Entry>
 			</Relationship>
 			<Relationship Name="Schema">
@@ -7630,10 +7951,10 @@ end]]></Value>
 				</Entry>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="430" />
+				<Property Name="Length" Value="1369" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
-				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[get_expires_vendor_state_list]&#xD;&#xA;&#x9;AS" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[get_expires_vendor_state_list]&#xD;&#xA;@expires bit = 0,&#xD;&#xA;@newbie bit = 0,&#xD;&#xA;@updated bit = 0&#xD;&#xA;&#x9;AS" />
 			</Annotation>
 		</Element>
 		<Element Type="SqlProcedure" Name="[dbo].[get_holiday_work_confirms]">
@@ -8446,6 +8767,134 @@ END]]></Value>
 				<Property Name="HeaderContents" Value="CREATE Procedure [dbo].[get_position_link_count]&#xD;&#xA;(&#xD;&#xA;&#x9;@id int&#xD;&#xA;)&#xD;&#xA;AS" />
 			</Annotation>
 		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[get_subordinate_list]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+	begin
+
+	set nocount on;
+	declare @id_department int
+	select @id_department = id_department from employees_view e where e.ad_sid = @sid and e.is_chief = 1
+
+	if @id_department is not null and @id_department > 0
+	begin
+with deps as (
+   select id, id_parent
+   from dbo.departments
+   where id = @id_department
+   union all
+   select c.id, c.id_parent
+   from departments c
+     join deps p on p.id = c.id_parent 
+)
+
+SELECT * FROM dbo.employees_view e
+WHERE e.ad_sid <> @sid and e.id_department IN (SELECT id FROM deps)
+end
+
+	end]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[int]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[employees_view]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[employees_view].[id_department]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[employees_view].[ad_sid]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[get_subordinate_list].[@sid]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[employees_view].[is_chief]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[departments]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[departments].[id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[departments].[id_parent]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[get_subordinate_list].[CTE1].[deps].[id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[departments].[id_parent]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[departments].[id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[employees_view].[id_department]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[departments].[id]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="DynamicObjects">
+				<Entry>
+					<Element Type="SqlDynamicColumnSource" Name="[dbo].[get_subordinate_list].[CTE1].[deps]">
+						<Relationship Name="Columns">
+							<Entry>
+								<Element Type="SqlComputedColumn" Name="[dbo].[get_subordinate_list].[CTE1].[deps].[id]">
+									<Relationship Name="ExpressionDependencies">
+										<Entry>
+											<References Name="[dbo].[departments].[id]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+							<Entry>
+								<Element Type="SqlComputedColumn" Name="[dbo].[get_subordinate_list].[CTE1].[deps].[id_parent]">
+									<Relationship Name="ExpressionDependencies">
+										<Entry>
+											<References Name="[dbo].[departments].[id_parent]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[get_subordinate_list].[@sid]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="46" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[varchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="619" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[get_subordinate_list]&#xD;&#xA;&#x9;@sid varchar(46)&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
 		<Element Type="SqlProcedure" Name="[dbo].[get_vendor]">
 			<Property Name="BodyScript">
 				<Value><![CDATA[
@@ -8515,7 +8964,7 @@ END]]></Value>
 			<Property Name="BodyScript">
 				<Value><![CDATA[ begin
 set nocount on;
-	select vs.id, vs.id_vendor , vs.descr, date_end, vs.id_organization, vs.id_language, pic_data, creator_sid
+	select vs.id, vs.id_vendor , vs.descr, date_end, vs.id_organization, vs.id_language, pic_data, creator_sid, vs.name
 	from vendor_states  vs 	
 	where vs.id=@id
 end]]></Value>
@@ -8550,6 +8999,9 @@ end]]></Value>
 					<References Name="[dbo].[vendor_states].[creator_sid]" />
 				</Entry>
 				<Entry>
+					<References Name="[dbo].[vendor_states].[name]" />
+				</Entry>
+				<Entry>
 					<References Name="[dbo].[get_vendor_state].[@id]" />
 				</Entry>
 			</Relationship>
@@ -8576,7 +9028,7 @@ end]]></Value>
 				</Entry>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="237" />
+				<Property Name="Length" Value="246" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
 				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[get_vendor_state]&#xD;&#xA;&#x9;@id int&#xD;&#xA;AS" />
@@ -8587,7 +9039,7 @@ end]]></Value>
 				<Value><![CDATA[ begin
 set nocount on;
 	select  vs.id,  v.name as vendor_name, vs.descr, date_end, o.name as organization_name, l.name as language, pic_data, 
-	(select display_name FROM dbo.employees e WHERE e.ad_sid= vs.creator_sid) AS creator, vs.dattim1 AS date_create
+	(select display_name FROM dbo.employees e WHERE e.ad_sid= vs.creator_sid) AS creator, vs.dattim1 AS date_create, vs.name
 	from vendor_states vs 
 	inner join vendors v on v.id=vs.id_vendor
 	inner join organizations o on o.id=vs.id_organization
@@ -8665,6 +9117,9 @@ end]]></Value>
 					<References Name="[dbo].[vendor_states].[dattim1]" />
 				</Entry>
 				<Entry>
+					<References Name="[dbo].[vendor_states].[name]" />
+				</Entry>
+				<Entry>
 					<References Name="[dbo].[get_vendor_state_history].[@id]" />
 				</Entry>
 				<Entry>
@@ -8697,7 +9152,7 @@ end]]></Value>
 				</Entry>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="559" />
+				<Property Name="Length" Value="568" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
 				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[get_vendor_state_history]&#xD;&#xA;&#x9;@id int&#xD;&#xA;AS" />
@@ -8707,7 +9162,7 @@ end]]></Value>
 			<Property Name="BodyScript">
 				<Value><![CDATA[ begin
 set nocount on;
-	select vs.id,  v.name as vendor_name, vs.descr, date_end, o.name as organization_name, l.name as language, pic_data
+	select vs.id,  v.name as vendor_name, vs.descr, date_end, o.name as organization_name, l.name as language, pic_data, vs.name
 	from vendor_states vs 
 	inner join vendors v on v.id=vs.id_vendor
 	inner join organizations o on o.id=vs.id_organization
@@ -8770,6 +9225,9 @@ end]]></Value>
 					<References Name="[dbo].[vendor_states].[pic_data]" />
 				</Entry>
 				<Entry>
+					<References Name="[dbo].[vendor_states].[name]" />
+				</Entry>
+				<Entry>
 					<References Name="[dbo].[vendor_states].[enabled]" />
 				</Entry>
 				<Entry>
@@ -8782,10 +9240,129 @@ end]]></Value>
 				</Entry>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="409" />
+				<Property Name="Length" Value="418" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
 				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[get_vendor_state_list]&#xD;&#xA;AS" />
+			</Annotation>
+		</Element>
+		<Element Type="SqlProcedure" Name="[dbo].[get_vendor_state_prev_version]">
+			<Property Name="BodyScript">
+				<Value><![CDATA[
+	begin set nocount on;
+
+	select vs_old.id, (select name from vendors v where v.id=vs_old.id_vendor) as vendor_name , vs_old.descr, vs_old.date_end, 
+	(select name from organizations o where o.id=vs_old.id_organization) as organization_name, (select name from languages l where l.id=vs_old.id_language) as language, vs_old.pic_data, vs_old.creator_sid, vs_old.name
+from vendor_states vs inner join vendor_states vs_old on vs.id=vs_old.old_id AND vs_old.id = (SELECT MAX(id) FROM vendor_states old WHERE old.old_id=@id)
+where vs.id=@id 
+
+	end]]></Value>
+			</Property>
+			<Property Name="IsAnsiNullsOn" Value="True" />
+			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[vendor_states]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[old_id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[old_id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[get_vendor_state_prev_version].[@id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendors]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendors].[name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendors].[id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id_vendor]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[descr]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[date_end]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[organizations]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[organizations].[name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[organizations].[id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id_organization]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[languages]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[languages].[name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[languages].[id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id_language]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[pic_data]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[creator_sid]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[name]" />
+				</Entry>
+			</Relationship>
+			<Relationship Name="Parameters">
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[get_vendor_state_prev_version].[@id]">
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[int]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+			</Relationship>
+			<Relationship Name="Schema">
+				<Entry>
+					<References ExternalSource="BuiltIns" Name="[dbo]" />
+				</Entry>
+			</Relationship>
+			<Annotation Type="SysCommentsObjectAnnotation">
+				<Property Name="Length" Value="617" />
+				<Property Name="StartLine" Value="1" />
+				<Property Name="StartColumn" Value="1" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[get_vendor_state_prev_version]&#xD;&#xA;&#x9;@id int&#xD;&#xA;AS" />
 			</Annotation>
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[holiday_work_confirms]">
@@ -8900,7 +9477,7 @@ end]]></Value>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="80" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="82" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[holiday_work_documents]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -9014,7 +9591,7 @@ end]]></Value>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="81" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="83" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[languages]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -9033,7 +9610,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="71" />
+						<AttachedAnnotation Disambiguator="67" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -9067,7 +9644,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="52" />
+						<AttachedAnnotation Disambiguator="31" />
 					</Element>
 				</Entry>
 			</Relationship>
@@ -9095,7 +9672,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="62" />
+						<AttachedAnnotation Disambiguator="64" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -9164,7 +9741,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="73" />
+						<AttachedAnnotation Disambiguator="75" />
 						<AttachedAnnotation Disambiguator="28" />
 					</Element>
 				</Entry>
@@ -9227,7 +9804,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="67" />
+						<AttachedAnnotation Disambiguator="73" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -9261,7 +9838,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="38" />
+						<AttachedAnnotation Disambiguator="48" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -9278,7 +9855,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="39" />
+						<AttachedAnnotation Disambiguator="49" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -9295,7 +9872,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="40" />
+						<AttachedAnnotation Disambiguator="50" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -9312,7 +9889,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="41" />
+						<AttachedAnnotation Disambiguator="51" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -9345,7 +9922,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="42" />
+						<AttachedAnnotation Disambiguator="52" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -9724,7 +10301,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="66" />
+						<AttachedAnnotation Disambiguator="72" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -9757,7 +10334,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="35" />
+						<AttachedAnnotation Disambiguator="45" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -9774,7 +10351,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="36" />
+						<AttachedAnnotation Disambiguator="46" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -9791,7 +10368,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="37" />
+						<AttachedAnnotation Disambiguator="47" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -9904,7 +10481,7 @@ end]]></Value>
 					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="76" />
+			<AttachedAnnotation Disambiguator="78" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_document_meets]">
 			<Relationship Name="ColumnSpecifications">
@@ -9928,7 +10505,7 @@ end]]></Value>
 					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="77" />
+			<AttachedAnnotation Disambiguator="79" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_documents]">
 			<Relationship Name="ColumnSpecifications">
@@ -9952,7 +10529,7 @@ end]]></Value>
 					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="78" />
+			<AttachedAnnotation Disambiguator="80" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_holiday_work_confirms]">
 			<Relationship Name="ColumnSpecifications">
@@ -9976,7 +10553,7 @@ end]]></Value>
 					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="80" />
+			<AttachedAnnotation Disambiguator="82" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_holiday_work_delivery]">
 			<Relationship Name="ColumnSpecifications">
@@ -10000,7 +10577,7 @@ end]]></Value>
 					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="81" />
+			<AttachedAnnotation Disambiguator="83" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_wd_holidays]">
 			<Relationship Name="ColumnSpecifications">
@@ -10019,7 +10596,7 @@ end]]></Value>
 					<References Name="[dbo].[wd_holidays]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="82" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="84" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_wd_short_days]">
 			<Relationship Name="ColumnSpecifications">
@@ -10038,7 +10615,7 @@ end]]></Value>
 					<References Name="[dbo].[wd_short_days]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="83" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="85" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_wd_work_holidays]">
 			<Relationship Name="ColumnSpecifications">
@@ -10057,7 +10634,7 @@ end]]></Value>
 					<References Name="[dbo].[wd_work_holidays]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="84" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="86" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_work_days]">
 			<Relationship Name="ColumnSpecifications">
@@ -10076,7 +10653,7 @@ end]]></Value>
 					<References Name="[dbo].[work_days]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="85" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="87" />
 		</Element>
 		<Element Type="SqlPrimaryKeyConstraint" Name="[dbo].[PK_work_hours]">
 			<Relationship Name="ColumnSpecifications">
@@ -10095,7 +10672,7 @@ end]]></Value>
 					<References Name="[dbo].[work_hours]" />
 				</Entry>
 			</Relationship>
-			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="86" />
+			<Annotation Type="SqlInlineConstraintAnnotation" Disambiguator="88" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[position_import]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -10114,7 +10691,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="63" />
+						<AttachedAnnotation Disambiguator="65" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -10174,7 +10751,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="65" />
+						<AttachedAnnotation Disambiguator="71" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -10208,7 +10785,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="31" />
+						<AttachedAnnotation Disambiguator="41" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -10225,7 +10802,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="32" />
+						<AttachedAnnotation Disambiguator="42" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -10242,7 +10819,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="33" />
+						<AttachedAnnotation Disambiguator="43" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -10259,7 +10836,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="34" />
+						<AttachedAnnotation Disambiguator="44" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -13334,8 +13911,8 @@ set nocount on;
 	declare @pic_guid uniqueidentifier
 	set @pic_guid = newid()
 
-		insert into vendor_states (id_vendor, descr, date_end, id_organization, id_language, creator_sid, pic_data, pic_guid, old_id, dattim1, dattim2, enabled, deleter_sid)
-		select id_vendor, descr, date_end, id_organization, id_language, creator_sid, pic_data, @pic_guid, id, dattim1, getdate(), 0, @creator_sid from vendor_states where id=@id
+		insert into vendor_states (id_vendor, descr, date_end, id_organization, id_language, creator_sid, pic_data, pic_guid, old_id, dattim1, dattim2, enabled, deleter_sid, name, new_delivery_sent, expired_delivery_sent, update_delivery_sent)
+		select id_vendor, descr, date_end, id_organization, id_language, creator_sid, pic_data, @pic_guid, id, dattim1, getdate(), 0, @creator_sid, name, new_delivery_sent, expired_delivery_sent, update_delivery_sent from vendor_states where id=@id
 
 		--declare @pic_guid uniqueidentifier
 
@@ -13344,6 +13921,7 @@ set nocount on;
 		set @date_end = isnull(@date_end, (select date_end from vendor_states where id=@id))
 		set @id_organization = isnull(@id_organization, (select id_organization from vendor_states where id=@id))
 		set @id_language = isnull(@id_language, (select id_language from vendor_states where id=@id))
+		set @name = isnull(@name, (select name from vendor_states where id=@id))
 
 		--if @pic_data != null --обновляет guid картинки если загружаем заново
 		--begin
@@ -13353,13 +13931,26 @@ set nocount on;
 		set @pic_data = isnull(@pic_data, (select pic_data from vendor_states where id=@id))
 
 		update vendor_states
-		set id_vendor=@id_vendor, descr=@descr, date_end=@date_end, id_organization=@id_organization, id_language=@id_language, creator_sid=@creator_sid, pic_data=@pic_data, dattim1 = getdate()
+		set id_vendor=@id_vendor, descr=@descr, date_end=@date_end, id_organization=@id_organization, id_language=@id_language, 
+		creator_sid=@creator_sid, pic_data=@pic_data, dattim1 = getdate(), name = @name, expired_delivery_sent = 0
 		where id=@id
+
+		--если были изменения и это недавно созданный уведомление не отправлено
+		if exists(select 1 
+from vendor_states vs inner join vendor_states vs_old on vs.id=vs_old.old_id AND vs_old.id = (SELECT MAX(id) FROM vendor_states old WHERE old.old_id=@id)
+where vs.id=@id AND vs.new_delivery_sent = 1 and (vs.id_vendor != vs_old.id_vendor or LTRIM(RTRIM(vs.descr))!=RTRIM(LTRIM(vs_old.descr)) 
+or vs.date_end!=vs_old.date_end or vs.id_organization != vs_old.id_organization or vs.id_language!=vs_old.id_language or vs.pic_data!=vs_old.pic_data))
+begin
+update vendor_states
+set update_delivery_sent=0
+where id=@id
+end
+
 	end
 	else
 	begin
-		insert into vendor_states (id_vendor, descr, date_end, id_organization, id_language, creator_sid, pic_data)
-		values(@id_vendor,@descr, @date_end, @id_organization, @id_language, @creator_sid, @pic_data)
+		insert into vendor_states (id_vendor, descr, date_end, id_organization, id_language, creator_sid, pic_data, name, new_delivery_sent, expired_delivery_sent, update_delivery_sent)
+		values(@id_vendor,@descr, @date_end, @id_organization, @id_language, @creator_sid, @pic_data, @name, 0, 0, 1)
 		set @id=@@IDENTITY
 	end
 	select @id as id
@@ -13422,6 +14013,18 @@ end]]></Value>
 					<References Name="[dbo].[vendor_states].[deleter_sid]" />
 				</Entry>
 				<Entry>
+					<References Name="[dbo].[vendor_states].[name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[new_delivery_sent]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[expired_delivery_sent]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[update_delivery_sent]" />
+				</Entry>
+				<Entry>
 					<References Name="[dbo].[vendor_states].[id]" />
 				</Entry>
 				<Entry>
@@ -13458,7 +14061,70 @@ end]]></Value>
 					<References Name="[dbo].[vendor_states].[id_language]" />
 				</Entry>
 				<Entry>
+					<References Name="[dbo].[save_vendor_state].[@name]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[name]" />
+				</Entry>
+				<Entry>
 					<References Name="[dbo].[save_vendor_state].[@pic_data]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[pic_data]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[old_id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[old_id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[new_delivery_sent]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id_vendor]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id_vendor]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[descr]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[descr]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[date_end]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[date_end]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id_organization]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id_organization]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id_language]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[id_language]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[pic_data]" />
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[vendor_states].[pic_data]" />
@@ -13609,6 +14275,25 @@ end]]></Value>
 						</Relationship>
 					</Element>
 				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[save_vendor_state].[@name]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[null]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="150" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
 			</Relationship>
 			<Relationship Name="Schema">
 				<Entry>
@@ -13616,10 +14301,10 @@ end]]></Value>
 				</Entry>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="2030" />
+				<Property Name="Length" Value="3032" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
-				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[save_vendor_state]&#xD;&#xA;&#x9;@id int = null,&#xD;&#xA;&#x9;@id_vendor int = null,&#xD;&#xA;&#x9;@descr nvarchar(max) = null,&#xD;&#xA;&#x9;@date_end datetime = null,&#xD;&#xA;&#x9;@id_organization int = null,&#xD;&#xA;&#x9;@id_language int = null,&#xD;&#xA;&#x9;@creator_sid varchar(46),&#xD;&#xA;&#x9;@pic_data varbinary(max) = null&#xD;&#xA;AS" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[save_vendor_state]&#xD;&#xA;&#x9;@id int = null,&#xD;&#xA;&#x9;@id_vendor int = null,&#xD;&#xA;&#x9;@descr nvarchar(max) = null,&#xD;&#xA;&#x9;@date_end datetime = null,&#xD;&#xA;&#x9;@id_organization int = null,&#xD;&#xA;&#x9;@id_language int = null,&#xD;&#xA;&#x9;@creator_sid varchar(46),&#xD;&#xA;&#x9;@pic_data varbinary(max) = null,&#xD;&#xA;&#x9;@name nvarchar(150) = null&#xD;&#xA;AS" />
 			</Annotation>
 		</Element>
 		<Element Type="SqlProcedure" Name="[dbo].[set_employee_date_fired]">
@@ -13821,15 +14506,34 @@ end]]></Value>
 			<Property Name="BodyScript">
 				<Value><![CDATA[
 begin
-
+if @expired=1 
+begin
 update vendor_states
 set expired_delivery_sent=1
 where id=@id
+end
+else
+if @new = 1
+begin
+update vendor_states
+set new_delivery_sent=1
+where id=@id
+end
+else
+if @updated = 1
+begin
+update vendor_states
+set update_delivery_sent=1
+where id=@id
+end
 
 end]]></Value>
 			</Property>
 			<Property Name="IsAnsiNullsOn" Value="True" />
 			<Relationship Name="BodyDependencies">
+				<Entry>
+					<References Name="[dbo].[set_vendor_state_delivery_sent].[@expired]" />
+				</Entry>
 				<Entry>
 					<References Name="[dbo].[vendor_states]" />
 				</Entry>
@@ -13841,6 +14545,18 @@ end]]></Value>
 				</Entry>
 				<Entry>
 					<References Name="[dbo].[set_vendor_state_delivery_sent].[@id]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[set_vendor_state_delivery_sent].[@new]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[new_delivery_sent]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[set_vendor_state_delivery_sent].[@updated]" />
+				</Entry>
+				<Entry>
+					<References Name="[dbo].[vendor_states].[update_delivery_sent]" />
 				</Entry>
 			</Relationship>
 			<Relationship Name="Parameters">
@@ -13859,6 +14575,60 @@ end]]></Value>
 						</Relationship>
 					</Element>
 				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[set_vendor_state_delivery_sent].[@new]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[0]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bit]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[set_vendor_state_delivery_sent].[@expired]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[0]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bit]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSubroutineParameter" Name="[dbo].[set_vendor_state_delivery_sent].[@updated]">
+						<Property Name="DefaultExpressionScript">
+							<Value><![CDATA[0]]></Value>
+						</Property>
+						<Relationship Name="Type">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bit]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
 			</Relationship>
 			<Relationship Name="Schema">
 				<Entry>
@@ -13866,10 +14636,10 @@ end]]></Value>
 				</Entry>
 			</Relationship>
 			<Annotation Type="SysCommentsObjectAnnotation">
-				<Property Name="Length" Value="150" />
+				<Property Name="Length" Value="423" />
 				<Property Name="StartLine" Value="1" />
 				<Property Name="StartColumn" Value="1" />
-				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[set_vendor_state_delivery_sent]&#xD;&#xA;&#x9;@id int&#xD;&#xA;AS" />
+				<Property Name="HeaderContents" Value="CREATE PROCEDURE [dbo].[set_vendor_state_delivery_sent]&#xD;&#xA;&#x9;@id int,&#xD;&#xA;&#x9;@new bit = 0,&#xD;&#xA;&#x9;@expired bit = 0,&#xD;&#xA;&#x9;@updated bit = 0&#xD;&#xA;AS" />
 			</Annotation>
 		</Element>
 		<Element Type="SqlUniqueConstraint" Name="[dbo].[UQ__document__CC80C6D41F98B2C1]">
@@ -13894,7 +14664,7 @@ end]]></Value>
 					<References ExternalSource="BuiltIns" Name="[PRIMARY]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="79" />
+			<AttachedAnnotation Disambiguator="81" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[vendor_state_pictures]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -13914,7 +14684,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="70" />
+						<AttachedAnnotation Disambiguator="68" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -13965,7 +14735,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="50" />
+						<AttachedAnnotation Disambiguator="32" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -13983,8 +14753,8 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="74" />
-						<AttachedAnnotation Disambiguator="51" />
+						<AttachedAnnotation Disambiguator="76" />
+						<AttachedAnnotation Disambiguator="33" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -14029,7 +14799,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="72" />
+						<AttachedAnnotation Disambiguator="74" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -14243,7 +15013,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="75" />
+						<AttachedAnnotation Disambiguator="77" />
 						<AttachedAnnotation Disambiguator="56" />
 					</Element>
 				</Entry>
@@ -14262,6 +15032,56 @@ end]]></Value>
 							</Entry>
 						</Relationship>
 						<AttachedAnnotation Disambiguator="57" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[vendor_states].[name]">
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Property Name="Length" Value="150" />
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[nvarchar]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[vendor_states].[new_delivery_sent]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bit]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="58" />
+					</Element>
+				</Entry>
+				<Entry>
+					<Element Type="SqlSimpleColumn" Name="[dbo].[vendor_states].[update_delivery_sent]">
+						<Property Name="IsNullable" Value="False" />
+						<Relationship Name="TypeSpecifier">
+							<Entry>
+								<Element Type="SqlTypeSpecifier">
+									<Relationship Name="Type">
+										<Entry>
+											<References ExternalSource="BuiltIns" Name="[bit]" />
+										</Entry>
+									</Relationship>
+								</Element>
+							</Entry>
+						</Relationship>
+						<AttachedAnnotation Disambiguator="59" />
 					</Element>
 				</Entry>
 			</Relationship>
@@ -14323,7 +15143,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="47" />
+						<AttachedAnnotation Disambiguator="34" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -14340,7 +15160,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="48" />
+						<AttachedAnnotation Disambiguator="35" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -14390,7 +15210,7 @@ end]]></Value>
 								</Element>
 							</Entry>
 						</Relationship>
-						<AttachedAnnotation Disambiguator="49" />
+						<AttachedAnnotation Disambiguator="36" />
 					</Element>
 				</Entry>
 				<Entry>
@@ -14441,7 +15261,7 @@ end]]></Value>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="82" />
+			<AttachedAnnotation Disambiguator="84" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[wd_short_days]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -14468,7 +15288,7 @@ end]]></Value>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="83" />
+			<AttachedAnnotation Disambiguator="85" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[wd_work_holidays]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -14495,7 +15315,7 @@ end]]></Value>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="84" />
+			<AttachedAnnotation Disambiguator="86" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[work_days]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -14538,7 +15358,7 @@ end]]></Value>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="85" />
+			<AttachedAnnotation Disambiguator="87" />
 		</Element>
 		<Element Type="SqlTable" Name="[dbo].[work_hours]">
 			<Property Name="IsAnsiNullsOn" Value="True" />
@@ -14599,7 +15419,7 @@ end]]></Value>
 					<References ExternalSource="BuiltIns" Name="[dbo]" />
 				</Entry>
 			</Relationship>
-			<AttachedAnnotation Disambiguator="86" />
+			<AttachedAnnotation Disambiguator="88" />
 		</Element>
 	</Model>
 </DataSchemaModel>

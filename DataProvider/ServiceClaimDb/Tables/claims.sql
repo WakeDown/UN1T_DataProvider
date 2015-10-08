@@ -24,7 +24,10 @@
     [cur_engeneer_sid] VARCHAR(46) NULL, 
     [cur_admin_sid] VARCHAR(46) NULL, 
     [cur_tech_sid] VARCHAR(46) NULL, 
-    [cur_manager_sid] VARCHAR(46) NULL 
+    [cur_manager_sid] VARCHAR(46) NULL, 
+    [serial_num] VARCHAR(150) NULL, 
+    [cur_service_issue_id] INT NULL, 
+    [id_service_came] INT NULL 
 )
 
 GO

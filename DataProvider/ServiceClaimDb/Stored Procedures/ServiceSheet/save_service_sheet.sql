@@ -1,5 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[save_service_sheet]
 	@id int = null,
+	@id_claim int,
+	@id_service_issue int,
 	@process_enabled bit = null,
 	@device_enabled bit = null,
 	@zip_claim bit = null,
@@ -11,7 +13,10 @@
 	@no_counter bit = null,
 	@descr nvarchar(MAX) = null,
 	@counter_unavailable bit = null,
-	@counter_descr nvarchar(MAX) = null
+	@counter_descr nvarchar(MAX) = null,
+	@engeneer_sid varchar(46) = null,
+	@admin_sid varchar(46) = null,
+	@time_on_work_minutes int = null
 
 	as begin set nocount on;
 
@@ -24,9 +29,9 @@
 	end
 	else begin
 		insert into service_sheet (process_enabled, device_enabled, zip_claim, zip_claim_number, creator_sid, counter_mono, 
-		counter_color, counter_total, no_counter,descr, counter_unavailable, counter_descr)
+		counter_color, counter_total, no_counter,descr, counter_unavailable, counter_descr, engeneer_sid, admin_sid, id_service_issue, id_claim, time_on_work_minutes)
 		values(@process_enabled, @device_enabled, @zip_claim, @zip_claim_number, @creator_sid, @counter_mono, 
-		@counter_color, @counter_total, @no_counter, @descr, @counter_unavailable, @counter_descr)
+		@counter_color, @counter_total, @no_counter, @descr, @counter_unavailable, @counter_descr, @engeneer_sid, @admin_sid, @id_service_issue,@id_claim, @time_on_work_minutes)
 		set @id = @@IDENTITY
 	end
 

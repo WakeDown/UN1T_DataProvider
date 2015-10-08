@@ -245,4 +245,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="descr" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="34d386d2-8024-4192-9d48-be644066bc8b" ChangeDateTime="09/17/2015 15:03:18">
+    <Property Name="ElementName" Value="[dbo].[issue_plan].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[issue_plan]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3baeba77-cb7c-4c9c-85a1-45592fca3926" ChangeDateTime="09/17/2015 15:04:07">
+    <Property Name="ElementName" Value="[dbo].[service_issue_plan].[id_issue]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[service_issue_plan]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id_service_issue" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="dab1036a-0336-459b-babe-ed576f0d0cc0" ChangeDateTime="09/17/2015 15:11:05">
+    <Property Name="ElementName" Value="[dbo].[service_issue_plan].[id_system]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[service_issue_plan]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id_service_issue_type" />
+  </Operation>
 </Operations>
