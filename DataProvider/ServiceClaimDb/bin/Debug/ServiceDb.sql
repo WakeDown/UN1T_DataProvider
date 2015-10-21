@@ -40,865 +40,467 @@ USE [$(DatabaseName)];
 
 
 GO
-/*
-The column [dbo].[service_sheet].[id_claim2claim_state] is being dropped, data loss could occur.
-*/
-
-IF EXISTS (select top 1 1 from [dbo].[service_sheet])
-    RAISERROR (N'Rows were detected. The schema update is terminating because data loss might occur.', 16, 127) WITH NOWAIT
-
-GO
-PRINT N'The following operation was generated from a refactoring log file a4c8791f-e93f-467c-b204-b3d94c84adfa';
-
-PRINT N'Rename [dbo].[claims].[cliend_sd_num] to client_sd_num';
+PRINT N'Creating [dbo].[service_sheet_installed_zip_items]...';
 
 
 GO
-EXECUTE sp_rename @objname = N'[dbo].[claims].[cliend_sd_num]', @newname = N'client_sd_num', @objtype = N'COLUMN';
-
-
-GO
-PRINT N'Rename refactoring operation with key bbed99bb-81f4-4fd0-b737-2e7036d6c94d is skipped, element [dbo].[claims].[current_engeneer_sid] (SqlSimpleColumn) will not be renamed to cur_engeneer_sid';
-
-
-GO
-PRINT N'Rename refactoring operation with key 8f116ff2-0393-4497-aa0d-7ee3ae5abde0 is skipped, element [dbo].[mobile_cames].[dattim1] (SqlSimpleColumn) will not be renamed to date_create';
-
-
-GO
-PRINT N'The following operation was generated from a refactoring log file 0803fe49-f0cd-4e84-aebe-4358935546bc';
-
-PRINT N'Rename [dbo].[mobile_users].[id] to sid';
-
-
-GO
-EXECUTE sp_rename @objname = N'[dbo].[mobile_users].[id]', @newname = N'sid', @objtype = N'COLUMN';
-
-
-GO
-PRINT N'Rename refactoring operation with key 1768afd4-531b-4c54-bb36-9d96df569dcf is skipped, element [dbo].[mobile_cames].[Id] (SqlSimpleColumn) will not be renamed to id';
-
-
-GO
-PRINT N'Rename refactoring operation with key 252dc46c-b211-4d27-9546-92911076617b is skipped, element [dbo].[mobile_cames].[desc] (SqlSimpleColumn) will not be renamed to descr';
-
-
-GO
-PRINT N'Rename refactoring operation with key 34d386d2-8024-4192-9d48-be644066bc8b is skipped, element [dbo].[issue_plan].[Id] (SqlSimpleColumn) will not be renamed to id';
-
-
-GO
-PRINT N'Rename refactoring operation with key 3baeba77-cb7c-4c9c-85a1-45592fca3926 is skipped, element [dbo].[service_issue_plan].[id_issue] (SqlSimpleColumn) will not be renamed to id_service_issue';
-
-
-GO
-PRINT N'Rename refactoring operation with key dab1036a-0336-459b-babe-ed576f0d0cc0 is skipped, element [dbo].[service_issue_plan].[id_system] (SqlSimpleColumn) will not be renamed to id_service_issue_type';
-
-
-GO
-PRINT N'Dropping unnamed constraint on [dbo].[mobile_users]...';
-
-
-GO
-ALTER TABLE [dbo].[mobile_users] DROP CONSTRAINT [DF__mobile_us__enabl__619B8048];
-
-
-GO
-PRINT N'Dropping unnamed constraint on [dbo].[service_sheet]...';
-
-
-GO
-ALTER TABLE [dbo].[service_sheet] DROP CONSTRAINT [DF__service_s__count__06CD04F7];
-
-
-GO
-PRINT N'Dropping unnamed constraint on [dbo].[service_sheet]...';
-
-
-GO
-ALTER TABLE [dbo].[service_sheet] DROP CONSTRAINT [DF__service_s__zip_c__02084FDA];
-
-
-GO
-PRINT N'Dropping unnamed constraint on [dbo].[service_sheet]...';
-
-
-GO
-ALTER TABLE [dbo].[service_sheet] DROP CONSTRAINT [DF__service_s__proce__00200768];
-
-
-GO
-PRINT N'Dropping unnamed constraint on [dbo].[service_sheet]...';
-
-
-GO
-ALTER TABLE [dbo].[service_sheet] DROP CONSTRAINT [DF__service_s__devic__01142BA1];
-
-
-GO
-PRINT N'Altering [dbo].[claim2claim_states]...';
-
-
-GO
-ALTER TABLE [dbo].[claim2claim_states]
-    ADD [id_service_sheet] INT NULL;
-
-
-GO
-PRINT N'Altering [dbo].[claims]...';
-
-
-GO
-ALTER TABLE [dbo].[claims]
-    ADD [changer_sid]      VARCHAR (46) NULL,
-        [cur_engeneer_sid] VARCHAR (46) NULL,
-        [cur_admin_sid]    VARCHAR (46) NULL,
-        [cur_tech_sid]     VARCHAR (46) NULL,
-        [cur_manager_sid]  VARCHAR (46) NULL;
-
-
-GO
-PRINT N'Starting rebuilding table [dbo].[mobile_users]...';
-
-
-GO
-BEGIN TRANSACTION;
-
-SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
-
-SET XACT_ABORT ON;
-
-CREATE TABLE [dbo].[tmp_ms_xx_mobile_users] (
-    [id]       INT           IDENTITY (1, 1) NOT NULL,
-    [sid]      VARCHAR (46)  DEFAULT newid() NOT NULL,
-    [login]    NVARCHAR (50) NOT NULL,
-    [password] NVARCHAR (50) NOT NULL,
-    [enabled]  BIT           DEFAULT 1 NOT NULL,
-    [dattim1]  DATETIME      DEFAULT getdate() NOT NULL,
-    [dattim2]  DATETIME      DEFAULT '3.3.3333' NOT NULL,
+CREATE TABLE [dbo].[service_sheet_installed_zip_items] (
+    [id]                  INT          IDENTITY (1, 1) NOT NULL,
+    [id_service_sheet]    INT          NOT NULL,
+    [id_ordered_zip_item] INT          NOT NULL,
+    [dattim1]             DATETIME     NOT NULL,
+    [dattim2]             DATETIME     NOT NULL,
+    [creator_sid]         VARCHAR (46) NOT NULL,
+    [deleter_sid]         VARCHAR (46) NULL,
+    [enabled]             BIT          NOT NULL,
     PRIMARY KEY CLUSTERED ([id] ASC)
 );
 
-IF EXISTS (SELECT TOP 1 1 
-           FROM   [dbo].[mobile_users])
-    BEGIN
-        INSERT INTO [dbo].[tmp_ms_xx_mobile_users] ([sid], [login], [password], [enabled])
-        SELECT [sid],
-               [login],
-               [password],
-               [enabled]
-        FROM   [dbo].[mobile_users];
-    END
 
-DROP TABLE [dbo].[mobile_users];
-
-EXECUTE sp_rename N'[dbo].[tmp_ms_xx_mobile_users]', N'mobile_users';
-
-COMMIT TRANSACTION;
-
-SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+GO
+PRINT N'Creating [dbo].[service_sheet_issued_zip_items]...';
 
 
 GO
-PRINT N'Altering [dbo].[service_sheet]...';
+CREATE TABLE [dbo].[service_sheet_issued_zip_items] (
+    [id]                         INT            IDENTITY (1, 1) NOT NULL,
+    [id_service_sheet]           INT            NOT NULL,
+    [part_num]                   NVARCHAR (50)  NOT NULL,
+    [name]                       NVARCHAR (500) NULL,
+    [count]                      INT            NOT NULL,
+    [dattim1]                    DATETIME       NOT NULL,
+    [dattim2]                    DATETIME       NOT NULL,
+    [creator_sid]                VARCHAR (46)   NOT NULL,
+    [deleter_sid]                VARCHAR (46)   NULL,
+    [enabled]                    BIT            NOT NULL,
+    [id_zip_claim_unit]          INT            NULL,
+    [installed]                  BIT            NOT NULL,
+    [installed_sid]              VARCHAR (46)   NULL,
+    [installed_cancel_sid]       VARCHAR (46)   NULL,
+    [installed_id_service_sheet] INT            NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC)
+);
 
 
 GO
-ALTER TABLE [dbo].[service_sheet] DROP COLUMN [id_claim2claim_state];
+PRINT N'Creating [dbo].[service_sheet_not_installed_zip_items]...';
 
 
 GO
-ALTER TABLE [dbo].[service_sheet] ALTER COLUMN [counter_unavailable] BIT NULL;
-
-ALTER TABLE [dbo].[service_sheet] ALTER COLUMN [zip_claim] BIT NULL;
+CREATE TABLE [dbo].[service_sheet_not_installed_zip_items] (
+    [id]                  INT          IDENTITY (1, 1) NOT NULL,
+    [id_service_sheet]    INT          NOT NULL,
+    [id_ordered_zip_item] INT          NOT NULL,
+    [dattim1]             DATETIME     NOT NULL,
+    [dattim2]             DATETIME     NOT NULL,
+    [creator_sid]         VARCHAR (46) NOT NULL,
+    [deleter_sid]         VARCHAR (46) NULL,
+    [enabled]             BIT          NOT NULL,
+    PRIMARY KEY CLUSTERED ([id] ASC)
+);
 
 
 GO
-ALTER TABLE [dbo].[service_sheet]
-    ADD [counter_descr] NVARCHAR (MAX) NULL;
+PRINT N'Creating [dbo].[service_sheet_ordered_zip_items]...';
 
 
 GO
-PRINT N'Creating [dbo].[mobile_cames]...';
-
-
-GO
-CREATE TABLE [dbo].[mobile_cames] (
+CREATE TABLE [dbo].[service_sheet_ordered_zip_items] (
     [id]                INT            IDENTITY (1, 1) NOT NULL,
-    [device_serial_num] NVARCHAR (20)  NOT NULL,
-    [id_device]         INT            NULL,
-    [device_model]      NVARCHAR (150) NULL,
-    [city]              NVARCHAR (150) NULL,
-    [address]           NVARCHAR (150) NULL,
-    [client_name]       NVARCHAR (150) NULL,
-    [id_work_type]      INT            NULL,
-    [counter_mono]      BIGINT         NULL,
-    [counter_color]     BIGINT         NULL,
-    [counter_total]     BIGINT         NULL,
-    [descr]             NVARCHAR (MAX) NULL,
-    [specialist_sid]    VARCHAR (46)   NOT NULL,
-    [date_create]       DATETIME       NOT NULL,
-    [dattim1]           DATE           NOT NULL,
+    [id_service_sheet]  INT            NOT NULL,
+    [part_num]          NVARCHAR (50)  NOT NULL,
+    [name]              NVARCHAR (500) NULL,
+    [count]             INT            NOT NULL,
+    [dattim1]           DATETIME       NOT NULL,
+    [dattim2]           DATETIME       NOT NULL,
     [creator_sid]       VARCHAR (46)   NOT NULL,
+    [deleter_sid]       VARCHAR (46)   NULL,
+    [enabled]           BIT            NOT NULL,
+    [id_zip_claim_unit] INT            NULL,
     PRIMARY KEY CLUSTERED ([id] ASC)
 );
 
 
 GO
-PRINT N'Creating [dbo].[service_issue_plan]...';
+PRINT N'Creating unnamed constraint on [dbo].[service_sheet_installed_zip_items]...';
 
 
 GO
-CREATE TABLE [dbo].[service_issue_plan] (
-    [id]                    INT          IDENTITY (1, 1) NOT NULL,
-    [id_service_issue]      INT          NOT NULL,
-    [id_service_issue_type] INT          NOT NULL,
-    [period_start]          DATE         NOT NULL,
-    [period_end]            DATE         NOT NULL,
-    [dattim1]               DATETIME     NOT NULL,
-    [dattim2]               DATETIME     NOT NULL,
-    [enabled]               INT          NOT NULL,
-    [creator_sid]           VARCHAR (46) NOT NULL,
-    [deleter_sid]           VARCHAR (46) NULL,
-    PRIMARY KEY CLUSTERED ([id] ASC)
-);
-
-
-GO
-PRINT N'Creating [dbo].[service_issue_plan].[IX_service_issue_plan_period_start]...';
-
-
-GO
-CREATE NONCLUSTERED INDEX [IX_service_issue_plan_period_start]
-    ON [dbo].[service_issue_plan]([period_start] DESC);
-
-
-GO
-PRINT N'Creating [dbo].[service_issue_plan].[IX_service_issue_plan_period_end]...';
-
-
-GO
-CREATE NONCLUSTERED INDEX [IX_service_issue_plan_period_end]
-    ON [dbo].[service_issue_plan]([period_end] DESC);
-
-
-GO
-PRINT N'Creating [dbo].[service_issue_plan].[IX_service_issue_plan_enabled]...';
-
-
-GO
-CREATE NONCLUSTERED INDEX [IX_service_issue_plan_enabled]
-    ON [dbo].[service_issue_plan]([enabled] DESC);
-
-
-GO
-PRINT N'Creating [dbo].[service_issue_plan].[IX_service_issue_plan_service_type]...';
-
-
-GO
-CREATE NONCLUSTERED INDEX [IX_service_issue_plan_service_type]
-    ON [dbo].[service_issue_plan]([id_service_issue_type] ASC);
-
-
-GO
-PRINT N'Creating unnamed constraint on [dbo].[mobile_cames]...';
-
-
-GO
-ALTER TABLE [dbo].[mobile_cames]
+ALTER TABLE [dbo].[service_sheet_installed_zip_items]
     ADD DEFAULT getdate() FOR [dattim1];
 
 
 GO
-PRINT N'Creating unnamed constraint on [dbo].[service_issue_plan]...';
+PRINT N'Creating unnamed constraint on [dbo].[service_sheet_installed_zip_items]...';
 
 
 GO
-ALTER TABLE [dbo].[service_issue_plan]
-    ADD DEFAULT getdate() FOR [dattim1];
-
-
-GO
-PRINT N'Creating unnamed constraint on [dbo].[service_issue_plan]...';
-
-
-GO
-ALTER TABLE [dbo].[service_issue_plan]
+ALTER TABLE [dbo].[service_sheet_installed_zip_items]
     ADD DEFAULT '3.3.3333' FOR [dattim2];
 
 
 GO
-PRINT N'Creating unnamed constraint on [dbo].[service_issue_plan]...';
+PRINT N'Creating unnamed constraint on [dbo].[service_sheet_installed_zip_items]...';
 
 
 GO
-ALTER TABLE [dbo].[service_issue_plan]
+ALTER TABLE [dbo].[service_sheet_installed_zip_items]
     ADD DEFAULT 1 FOR [enabled];
 
 
 GO
-PRINT N'Altering [dbo].[claims_view]...';
+PRINT N'Creating unnamed constraint on [dbo].[service_sheet_issued_zip_items]...';
 
 
 GO
-ALTER VIEW [dbo].[claims_view]
-	AS SELECT  c.id, c.sid, c.id_contractor, c.id_contract, c.id_device, c.contractor_name, 
-	c.contract_number, c.device_name, c.id_admin, c.id_engeneer, c.id_claim_state, c.id_work_type,
-	c.dattim1 as date_create, date_state_change, client_sd_num, changer_sid, cur_engeneer_sid, cur_admin_sid, cur_tech_sid, cur_manager_sid
-	FROM claims c where c.enabled = 1
-GO
-PRINT N'Altering [dbo].[get_claim2claim_state_list]...';
+ALTER TABLE [dbo].[service_sheet_issued_zip_items]
+    ADD DEFAULT getdate() FOR [dattim1];
 
 
 GO
-ALTER PROCEDURE [dbo].[get_claim2claim_state_list]
-	@id_claim int
-	as begin set nocount on;
-	select c2cs.id, c2cs.id_claim, c2cs.id_claim_state, c2cs.dattim1, c2cs.creator_sid, c2cs.descr, cs.background_color, cs.foreground_color, 
-	cs.sys_name, cs.name, c2cs.specialist_sid, c2cs.id_work_type, id_service_sheet 
-	--,wt.sys_name as work_type_sys_name, wt.name as work_type_name
-	from claim2claim_states c2cs
-	inner join claim_states cs on c2cs.id_claim_state=cs.id
-	--inner join work_types wt on c2cs.id_work_type=wt.id
-	where c2cs.enabled=1 and cs.enabled=1 and c2cs.id_claim=@id_claim
-	end
-GO
-PRINT N'Altering [dbo].[get_service_sheet]...';
+PRINT N'Creating unnamed constraint on [dbo].[service_sheet_issued_zip_items]...';
 
 
 GO
-ALTER PROCEDURE [dbo].[get_service_sheet]
-	@id int = null,
-	@id_claim int = null,
-	@id_claim2claim_state int = null
-	as begin set nocount on;
-
-	select s.id, c2cs.id_claim, c2cs.id as id_claim2claim_state, case when s.process_enabled=1 then 1 else 0 end as process_enabled, 
-	case when s.device_enabled=1 then 1 else 0 end as device_enabled, case when s.zip_claim=1 then 1 else 0 end as zip_claim, s.zip_claim_number, 
-	s.counter_mono, s.counter_color, counter_total, case when no_counter=1 then 1 else 0 end as no_counter,
-	s.dattim1 as date_create, s.descr, case when counter_unavailable=1 then 1 else 0 end as counter_unavailable, counter_descr
-	from service_sheet s 
-	inner join claim2claim_states c2cs on s.id=c2cs.id_service_sheet
-	where s.enabled=1 and c2cs.enabled=1 and
-	(@id is null or @id <= 0 or (@id is not null and @id > 0 and s.id=@id)) and 
-	(@id_claim is null or @id_claim <= 0 or (@id_claim is not null and @id_claim > 0 and c2cs.id_claim=@id_claim)) 
-	and 
-	(@id_claim2claim_state is null or @id_claim2claim_state <= 0 or (@id_claim2claim_state is not null and @id_claim2claim_state > 0 and c2cs.id=@id_claim2claim_state)) 
-
-	end
-GO
-PRINT N'Altering [dbo].[save_claim2claim_state]...';
+ALTER TABLE [dbo].[service_sheet_issued_zip_items]
+    ADD DEFAULT '3.3.3333' FOR [dattim2];
 
 
 GO
-ALTER PROCEDURE [dbo].[save_claim2claim_state]
-	@id_claim int,
-	@id_claim_state int,
-	@creator_sid varchar(46),
-	@descr nvarchar(max)=null,
-	@specialist_sid varchar(46)=null,
-	@id_work_type int = null,
-	@id_service_sheet int = null
-	as begin set nocount on;
-	declare @id int
-	insert into claim2claim_states(id_claim, id_claim_state, creator_sid, descr, specialist_sid, id_work_type, id_service_sheet)
-	values (@id_claim, @id_claim_state, @creator_sid, @descr, @specialist_sid, @id_work_type, @id_service_sheet)	
-	set @id = @@IDENTITY
-	select @id as id
-	end
-GO
-PRINT N'Altering [dbo].[clear_claim]...';
+PRINT N'Creating unnamed constraint on [dbo].[service_sheet_issued_zip_items]...';
 
 
 GO
-ALTER PROCEDURE [dbo].[clear_claim]
-	@id int = null,
-	@sid varchar(46) = null,
-	@clear_specialist_sid bit = 0,
-	@clear_id_work_type bit = 0,
-	@clear_engeneer_sid bit = 0,
-	@clear_admin_sid bit = 0,
-	@clear_tech_sid bit = 0,
-	@clear_manager_sid bit =0
-	as begin
-	set nocount on;
-
-	
-
-	if (@id is not null and @id > 0 and exists(select 1 from claims where id=@id))
-	begin	
-		if @clear_specialist_sid = 1 
-		begin
-		update claims
-		set specialist_sid = null
-		where id=@id
-		end
-
-		if @clear_id_work_type = 1 
-		begin
-		update claims
-		set id_work_type = 0
-		where id=@id
-		end
-
-		if @clear_engeneer_sid = 1 
-		begin
-		update claims
-		set cur_engeneer_sid = 0
-		where id=@id
-		end
-
-		if @clear_admin_sid = 1 
-		begin
-		update claims
-		set cur_admin_sid = 0
-		where id=@id
-		end
-
-		if @clear_tech_sid = 1 
-		begin
-		update claims
-		set cur_tech_sid = 0
-		where id=@id
-		end
-
-		if @clear_manager_sid = 1 
-		begin
-		update claims
-		set cur_manager_sid = 0
-		where id=@id
-		end
-	end
-	else if (@sid is not null and @sid <> '' and exists(select 1 from claims where sid=@sid))
-	begin
-		if @clear_specialist_sid = 1 
-		begin
-		update claims
-		set specialist_sid = null
-		where sid=@sid
-		end
-
-		if @clear_id_work_type = 1 
-		begin
-		update claims
-		set id_work_type = 0
-		where sid=@sid
-		end
-
-		if @clear_engeneer_sid = 1 
-		begin
-		update claims
-		set cur_engeneer_sid = 0
-		where sid=@sid
-		end
-
-		if @clear_admin_sid = 1 
-		begin
-		update claims
-		set cur_admin_sid = 0
-		where sid=@sid
-		end
-
-		if @clear_tech_sid = 1 
-		begin
-		update claims
-		set cur_tech_sid = 0
-		where sid=@sid
-		end
-
-		if @clear_manager_sid = 1 
-		begin
-		update claims
-		set cur_manager_sid = 0
-		where sid=@sid
-		end
-	end
-	
-	select @id as id
-	end
-GO
-PRINT N'Altering [dbo].[get_claim]...';
+ALTER TABLE [dbo].[service_sheet_issued_zip_items]
+    ADD DEFAULT 1 FOR [enabled];
 
 
 GO
-ALTER PROCEDURE [dbo].[get_claim]
-	@id int = null,
-	@sid varchar(46) = null
-	as begin
-	set nocount on;
-	select c.id, c.sid, c.id_contractor, c.id_contract, c.id_device, c.contractor_name, c.contract_number, 
-	c.device_name, c.id_admin, c.id_engeneer, c.id_claim_state, c.id_work_type, c.specialist_sid,
-	c.dattim1 as date_create, date_state_change, client_sd_num, changer_sid, cur_engeneer_sid, cur_admin_sid, cur_tech_sid, cur_manager_sid
-	from claims c
-	where (@id is null or @id<= 0 or (@id is not null and @id> 0 and c.id=@id)) and
-	(@sid is null or @sid= '' or (@id is not null and @sid!= '' and c.sid=@sid))
-	end
-GO
-PRINT N'Altering [dbo].[save_claim]...';
+PRINT N'Creating unnamed constraint on [dbo].[service_sheet_issued_zip_items]...';
 
 
 GO
-ALTER PROCEDURE [dbo].[save_claim]
-	@id int = null,
-	@sid varchar(46) = null,
-	@id_contractor int = null,
-	@id_contract int = null,
-	@id_device int = null, 
-	@contractor_name nvarchar(500) = null,
-	@contract_number nvarchar(150) = null,
-	@device_name nvarchar(500) = null,
-	@creator_sid varchar(46),
-	@id_admin int = null,
-	@id_engeneer int = null,
-	@id_work_type int = null,
-	@specialist_sid varchar(46)=null,
-	@client_sd_num nvarchar(50)=null,
-	@cur_engeneer_sid varchar(46) = null,
-	@cur_admin_sid varchar(46) = null,
-	@cur_tech_sid varchar(46) = null,
-	@cur_manager_sid varchar(46) = null
-
-	--,	@id_claim_state int= null -- статус меняем отдельной процедурой
-	as begin
-	set nocount on;
-
-	if (@id is not null and @id > 0 and exists(select 1 from claims where id=@id))
-	begin
-	--if @id_engeneer is null or @id_engeneer = 0 begin
-	--select @id_admin = isnull(@id_admin,(select id_admin from claims where id=@id))
-	--if @id_engeneer is null or @id_engeneer = 0 begin
-	--	select @id_engeneer = isnull(@id_engeneer,(select id_engeneer from claims where id=@id))
-	--	end
-		if @id_work_type is null or @id_work_type = 0 begin
-		select @id_work_type = id_work_type from claims where id=@id
-		end
-
-		select @specialist_sid = isnull(@specialist_sid,(select specialist_sid from claims where id=@id))
-
-		select @cur_engeneer_sid = isnull(@cur_engeneer_sid,(select cur_engeneer_sid from claims where id=@id))
-		select @cur_admin_sid = isnull(@cur_admin_sid,(select cur_admin_sid from claims where id=@id))
-		select @cur_tech_sid = isnull(@cur_tech_sid,(select cur_tech_sid from claims where id=@id))
-		select @cur_manager_sid = isnull(@cur_manager_sid,(select cur_manager_sid from claims where id=@id))
-
-		update claims
-		set 
-		--creator_sid=@creator_sid,
-		--id_admin=@id_admin, id_engeneer=@id_engeneer, 
-		id_work_type=@id_work_type, specialist_sid=@specialist_sid,
-		cur_engeneer_sid = @cur_engeneer_sid, cur_admin_sid=@cur_admin_sid, cur_tech_sid=@cur_tech_sid, cur_manager_sid=@cur_manager_sid
-		--id_contractor = @id_contractor,id_contract=@id_contract,id_device=@id_device, contractor_name=@contractor_name, contract_number=@contract_number, device_name=@device_name, id_claim_state=@id_claim_state
-		where id=@id
-	end
-	else if (@sid is not null and @sid <> '' and exists(select 1 from claims where sid=@sid))
-	begin
-	--select @id_admin = isnull(@id_admin,(select id_admin from claims where sid=@sid))
-	--	select @id_engeneer = isnull(@id_engeneer,(select id_engeneer from claims where sid=@sid))
-		if @id_work_type is null or @id_work_type = 0 begin
-		select @id_work_type = id_work_type from claims where sid=@sid
-		end
-
-		select @specialist_sid = isnull(@specialist_sid,(select specialist_sid from claims where sid=@sid))
-
-		select @cur_engeneer_sid = isnull(@cur_engeneer_sid,(select cur_engeneer_sid from claims where sid=@sid))
-		select @cur_admin_sid = isnull(@cur_admin_sid,(select cur_admin_sid from claims where sid=@sid))
-		select @cur_tech_sid = isnull(@cur_tech_sid,(select cur_tech_sid from claims where sid=@sid))
-		select @cur_manager_sid = isnull(@cur_manager_sid,(select cur_manager_sid from claims where sid=@sid))
-
-		update claims
-		set 
-		--creator_sid=@creator_sid,
-		--id_admin=@id_admin, id_engeneer=@id_engeneer, 
-		id_work_type=@id_work_type, specialist_sid=@specialist_sid,
-		cur_engeneer_sid = @cur_engeneer_sid, cur_admin_sid=@cur_admin_sid, cur_tech_sid=@cur_tech_sid, cur_manager_sid=@cur_manager_sid
-		--id_contractor = @id_contractor,id_contract=@id_contract,id_device=@id_device, contractor_name=@contractor_name, contract_number=@contract_number, device_name=@device_name, id_claim_state=@id_claim_state
-		where sid=@sid
-	end
-	else
-	begin
-	insert into claims(id_contractor, id_contract, id_device, contractor_name, contract_number, device_name, creator_sid, 
-	id_admin, id_engeneer, id_claim_state, id_work_type, date_state_change, client_sd_num, cur_engeneer_sid, cur_admin_sid, cur_tech_sid, cur_manager_sid)
-	values(@id_contractor, @id_contract, @id_device, @contractor_name, @contract_number, @device_name, @creator_sid, 
-	@id_admin, @id_engeneer, 0, 0, getdate(), @client_sd_num, @cur_engeneer_sid, @cur_admin_sid, @cur_tech_sid, @cur_manager_sid)
-		set @id = @@IDENTITY
-	end
-	select @id as id
-	end
-GO
-PRINT N'Altering [dbo].[set_claim_current_state]...';
+ALTER TABLE [dbo].[service_sheet_issued_zip_items]
+    ADD DEFAULT 0 FOR [installed];
 
 
 GO
-ALTER PROCEDURE [dbo].[set_claim_current_state]
-	@id_claim int,
-	@id_claim_state int,
-	@creator_sid varchar(46)
-	as begin set nocount on;
-		update claims
-		set id_claim_state = @id_claim_state, date_state_change = getdate(), changer_sid=@creator_sid where id=@id_claim
-	end
-GO
-PRINT N'Altering [dbo].[get_claim_list]...';
+PRINT N'Creating unnamed constraint on [dbo].[service_sheet_not_installed_zip_items]...';
 
 
 GO
-ALTER PROCEDURE [dbo].[get_claim_list]
-	@id_admin int = null,
-	@id_engeneer int = null,
-	@date_start date = null,
-	@date_end date = null,
-	@top_rows int
-	as begin
-	set nocount on;
-	--/////////
-	-- Поправил запрос - ПОПРАВЬ ДАПРОС КОЛИЧЕСТВА get_claim_list_count
-	--/////////
-	select top (@top_rows) c.id, c.sid, c.id_contractor, c.id_contract, c.id_device, c.contractor_name, 
-	c.contract_number, c.device_name, c.id_admin, c.id_engeneer, c.id_claim_state, c.id_work_type,
-	c.date_create, date_state_change, client_sd_num, changer_sid, cur_engeneer_sid, cur_admin_sid, cur_tech_sid, cur_manager_sid
-	from claims_view c
-	order by c.id desc
-	end
-GO
-PRINT N'Altering [dbo].[get_mobile_user_list]...';
+ALTER TABLE [dbo].[service_sheet_not_installed_zip_items]
+    ADD DEFAULT getdate() FOR [dattim1];
 
 
 GO
-ALTER PROCEDURE [dbo].[get_mobile_user_list]
+PRINT N'Creating unnamed constraint on [dbo].[service_sheet_not_installed_zip_items]...';
+
+
+GO
+ALTER TABLE [dbo].[service_sheet_not_installed_zip_items]
+    ADD DEFAULT '3.3.3333' FOR [dattim2];
+
+
+GO
+PRINT N'Creating unnamed constraint on [dbo].[service_sheet_not_installed_zip_items]...';
+
+
+GO
+ALTER TABLE [dbo].[service_sheet_not_installed_zip_items]
+    ADD DEFAULT 1 FOR [enabled];
+
+
+GO
+PRINT N'Creating unnamed constraint on [dbo].[service_sheet_ordered_zip_items]...';
+
+
+GO
+ALTER TABLE [dbo].[service_sheet_ordered_zip_items]
+    ADD DEFAULT getdate() FOR [dattim1];
+
+
+GO
+PRINT N'Creating unnamed constraint on [dbo].[service_sheet_ordered_zip_items]...';
+
+
+GO
+ALTER TABLE [dbo].[service_sheet_ordered_zip_items]
+    ADD DEFAULT '3.3.3333' FOR [dattim2];
+
+
+GO
+PRINT N'Creating unnamed constraint on [dbo].[service_sheet_ordered_zip_items]...';
+
+
+GO
+ALTER TABLE [dbo].[service_sheet_ordered_zip_items]
+    ADD DEFAULT 1 FOR [enabled];
+
+
+GO
+PRINT N'Creating [dbo].[SplitInt]...';
+
+
+GO
+create function [dbo].[SplitInt]
+(
+    @value varchar(max),
+    @delimiter nvarchar(10)
+)
+returns @SplittedValues table
+(
+    value int
+)
+as
+begin
+    declare @SplitLength int
+    
+    while len(@value) > 0
+    begin 
+        select @SplitLength = (case charindex(@delimiter,@value) when 0 then
+            len(@value) else charindex(@delimiter,@value) -1 end)
+ 
+        insert into @SplittedValues
+        select cast(substring(@value,1,@SplitLength) as int)
+    
+        select @value = (case (len(@value) - @SplitLength) when 0 then  ''
+            else right(@value, len(@value) - @SplitLength - 1) end)
+    end 
+return  
+end
+GO
+PRINT N'Altering [dbo].[get_service_issue_plan_list]...';
+
+
+GO
+ALTER PROCEDURE [dbo].[get_service_issue_plan_list]
+	@period_start date,
+	@period_end date,
+	@id_service_issue_type int = null,
+	@engeneer_sid varchar(46) = null
 AS
-	begin
-	set nocount on;
-
-	select sid, login, password from mobile_users
-	where enabled = 1
-
-	end
-GO
-PRINT N'Altering [dbo].[save_service_sheet]...';
-
-
-GO
-ALTER PROCEDURE [dbo].[save_service_sheet]
-	@id int = null,
-	@process_enabled bit = null,
-	@device_enabled bit = null,
-	@zip_claim bit = null,
-	@zip_claim_number nvarchar(50) = null,
-	@creator_sid varchar(46),
-	@counter_mono bigint = null,
-	@counter_color bigint = null,
-	@counter_total bigint = null,
-	@no_counter bit = null,
-	@descr nvarchar(MAX) = null,
-	@counter_unavailable bit = null,
-	@counter_descr nvarchar(MAX) = null
-
-	as begin set nocount on;
-
-	if exists(select 1 from service_sheet where id=@id)
-	begin
-		--update service_sheet
-		--set 
-		--where id=@id
-		select null
-	end
-	else begin
-		insert into service_sheet (process_enabled, device_enabled, zip_claim, zip_claim_number, creator_sid, counter_mono, 
-		counter_color, counter_total, no_counter,descr, counter_unavailable, counter_descr)
-		values(@process_enabled, @device_enabled, @zip_claim, @zip_claim_number, @creator_sid, @counter_mono, 
-		@counter_color, @counter_total, @no_counter, @descr, @counter_unavailable, @counter_descr)
-		set @id = @@IDENTITY
-	end
-
-	select @id as id
-
-	end
-GO
-PRINT N'Creating [dbo].[get_last_service_sheet_id]...';
-
-
-GO
-CREATE PROCEDURE [dbo].[get_last_service_sheet_id]
-	@id_claim int
-AS begin
-set nocount on;
-select top 1 c2cs.id_service_sheet 
-from claim2claim_states c2cs where c2cs.id_claim=@id_claim and enabled=1
-order by id desc
+begin
+	Set nocount on;
+	select id,id_service_issue, id_service_issue_type, period_start, period_end,creator_sid 
+	from service_issue_plan
+	where period_start >= @period_start and period_end<=@period_end
 
 end
 GO
-PRINT N'Creating [dbo].[get_service_issue_plan]...';
+PRINT N'Creating [dbo].[claim_ordered_zip_item_list_get]...';
 
 
 GO
-CREATE PROCEDURE [dbo].[get_service_issue_plan]
-	@id int
-AS
-	begin set nocount on;
-
-	select id,id_service_issue, id_service_issue_type, period_start, period_end,creator_sid from service_issue_plan
-	where id=@id
-
-	end
-GO
-PRINT N'Creating [dbo].[get_service_issue_plan_list]...';
-
-
-GO
-CREATE PROCEDURE [dbo].[get_service_issue_plan_list]
-	@period_start date,
-	@period_end date,
-	@id_service_issue_type int = null
-AS
-	Set nocount on;
-	select id,id_service_issue, id_service_issue_type, period_start, period_end,creator_sid from service_issue_plan
-	where period_start >= @period_start and period_end<=@period_end
-
-
-RETURN 0
-GO
-PRINT N'Creating [dbo].[save_mobile_came]...';
-
-
-GO
-CREATE PROCEDURE dbo.save_mobile_came
-	@id INT = null, 
-    @device_serial_num NVARCHAR(20) = NULL, 
-    @id_device INT= NULL, 
-    @device_model NVARCHAR(150) =NULL, 
-    @city NVARCHAR(150) =NULL, 
-    @address NVARCHAR(150) =NULL, 
-    @client_name NVARCHAR(150) =NULL, 
-    @id_work_type INT =NULL, 
-    @counter_mono BIGINT =NULL, 
-    @counter_color BIGINT =NULL, 
-    @counter_total BIGINT =NULL, 
-    @descr NVARCHAR(MAX) =NULL, 
-    @specialist_sid VARCHAR(46) = NULL, 
-    @date_create DATETIME = NULL,
-	@creator_sid varchar(46)
+CREATE PROCEDURE [dbo].[claim_ordered_zip_item_list_get]
+@claim_id int,
+	@not_in_id_service_sheet int = null
 	as begin
 	set nocount on;
-	INSERT INTO [dbo].[mobile_cames]
-           ([device_serial_num]
-           ,[id_device]
-           ,[device_model]
-           ,[city]
-           ,[address]
-           ,[client_name]
-           ,[id_work_type]
-           ,[counter_mono]
-           ,[counter_color]
-           ,[counter_total]
-           ,[descr]
-           ,[specialist_sid]
-           ,[date_create]
-           ,creator_sid)
-     VALUES
-           (@device_serial_num
-           ,@id_device
-           ,@device_model
-           ,@city
-           ,@address
-           ,@client_name
-           ,@id_work_type
-           ,@counter_mono
-           ,@counter_color
-           ,@counter_total
-           ,@descr
-           ,@specialist_sid
-           ,@date_create,
-		   @creator_sid)
-		   set @id = SCOPE_IDENTITY()
-		   select @id as id
-	end
-GO
-PRINT N'Creating [dbo].[save_service_issue_plan]...';
-
-
-GO
-CREATE PROCEDURE [dbo].[save_service_issue_plan]
-	@id int = null,
-	@id_service_issue int = null,
-	@id_service_issue_type int = null,
-	@period_start date = null,
-	@period_end date = null,
-	@creator_sid varchar(46) = null
-	as begin
-	set nocount on;
-
-	if not exists (select 1 from service_issue_plan where enabled=1 and id_service_issue=@id_service_issue and id_service_issue_type=@id_service_issue_type)
-	begin
-		insert into service_issue_plan (id_service_issue, id_service_issue_type, period_start, period_end, creator_sid)
-		values (@id_service_issue, @id_service_issue_type, @period_start, @period_end, @creator_sid)
-		set @id=SCOPE_IDENTITY()
-		select @id as id
-	end 
-	else
-	begin
-		declare @err_msg nvarchar(max)
-		set @err_msg = ''
-			 THROW 50000, @err_msg, 1;
-			--select top 1 @id=id from service_issue_plan where enabled=1 and id_service_issue=@id_service_issue and id_service_issue_type=@id_service_issue_type
-	end
+	select zi.id, zi.id_service_sheet, zi.part_num, zi.name, zi.count, zi.creator_sid, zi.id_zip_claim_unit, zi.dattim1 as date_create, zi.creator_sid,
+	case when inst.id is null then 0 else 1 end as installed,
+	inst.creator_sid as installed_sid,
+	inst.id_service_sheet as installed_id_service_sheet,
+	inst.creator_sid as installed_sid,
+	inst.dattim1 as date_install
+	from service_sheet_ordered_zip_items zi
+	left join service_sheet_installed_zip_items inst on zi.id = inst.id_ordered_zip_item
+	inner join service_sheet sh on zi.id_service_sheet=sh.id
 	
+	where zi.enabled=1 and sh.enabled=1 and sh.id_claim=@claim_id 
+	and (@not_in_id_service_sheet is null or @not_in_id_service_sheet <= 0 or (sh.id != @not_in_id_service_sheet and sh.id != @not_in_id_service_sheet))
+	--and zi.installed = 0
 
 	end
 GO
-PRINT N'Refreshing [dbo].[get_claim_current_state]...';
+PRINT N'Creating [dbo].[service_sheet_installed_zip_item_get_list]...';
 
 
 GO
-EXECUTE sp_refreshsqlmodule N'[dbo].[get_claim_current_state]';
+CREATE PROCEDURE [dbo].[service_sheet_installed_zip_item_get_list]
+	@id_service_sheet int
+	as begin
+	set nocount on;
+
+	select i.id, i.id_service_sheet, i.dattim1 as date_install, i.creator_sid as installed_sid, o.part_num, o.name, o.count, o.id_zip_claim_unit	
+	from service_sheet_installed_zip_items i 
+	left join service_sheet_ordered_zip_items o on o.id = i.id_ordered_zip_item
+	where i.enabled=1 and i.id_service_sheet=@id_service_sheet
+	end
+GO
+PRINT N'Creating [dbo].[service_sheet_installed_zip_item_save]...';
 
 
 GO
-PRINT N'Refreshing [dbo].[close_claim]...';
+CREATE PROCEDURE [dbo].[service_sheet_installed_zip_item_save]
+	@id_ordered_zip_item int,
+	@creator_sid varchar(46),
+	@id_service_sheet int,
+	@installed bit = 1
+as begin
+	set nocount on;
+	declare @part_num nvarchar(50), @name nvarchar(500), @count int, @id_zip_claim_unit int
+	
+	if @installed = 1
+	begin
+
+
+	insert into service_sheet_installed_zip_items (id_ordered_zip_item, id_service_sheet, creator_sid)
+	values (@id_ordered_zip_item, @id_service_sheet,@creator_sid)
+
+	--update service_sheet_zip_items
+	--set installed = 1, installed_sid = @creator_sid, installed_id_service_sheet = @id_service_sheet
+	--where id=@id
+	end
+	if @installed = 0
+	begin
+
+	update service_sheet_installed_zip_items
+	set enabled=0, dattim2=getdate(),deleter_sid=@creator_sid
+	where id_service_sheet=@id_service_sheet and id_ordered_zip_item=@id_ordered_zip_item
+
+	--update service_sheet_zip_items
+	--set installed = 0, installed_cancel_sid = @creator_sid, installed_id_service_sheet = null
+	--where id=@id
+	end
+	end
+GO
+PRINT N'Creating [dbo].[service_sheet_issued_zip_item_close]...';
 
 
 GO
-EXECUTE sp_refreshsqlmodule N'[dbo].[close_claim]';
+CREATE PROCEDURE [dbo].[service_sheet_issued_zip_item_close]
+	@id int, @deleter_sid varchar(46)
+AS
+    BEGIN
+        SET NOCOUNT ON;
+        UPDATE  service_sheet_issued_zip_items
+        SET     enabled = 0, dattim2 = getdate(), deleter_sid=@deleter_sid
+        WHERE   id = @id
+    END
+GO
+PRINT N'Creating [dbo].[service_sheet_issued_zip_item_get]...';
 
 
 GO
-PRINT N'Refreshing [dbo].[set_claim_claim_state]...';
+CREATE PROCEDURE [dbo].[service_sheet_issued_zip_item_get]
+	@id int
+	as begin
+	set nocount on;
+
+	select id, id_service_sheet, part_num, name, count, creator_sid, id_zip_claim_unit, dattim1 as date_create, creator_sid, installed, installed_sid, installed_cancel_sid, installed_id_service_sheet
+	from service_sheet_issued_zip_items
+	where id=@id
+	end
+GO
+PRINT N'Creating [dbo].[service_sheet_issued_zip_item_get_list]...';
 
 
 GO
-EXECUTE sp_refreshsqlmodule N'[dbo].[set_claim_claim_state]';
+CREATE PROCEDURE [dbo].[service_sheet_issued_zip_item_get_list]
+	@id_service_sheet int
+	as begin
+	set nocount on;
+
+	select id, id_service_sheet, part_num, name, count, creator_sid, id_zip_claim_unit, dattim1 as date_create, creator_sid, installed, installed_sid, installed_cancel_sid, installed_id_service_sheet
+	from service_sheet_issued_zip_items
+	where enabled=1 and id_service_sheet=@id_service_sheet
+	end
+GO
+PRINT N'Creating [dbo].[service_sheet_issued_zip_item_save]...';
 
 
 GO
-PRINT N'Refreshing [dbo].[get_claim_list_count]...';
+CREATE PROCEDURE [dbo].[service_sheet_issued_zip_item_save]
+	@id int = null,
+	@id_service_sheet int,
+	@part_num nvarchar(50),
+	@name nvarchar(500) = null,
+	@count int,
+	@creator_sid varchar(46)
+AS
+begin
+set nocount on;
+	insert into service_sheet_issued_zip_items (id_service_sheet, part_num, name, count ,creator_sid)
+	values (@id_service_sheet, @part_num, @name, @count ,@creator_sid)
+end
+GO
+PRINT N'Creating [dbo].[service_sheet_not_installed_zip_item_get_list]...';
 
 
 GO
-EXECUTE sp_refreshsqlmodule N'[dbo].[get_claim_list_count]';
+CREATE PROCEDURE [dbo].[service_sheet_not_installed_zip_item_get_list]
+	@id_service_sheet int
+	as begin
+	set nocount on;
+
+	select ni.id, ni.id_service_sheet, o.part_num, o.name, o.count, ni.creator_sid, o.id_zip_claim_unit, ni.dattim1 as date_create
+	from service_sheet_not_installed_zip_items ni
+	left join service_sheet_ordered_zip_items o on o.id = ni.id_ordered_zip_item
+	where ni.enabled=1 and ni.id_service_sheet=@id_service_sheet
+	end
+GO
+PRINT N'Creating [dbo].[service_sheet_not_installed_zip_item_save_list]...';
 
 
 GO
--- Refactoring step to update target server with deployed transaction logs
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'a4c8791f-e93f-467c-b204-b3d94c84adfa')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('a4c8791f-e93f-467c-b204-b3d94c84adfa')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'bbed99bb-81f4-4fd0-b737-2e7036d6c94d')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('bbed99bb-81f4-4fd0-b737-2e7036d6c94d')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '8f116ff2-0393-4497-aa0d-7ee3ae5abde0')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('8f116ff2-0393-4497-aa0d-7ee3ae5abde0')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '0803fe49-f0cd-4e84-aebe-4358935546bc')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('0803fe49-f0cd-4e84-aebe-4358935546bc')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '1768afd4-531b-4c54-bb36-9d96df569dcf')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('1768afd4-531b-4c54-bb36-9d96df569dcf')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '252dc46c-b211-4d27-9546-92911076617b')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('252dc46c-b211-4d27-9546-92911076617b')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '34d386d2-8024-4192-9d48-be644066bc8b')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('34d386d2-8024-4192-9d48-be644066bc8b')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = '3baeba77-cb7c-4c9c-85a1-45592fca3926')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('3baeba77-cb7c-4c9c-85a1-45592fca3926')
-IF NOT EXISTS (SELECT OperationKey FROM [dbo].[__RefactorLog] WHERE OperationKey = 'dab1036a-0336-459b-babe-ed576f0d0cc0')
-INSERT INTO [dbo].[__RefactorLog] (OperationKey) values ('dab1036a-0336-459b-babe-ed576f0d0cc0')
+CREATE PROCEDURE [dbo].[service_sheet_not_installed_zip_item_save_list]
+	@id_ordered_zip_item_list nvarchar(max),
+	@id_service_sheet int,	
+	@creator_sid varchar(46)
+AS
+begin
+set nocount on;
+declare @id_ordered_zip_item int
+declare curs cursor FAST_FORWARD for
+select value from SplitInt(@id_ordered_zip_item_list, ',')
+
+OPEN curs
+
+begin try
+
+FETCH NEXT FROM curs
+INTO @id_ordered_zip_item
+
+
+BEGIN tran
+WHILE @@FETCH_STATUS = 0
+BEGIN
+
+	insert into service_sheet_not_installed_zip_items (id_ordered_zip_item, id_service_sheet, creator_sid)
+	values (@id_ordered_zip_item, @id_service_sheet, @creator_sid)
+
+	FETCH NEXT FROM curs
+	INTO @id_ordered_zip_item
+
+	end
+	COMMIT tran
+	CLOSE curs
+	DEALLOCATE curs
+	end try
+	begin catch
+	rollback tran
+	CLOSE curs
+	DEALLOCATE curs
+		THROW;  
+	end catch
+
+	
+end
+GO
+PRINT N'Creating [dbo].[service_sheet_ordered_zip_item_get_list]...';
+
 
 GO
+CREATE PROCEDURE [dbo].[service_sheet_ordered_zip_item_get_list]
+	@id_service_sheet int
+	as begin
+	set nocount on;
 
+	select id, id_service_sheet, part_num, name, count, creator_sid, id_zip_claim_unit, dattim1 as date_create, creator_sid
+	from service_sheet_ordered_zip_items
+	where enabled=1 and id_service_sheet=@id_service_sheet
+	end
 GO
 /*
 Шаблон скрипта после развертывания							
@@ -913,6 +515,7 @@ GO
 */
 
 GRANT EXECUTE ON SCHEMA ::dbo TO sqlUnit_prog
+GRANT select ON SCHEMA ::dbo TO sqlUnit_prog
 if not exists(select 1 from claim_states)
 begin
 	insert into claim_states (name, sys_name, order_num)

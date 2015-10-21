@@ -16,7 +16,8 @@
 	@counter_descr nvarchar(MAX) = null,
 	@engeneer_sid varchar(46) = null,
 	@admin_sid varchar(46) = null,
-	@time_on_work_minutes int = null
+	@time_on_work_minutes int = null,
+	@id_work_type int
 
 	as begin set nocount on;
 
@@ -29,9 +30,9 @@
 	end
 	else begin
 		insert into service_sheet (process_enabled, device_enabled, zip_claim, zip_claim_number, creator_sid, counter_mono, 
-		counter_color, counter_total, no_counter,descr, counter_unavailable, counter_descr, engeneer_sid, admin_sid, id_service_issue, id_claim, time_on_work_minutes)
+		counter_color, counter_total, no_counter,descr, counter_unavailable, counter_descr, engeneer_sid, admin_sid, id_service_issue, id_claim, time_on_work_minutes, id_work_type)
 		values(@process_enabled, @device_enabled, @zip_claim, @zip_claim_number, @creator_sid, @counter_mono, 
-		@counter_color, @counter_total, @no_counter, @descr, @counter_unavailable, @counter_descr, @engeneer_sid, @admin_sid, @id_service_issue,@id_claim, @time_on_work_minutes)
+		@counter_color, @counter_total, @no_counter, @descr, @counter_unavailable, @counter_descr, @engeneer_sid, @admin_sid, @id_service_issue,@id_claim, @time_on_work_minutes, @id_work_type)
 		set @id = @@IDENTITY
 	end
 

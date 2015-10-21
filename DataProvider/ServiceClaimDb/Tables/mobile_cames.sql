@@ -14,6 +14,6 @@
     [descr] NVARCHAR(MAX) NULL, 
     [specialist_sid] VARCHAR(46) NOT NULL, 
     [date_create] DATETIME NOT NULL, 
-    [dattim1] DATE NOT NULL DEFAULT getdate(), 
+    [dattim1] DATETIME NOT NULL DEFAULT getdate(), 
     [creator_sid] VARCHAR(46) NOT NULL
 )

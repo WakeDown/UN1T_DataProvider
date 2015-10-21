@@ -76,6 +76,8 @@
     <Folder Include="Stored Procedures\ContractorAccess" />
     <Folder Include="Stored Procedures\ServiceIssue" />
     <Folder Include="Stored Procedures\ServiceIssuePlan" />
+    <Folder Include="Stored Procedures\ServiceSheetZipItems" />
+    <Folder Include="Functions" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Stored Procedures\Claim\get_claim_list.sql" />
@@ -139,6 +141,28 @@
     <Build Include="Stored Procedures\Claim\get_claim_list_count_by_states.sql" />
     <Build Include="Stored Procedures\Claim\get_claim_client_list.sql" />
     <Build Include="Stored Procedures\Claim2ClaimState\get_claim_last_added_claim_state.sql" />
+    <Build Include="Stored Procedures\Claim\get_claim_service_sheet_list.sql" />
+    <Build Include="Stored Procedures\Claim\get_claim_zip_claim_list.sql" />
+    <Build Include="Tables\claim_state_groups.sql" />
+    <Build Include="Tables\service_sheet_issued_zip_items.sql" />
+    <Build Include="Stored Procedures\ServiceSheetZipItems\service_sheet_issued_zip_item_save.sql" />
+    <Build Include="Stored Procedures\ServiceSheetZipItems\service_sheet_issued_zip_item_get_list.sql" />
+    <Build Include="Stored Procedures\ServiceSheetZipItems\service_sheet_issued_zip_item_get.sql" />
+    <Build Include="Stored Procedures\ServiceSheetZipItems\service_sheet_issued_zip_item_close.sql" />
+    <Build Include="Stored Procedures\Claim\claim_ordered_zip_item_list_get.sql" />
+    <Build Include="Stored Procedures\ServiceSheetZipItems\service_sheet_installed_zip_item_save.sql" />
+    <Build Include="Stored Procedures\ServiceSheetZipItems\service_sheet_installed_zip_item_get_list.sql" />
+    <Build Include="Tables\service_sheet_not_installed_zip_items.sql" />
+    <Build Include="Tables\service_sheet_installed_zip_items.sql" />
+    <Build Include="Tables\service_sheet_ordered_zip_items.sql" />
+    <Build Include="Stored Procedures\ServiceSheetZipItems\service_sheet_not_installed_zip_item_get_list.sql" />
+    <Build Include="Stored Procedures\ServiceSheetZipItems\service_sheet_ordered_zip_item_copy_from_issued.sql" />
+    <Build Include="Stored Procedures\ServiceSheetZipItems\service_sheet_not_installed_zip_item_save_list.sql" />
+    <Build Include="Functions\SplitInt.sql" />
+    <Build Include="Stored Procedures\ServiceSheetZipItems\service_sheet_ordered_zip_item_save_list.sql" />
+    <Build Include="Stored Procedures\ServiceSheetZipItems\service_sheet_ordered_zip_item_save.sql" />
+    <Build Include="Stored Procedures\ServiceSheetZipItems\service_sheet_ordered_zip_item_close.sql" />
+    <Build Include="Stored Procedures\ServiceSheet\service_sheet_update.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ServiceDb.refactorlog" />

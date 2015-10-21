@@ -179,6 +179,10 @@
     <Build Include="StoredProc\RestHoliday\rest_holiday_list_confirm.sql" />
     <Build Include="Functions\SplitInt.sql" />
     <Build Include="StoredProc\RestHoliday\rest_holiday_get.sql" />
+    <Build Include="StoredProc\RestHoliday\rest_holiday_years_list.sql" />
+    <Build Include="StoredProc\RestHoliday\rest_holiday_check_period_cross.sql" />
+    <Build Include="StoredProc\RestHoliday\rest_holiday_employee_list.sql" />
+    <Build Include="StoredProc\RestHoliday\rest_holiday_employee_year_confirm.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="StuffDb.refactorlog" />

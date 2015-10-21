@@ -20,5 +20,7 @@
     [engeneer_sid] VARCHAR(46) NULL, 
     [id_service_issue] INT NOT NULL, 
     [id_claim] INT NOT NULL, 
-    [time_on_work_minutes] INT NULL    
+    [time_on_work_minutes] INT NULL, 
+    [id_work_type] INT NOT NULL, 
+    [not_installed_comment] NVARCHAR(MAX) NULL 
 )

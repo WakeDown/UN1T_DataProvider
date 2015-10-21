@@ -10,7 +10,9 @@ CREATE procedure FilterTenderClaimsCount
  @tenderStartTo datetime = null,
  @overdie bit = null,
  @idProductManager nvarchar(500) = null,
- @author nvarchar(150) = null
+ @author nvarchar(150) = null,
+	  @customer nvarchar(500) = null,
+	  @dealTypeId int = null
 )
 as
 select count(*) from TenderClaim where Deleted = 0 and ((@idClaim is null) or (@idClaim is not null and Id = @idClaim)) 
@@ -26,3 +28,13 @@ and ((@tenderStartFrom is null and @tenderStartTo is null) or (@tenderStartFrom 
 and ClaimDeadline BETWEEN @tenderStartFrom AND @tenderStartTo) or (@tenderStartFrom is null and @tenderStartTo is not null
 and ClaimDeadline <= @tenderStartTo) or (@tenderStartFrom is not null and @tenderStartTo is null
 and ClaimDeadline >= @tenderStartFrom))
+ AND ( ( @dealTypeId IS NULL or @dealTypeId <=0 )
+                  OR ( @dealTypeId IS NOT NULL and @dealTypeId > 0
+                       AND DealType = @dealTypeId
+                     )
+                )
+				AND ( ( @customer IS NULL or @customer = '' )
+                  OR ( @customer IS NOT NULL and @customer != ''
+                       AND (Customer like '%' + @customer + '%' or CustomerInn like '%' + @customer + '%')
+                     )
+                )

@@ -4,7 +4,7 @@
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseName>Stuff</TargetDatabaseName>
     <DeployScriptFileName>StuffDb.sql</DeployScriptFileName>
-    <TargetConnectionString>Data Source=udb-1;Integrated Security=True;Pooling=False</TargetConnectionString>
+    <TargetConnectionString>Data Source=usql-1;Integrated Security=True;Pooling=False</TargetConnectionString>
     <ProfileVersionNumber>1</ProfileVersionNumber>
   </PropertyGroup>
 </Project>

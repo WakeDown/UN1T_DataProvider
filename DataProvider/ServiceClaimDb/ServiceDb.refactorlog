@@ -266,4 +266,39 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="id_service_issue_type" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="842dc052-8dca-4d19-be0e-463133347a03" ChangeDateTime="10/12/2015 11:53:20">
+    <Property Name="ElementName" Value="[dbo].[claim_state_groups].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[claim_state_groups]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="9ca151cf-76a7-4980-9dd2-11aefa13e460" ChangeDateTime="10/13/2015 12:38:41">
+    <Property Name="ElementName" Value="[dbo].[claim_zip_items].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[claim_zip_items]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="83bfdae7-3e76-45d1-afd9-0b34d6b28f69" ChangeDateTime="10/14/2015 11:51:31">
+    <Property Name="ElementName" Value="[dbo].[claim_zip_items].[id_claim]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[claim_zip_items]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="id_service_sheet" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5a2232c0-88fd-492f-a908-eb3e1974737f" ChangeDateTime="10/14/2015 12:55:53">
+    <Property Name="ElementName" Value="[dbo].[service_sheet_zip_items].[enbaled]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[service_sheet_zip_items]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="enabled" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="c33edf68-aee5-4818-9d3e-2d6e24f96b9e" ChangeDateTime="10/19/2015 10:19:35">
+    <Property Name="ElementName" Value="[dbo].[service_sheet].[engeneer_]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[service_sheet]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="engeneer_zip_confirm" />
+  </Operation>
 </Operations>

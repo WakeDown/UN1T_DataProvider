@@ -11,7 +11,9 @@ CREATE PROCEDURE FilterTenderClaims
       @tenderStartTo DATETIME = NULL ,
       @overdie BIT = NULL ,
       @idProductManager NVARCHAR(500) = NULL ,
-      @author NVARCHAR(150) = NULL
+      @author NVARCHAR(150) = NULL,
+	  @customer nvarchar(500) = null,
+	  @dealTypeId int = null
     )
 AS
 	
@@ -35,6 +37,17 @@ AS
                        AND ClaimStatus IN (
                        SELECT   *
                        FROM     dbo.Split(@claimStatusIds, ',') )
+                     )
+                )
+
+				 AND ( ( @dealTypeId IS NULL or @dealTypeId <=0 )
+                  OR ( @dealTypeId IS NOT NULL and @dealTypeId > 0
+                       AND DealType = @dealTypeId
+                     )
+                )
+				AND ( ( @customer IS NULL or @customer = '' )
+                  OR ( @customer IS NOT NULL and @customer != ''
+                       AND (Customer like '%' + @customer + '%' or CustomerInn like '%' + @customer + '%')
                      )
                 )
             AND ( ( @manager IS NULL )

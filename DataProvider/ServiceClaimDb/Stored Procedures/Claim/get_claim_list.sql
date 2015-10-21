@@ -10,7 +10,8 @@
 	@id_device int = null,
 	@active_claims_only bit = null,
 	@id_claim_state int = null,
-	@id_client int = null
+	@id_client int = null,
+	@client_sd_num nvarchar(20) = null
 	as begin
 	set nocount on;
 	--/////////
@@ -35,5 +36,6 @@
 	and (@active_claims_only is null or @active_claims_only = 0 or (@active_claims_only is not null and @active_claims_only = 1 and c.id_end_state = 0))
 	and (@id_claim_state is null or @id_claim_state <= 0 or (@id_claim_state is not null and @id_claim_state > 0 and c.id_claim_state = @id_claim_state))
 	and (@id_client is null or @id_client <= 0 or (@id_client is not null and @id_client > 0 and c.id_contractor = @id_client))
+	and (@client_sd_num is null or @client_sd_num = '' or (@client_sd_num is not null and @client_sd_num <> '' and c.client_sd_num = @client_sd_num))
 	order by c.id desc
 	end

@@ -8,5 +8,7 @@
     [dattim2] DATETIME NOT NULL DEFAULT '3.3.3333', 
     [enabled] BIT NOT NULL DEFAULT 1, 
     [creator_sid] VARCHAR(46) NULL, 
-    [order_num] INT NOT NULL DEFAULT 500
+    [order_num] INT NOT NULL DEFAULT 500, 
+    [zip_install] BIT NOT NULL DEFAULT 0, 
+    [zip_order] BIT NOT NULL DEFAULT 0
 )

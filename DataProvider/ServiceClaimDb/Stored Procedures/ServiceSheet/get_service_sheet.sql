@@ -8,11 +8,12 @@
 	case when s.device_enabled=1 then 1 else 0 end as device_enabled, case when s.zip_claim=1 then 1 else 0 end as zip_claim, s.zip_claim_number, 
 	s.counter_mono, s.counter_color, counter_total, case when no_counter=1 then 1 else 0 end as no_counter,
 	s.dattim1 as date_create, s.descr, case when counter_unavailable=1 then 1 else 0 end as counter_unavailable, counter_descr,
-	s.creator_sid, engeneer_sid, admin_sid, id_service_issue, c.id_device, c.id_work_type, s.creator_sid as engeneer_sid, 
+	s.creator_sid, engeneer_sid, admin_sid, id_service_issue, c.id_device, s.creator_sid as engeneer_sid, 
 	( select si.creator_sid from service_issue si where si.id = s.id_service_issue) as admin_sid,
 	--time_on_work_minutes = время от статуса в работе до создания заявки
 	s.time_on_work_minutes,
-	c.client_sd_num
+	c.client_sd_num, s.dattim1 as date_create, s.id_work_type,
+	not_installed_comment
 	from service_sheet s 
 	inner join claim2claim_states c2cs on s.id=c2cs.id_service_sheet
 	inner join claims c on c.id=s.id_claim
